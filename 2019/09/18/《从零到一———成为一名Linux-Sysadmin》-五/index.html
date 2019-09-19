@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,ubuntu,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Time Manager" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Bash脚本编程入门1. 一个bash脚本helloworld.sh 12345678#!/bin/bash# author: timmger# date: 2019/9/19message=&quot;Hello, World!&quot;echo $messageexit $? 添加others执行权限  chmod +x ./helloworld.sh  运行脚本  bash ./helloworld.sh 或">
+<meta name="keywords" content="Linux,ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《从零到一———成为一名Linux Sysadmin》(五)">
+<meta property="og:url" content="https://timmger.github.io/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/index.html">
+<meta property="og:site_name" content="Time Manager">
+<meta property="og:description" content="Bash脚本编程入门1. 一个bash脚本helloworld.sh 12345678#!/bin/bash# author: timmger# date: 2019/9/19message=&quot;Hello, World!&quot;echo $messageexit $? 添加others执行权限  chmod +x ./helloworld.sh  运行脚本  bash ./helloworld.sh 或">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-19T09:03:10.975Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《从零到一———成为一名Linux Sysadmin》(五)">
+<meta name="twitter:description" content="Bash脚本编程入门1. 一个bash脚本helloworld.sh 12345678#!/bin/bash# author: timmger# date: 2019/9/19message=&quot;Hello, World!&quot;echo $messageexit $? 添加others执行权限  chmod +x ./helloworld.sh  运行脚本  bash ./helloworld.sh 或">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://timmger.github.io/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/">
+
+
+
+
+
+  <title>《从零到一———成为一名Linux Sysadmin》(五) | Time Manager</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?40bd810474dac7f259f8afb92a8d103f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Time Manager</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">時は動き出す</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Timmger">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Time Manager">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《从零到一———成为一名Linux Sysadmin》(五)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T22:50:32+08:00">
+                2019-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/" class="leancloud_visitors" data-flag-title="《从零到一———成为一名Linux Sysadmin》(五)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  930
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Bash脚本编程入门"><a href="#Bash脚本编程入门" class="headerlink" title="Bash脚本编程入门"></a>Bash脚本编程入门</h2><h3 id="1-一个bash脚本"><a href="#1-一个bash脚本" class="headerlink" title="1. 一个bash脚本"></a>1. 一个bash脚本</h3><p>helloworld.sh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># author: timmger</span></span><br><span class="line"><span class="comment"># date: 2019/9/19</span></span><br><span class="line"></span><br><span class="line">message=<span class="string">"Hello, World!"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$message</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> $?</span><br></pre></td></tr></table></figure>
+<p>添加others执行权限</p>
+<blockquote>
+<p><strong>chmod +x ./helloworld.sh</strong></p>
+</blockquote>
+<p>运行脚本</p>
+<blockquote>
+<p><strong>bash ./helloworld.sh</strong> 或 <strong>./helloworld.sh</strong></p>
+</blockquote>
+<p>执行并将脚本的变量导入</p>
+<blockquote>
+<p><strong>source ./helloworld.sh</strong> 或 <strong>. helloworld.sh</strong></p>
+</blockquote>
+<h3 id="2-变量和字符串（Variables-and-String）"><a href="#2-变量和字符串（Variables-and-String）" class="headerlink" title="2. 变量和字符串（Variables and String）"></a>2. <strong>变量</strong>和<strong>字符串</strong>（Variables and String）</h3><p><strong>定义变量</strong>：</p>
+<blockquote>
+<p><strong>name=”timmger”</strong></p>
+</blockquote>
+<p>变量名与等号之间不能有空格, 命名只能使用英文字母，数字和下划线</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ name=<span class="string">"timmger"</span></span><br><span class="line">timmger@timmger-virtual-machine:~$ <span class="built_in">echo</span> <span class="variable">$name</span></span><br><span class="line">timmger</span><br><span class="line">timmger@timmger-virtual-machine:~$</span><br></pre></td></tr></table></figure>
+<p>使用变量时，在变量名前加入美元符号 <strong>\$</strong>, 可使用括号限定边界</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ <span class="built_in">echo</span> <span class="string">"my name is <span class="variable">$name</span>"</span></span><br><span class="line">my name is timmger</span><br><span class="line">timmger@timmger-virtual-machine:~$ <span class="built_in">echo</span> <span class="string">"my name is <span class="variable">$&#123;name&#125;</span>(time manager)"</span></span><br><span class="line">my name is timmger(time manager)</span><br></pre></td></tr></table></figure>
+<p><strong>删除变量</strong>：</p>
+<p>使用 <strong>ubset</strong> 可以删除变量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ <span class="built_in">unset</span> name</span><br><span class="line">timmger@timmger-virtual-machine:~$ <span class="built_in">echo</span> <span class="variable">$name</span></span><br><span class="line"></span><br><span class="line">timmger@timmger-virtual-machine:~$</span><br></pre></td></tr></table></figure></p>
+<p><strong>字符串</strong>：</p>
+<p>获取字符串长度<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string=<span class="string">"abcd"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#string&#125;</span> <span class="comment">#输出4</span></span><br></pre></td></tr></table></figure></p>
+<p>切片（slicing）</p>
+<p>${name:m:n}<br>从第m个字符开始截取n个字符</p>
+<blockquote>
+<p>string=”I am cool”<br>echo \${string:0:4} #输出 I am</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">name=<span class="string">"Timmger"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;name&#125;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;name/T/t&#125;</span>    <span class="comment">#=&gt; "timmger" 替换(substitution)</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;name:0:3&#125;</span>    <span class="comment">#=&gt; "Tim" (slicing)</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;name::3&#125;</span>     <span class="comment">#=&gt; "Tim" (slicing)</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;name::-1&#125;</span>    <span class="comment">#=&gt; "Timmge" 倒数第一个结束，不包含(slicing)</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;name:(-1)&#125;</span>   <span class="comment">#=&gt; "r" 从右开始(slicing from right)</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;name:(-2):1&#125;</span> <span class="comment">#=&gt; "e" (slicing from right)</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;food:-Cake&#125;</span>  <span class="comment">#=&gt; 如果food没赋值。设定默认值Cake</span></span><br></pre></td></tr></table></figure>
+<p>匹配（match）替换（substitution）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">STR=<span class="string">"/path/to/cool.java"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR%.java&#125;</span>    <span class="comment"># /path/to/cool</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR%.java&#125;</span>.cpp  <span class="comment"># 移除匹配的部分 /path/to/cool.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR##*.&#125;</span>     <span class="comment"># java 贪婪匹配(extension)</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR##*/&#125;</span>     <span class="comment"># cool.java 贪婪匹配</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR#*/&#125;</span>      <span class="comment"># 非贪婪匹配 path/to/cool.java</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR/cool/cooler&#125;</span> <span class="comment"># 非贪婪替换 /path/to/cooler.java</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR//\//*&#125;</span> <span class="comment"># 贪婪替换，替换/为* *path*to*cooler.java</span></span><br></pre></td></tr></table></figure>
+<p>大小写转换</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">STR=<span class="string">"HELLO WORLD!"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR,&#125;</span>   <span class="comment">#=&gt; "hELLO WORLD!" (将第一个字母小写)</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR,,&#125;</span>  <span class="comment">#=&gt; "hello world!" (所有小写)</span></span><br><span class="line"></span><br><span class="line">STR=<span class="string">"hello world!"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR^&#125;</span>   <span class="comment">#=&gt; "Hello world!" (将第一个字母大写)</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;STR^^&#125;</span>  <span class="comment">#=&gt; "HELLO WORLD!" (所有大写)</span></span><br></pre></td></tr></table></figure>
+<p>查找子字符串</p>
+<p>查找字符 m 或 p 的位置(哪个字母先出现就计算哪个)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string=<span class="string">"I am super cool"</span></span><br><span class="line"><span class="built_in">echo</span> `expr index <span class="string">"<span class="variable">$string</span>"</span> mp`  <span class="comment"># 输出 4, 反引号</span></span><br></pre></td></tr></table></figure></p>
+<p>字符串内使用反引号可执行command<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ wc -l &lt; /etc/group</span><br><span class="line">69</span><br><span class="line">timmger@timmger-virtual-machine:~$ <span class="built_in">echo</span> <span class="string">"there are `wc -l &lt; /etc/group` of lines in the /etc/group file"</span></span><br><span class="line">there are 69 of lines <span class="keyword">in</span> the /etc/group file</span><br><span class="line">timmger@timmger-virtual-machine:~$</span><br></pre></td></tr></table></figure></p>
+<p>也可以赋值command为变量(反引号)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ num=`ls <span class="variable">$HOME</span> | wc -l`</span><br><span class="line">timmger@timmger-virtual-machine:~$ <span class="built_in">echo</span> <span class="variable">$num</span></span><br><span class="line">20</span><br><span class="line">timmger@timmger-virtual-machine:~$</span><br></pre></td></tr></table></figure>
+<h3 id="3-参数（arguments）"><a href="#3-参数（arguments）" class="headerlink" title="3. 参数（arguments）"></a>3. 参数（arguments）</h3><blockquote>
+<p><strong>\$0</strong> : 该脚本的文件名参数</p>
+</blockquote>
+<blockquote>
+<p><strong>\$#</strong> : 脚本的参数数量</p>
+</blockquote>
+<blockquote>
+<p><strong>\$1..\$n</strong> : 输入传递的第n个参数</p>
+</blockquote>
+<blockquote>
+<p><strong>\$@</strong> : 从输入传递的所有参数</p>
+</blockquote>
+<p>cool.sh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># author:timmger</span></span><br><span class="line"><span class="comment"># url:blog.timmger.site</span></span><br><span class="line"></span><br><span class="line">filename=<span class="variable">$0</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"arguments are <span class="variable">$@</span>, the num is <span class="variable">$#</span>"</span></span><br></pre></td></tr></table></figure>
+<p>执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ ./cool.sh arg1 arg2 arg3</span><br><span class="line">./cool.sh</span><br><span class="line">arguments are arg1 arg2 arg3, the num is 3</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-循环（loops）和-条件语句（Conditionals）"><a href="#4-循环（loops）和-条件语句（Conditionals）" class="headerlink" title="4. 循环（loops）和 条件语句（Conditionals）"></a>4. 循环（loops）和 条件语句（Conditionals）</h3><h4 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a><strong>if</strong>语句</h4><p>if.sh<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># author:timmger</span></span><br><span class="line"><span class="comment"># url:blog.timmger.site</span></span><br><span class="line"></span><br><span class="line">NAME=<span class="variable">$1</span></span><br><span class="line">COOL=<span class="string">"you are cool"</span></span><br><span class="line">COOLER=<span class="string">"you are cooler"</span></span><br><span class="line">COOLEST=<span class="string">"you are coolest"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$NAME</span>"</span> = <span class="string">"time"</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$COOL</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$NAME</span>"</span> = <span class="string">"manager"</span>]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$COOLER</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$COOLEST</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
+<p>执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ ./if.sh time</span><br><span class="line">you are cool</span><br><span class="line">timmger@timmger-virtual-machine:~$ ./if.sh manager</span><br><span class="line">you are cooler</span><br><span class="line">timmger@timmger-virtual-machine:~$ ./if.sh timmger</span><br><span class="line">you are coolest</span><br><span class="line">timmger@timmger-virtual-machine:~$</span><br></pre></td></tr></table></figure></p>
+<p>if2.sh<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># author:timmger</span></span><br><span class="line"><span class="comment"># url:blog.timmger.site</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$#</span> -lt NUM_REQ ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Not enough arguments, Call this script with</span></span><br><span class="line"><span class="string">    <span class="variable">$0</span> \&lt;name\&gt; \&lt;number\&gt;"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
+<p>执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ ./if2.sh timmger</span><br><span class="line">Not enough arguments, Call this script with</span><br><span class="line">    ./if2.sh &lt;name&gt; &lt;number&gt;</span><br><span class="line">timmger@timmger-virtual-machine:~$</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Not NUll(-n) or Zero length(-z)</span></span><br><span class="line">string=<span class="string">""</span></span><br><span class="line"><span class="keyword">if</span> [[ -z <span class="string">"<span class="variable">$string</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"String is empty"</span></span><br><span class="line"><span class="keyword">elif</span> [[ -n <span class="string">"<span class="variable">$string</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"String is not empty"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a><strong>for</strong>循环</h4><h4 id="类C循环"><a href="#类C循环" class="headerlink" title="类C循环"></a><strong>类C</strong>循环</h4><h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a><strong>while</strong>循环</h4><h3 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h3><h3 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h3><p><strong>条件执行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit &amp;&amp; git push</span><br><span class="line">git commit || <span class="built_in">echo</span> <span class="string">"Commit failed"</span></span><br></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#---------------------------</span></span><br><span class="line"><span class="comment"># 单行注释</span></span><br><span class="line"><span class="comment"># author: timmger</span></span><br><span class="line"><span class="comment"># date: 2019/9/19</span></span><br><span class="line"><span class="comment">#---------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">：&lt;&lt;‘</span><br><span class="line">This is a</span><br><span class="line">muti line</span><br><span class="line">comment</span><br><span class="line">’</span><br></pre></td></tr></table></figure>
+<p><strong>参考资料</strong>：</p>
+<ol>
+<li><a href="https://devhints.io/bash" target="_blank" rel="noopener">https://devhints.io/bash</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Allen Timmger
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://timmger.github.io/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/" title="《从零到一———成为一名Linux Sysadmin》(五)">https://timmger.github.io/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/ubuntu/" rel="tag"><i class="fa fa-tag"></i> ubuntu</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-四/" rel="next" title="《从零到一———成为一名Linux Sysadmin》(四)">
+                <i class="fa fa-chevron-left"></i> 《从零到一———成为一名Linux Sysadmin》(四)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Allen Timmger">
+            
+              <p class="site-author-name" itemprop="name">Allen Timmger</p>
+              <p class="site-description motion-element" itemprop="description">ザ・ワールド</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Timmger" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:timmgerable@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/AllenTimmger" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://dxdesign.github.io" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash脚本编程入门"><span class="nav-number">1.</span> <span class="nav-text">Bash脚本编程入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-一个bash脚本"><span class="nav-number">1.1.</span> <span class="nav-text">1. 一个bash脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-变量和字符串（Variables-and-String）"><span class="nav-number">1.2.</span> <span class="nav-text">2. 变量和字符串（Variables and String）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-参数（arguments）"><span class="nav-number">1.3.</span> <span class="nav-text">3. 参数（arguments）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-循环（loops）和-条件语句（Conditionals）"><span class="nav-number">1.4.</span> <span class="nav-text">4. 循环（loops）和 条件语句（Conditionals）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if语句"><span class="nav-number">1.4.1.</span> <span class="nav-text">if语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for循环"><span class="nav-number">1.4.2.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类C循环"><span class="nav-number">1.4.3.</span> <span class="nav-text">类C循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while循环"><span class="nav-number">1.4.4.</span> <span class="nav-text">while循环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">1.5.</span> <span class="nav-text">5.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-其他"><span class="nav-number">1.6.</span> <span class="nav-text">6. 其他</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Timmger</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Timmger.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://timmger.github.io/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/';
+          this.page.identifier = '2019/09/18/《从零到一———成为一名Linux-Sysadmin》-五/';
+          this.page.title = '《从零到一———成为一名Linux Sysadmin》(五)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Timmger.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("iT4XyBMDp0Pyz0cKOytLfnfL-gzGzoHsz", "QjKlcR3aK5ao12eaYIzuUR8I");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

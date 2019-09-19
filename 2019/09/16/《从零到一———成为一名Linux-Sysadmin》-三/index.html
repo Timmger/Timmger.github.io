@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/09/16/83mlz61TGhO7IAa.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/16/ICmUaOjNEAzHBSZ.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/17/jl8zEy2fgeLG3dW.png">
-<meta property="og:updated_time" content="2019-09-17T12:16:58.877Z">
+<meta property="og:updated_time" content="2019-09-19T09:01:02.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《从零到一———成为一名Linux Sysadmin》(三)">
 <meta name="twitter:description" content="1. 进程管理Linux terminal 有一系列关于进程有用的指令，例如显示正在运行的进程，kill它们，或者改变它们的优先级，本节列举一些常用的指令。 toptop是最传统的指令，它用来查看系统的资源使用和占用最多系统资源的进程，列表按照CPU占用百分比排序。CTRL C退出。 htophtop相比top，拥有更易于理解的显示界面，它还允许你使用方向键选择进程并执行一些操作，例如kill(F">
@@ -432,12 +432,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@timmger-virtual-machine:~# ps -A | grep firefox</span><br><span class="line">  5173 ?        00:00:04 firefox</span><br><span class="line">root@timmger-virtual-machine:~#</span><br></pre></td></tr></table></figure>
 <h3 id="pstree"><a href="#pstree" class="headerlink" title="pstree"></a><strong>pstree</strong></h3><p>使用树结构来显示进程</p>
 <p><img src="https://i.loli.net/2019/09/16/ICmUaOjNEAzHBSZ.png" alt="Snipaste_2019-09-16_17-34-42.png"></p>
-<h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a><strong>kill</strong></h3><p>kill指令可以指定进程ID杀死进程，kill可以指定SIGNAL编号（例如 <strong>-9</strong> 强制杀死）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@timmger-virtual-machine:~# ps aux | grep firefox</span><br><span class="line">timmger    5240 13.0  8.3 783776 170012 ?       Sl   17:37   0:03 /usr/lib/firefox/firefox</span><br><span class="line">root       5287  0.0  0.1  13680  2128 pts/6    S+   17:38   0:00 grep --color=auto firefox</span><br><span class="line">root@timmger-virtual-machine:~# kill 5240</span><br><span class="line">root@timmger-virtual-machine:~#</span><br></pre></td></tr></table></figure></p>
+<h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a><strong>kill</strong></h3><p>kill指令可以指定进程ID杀死进程，kill可以指定SIGNAL编号（例如 <strong>-9</strong> 强制杀死）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@timmger-virtual-machine:~<span class="comment"># ps aux | grep firefox</span></span><br><span class="line">timmger    5240 13.0  8.3 783776 170012 ?       Sl   17:37   0:03 /usr/lib/firefox/firefox</span><br><span class="line">root       5287  0.0  0.1  13680  2128 pts/6    S+   17:38   0:00 grep --color=auto firefox</span><br><span class="line">root@timmger-virtual-machine:~<span class="comment"># kill 5240</span></span><br><span class="line">root@timmger-virtual-machine:~<span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="pgrep"><a href="#pgrep" class="headerlink" title="pgrep"></a><strong>pgrep</strong></h3><p>pgrep可以返回指定进程的匹配的ID</p>
 <blockquote>
-<p>**pgrep firefox | kill</p>
+<p><strong>pgrep firefox | kill</strong></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@timmger-virtual-machine:~# pgrep firefox</span><br><span class="line">5289</span><br><span class="line">root@timmger-virtual-machine:~# kill $(pgrep firefox)</span><br><span class="line">root@timmger-virtual-machine:~# pkill firefox</span><br><span class="line">root@timmger-virtual-machine:~#</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@timmger-virtual-machine:~<span class="comment"># pgrep firefox</span></span><br><span class="line">5289</span><br><span class="line">root@timmger-virtual-machine:~<span class="comment"># kill $(pgrep firefox)</span></span><br><span class="line">root@timmger-virtual-machine:~<span class="comment"># pkill firefox</span></span><br><span class="line">root@timmger-virtual-machine:~<span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <p>使用pkill更简单</p>
 <h3 id="pkill-amp-killall"><a href="#pkill-amp-killall" class="headerlink" title="pkill &amp; killall"></a><strong>pkill &amp; killall</strong></h3><p>指定进程名杀死</p>
 <blockquote>
@@ -448,7 +448,7 @@
 <p><strong>renice 19 PID</strong></p>
 </blockquote>
 <h3 id="xkill"><a href="#xkill" class="headerlink" title="xkill"></a><strong>xkill</strong></h3><p>xkill可以杀死指定任意图形程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@timmger-virtual-machine:~# xkill</span><br><span class="line">Select the window whose client you wish to kill with button 1....</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@timmger-virtual-machine:~<span class="comment"># xkill</span></span><br><span class="line">Select the window whose client you wish to <span class="built_in">kill</span> with button 1....</span><br></pre></td></tr></table></figure>
 <h2 id="2-Linux文件系统"><a href="#2-Linux文件系统" class="headerlink" title="2. Linux文件系统"></a>2. Linux文件系统</h2><h3 id="2-1-什么是日志-Journaling"><a href="#2-1-什么是日志-Journaling" class="headerlink" title="2.1 什么是日志(Journaling)"></a>2.1 什么是日志(Journaling)</h3><p>Journaling被设计用来防止由于内核崩溃或断电导致的数据损坏，通过日志，你的电脑在向磁盘写入文件时，先把相关信息写入日志区域，文件写入之后，再从日志中移除，如果中途断电，linux会检查系统的日志文件，在启动时恢复已部分完成的工作。<br>文件不会整个写入日志中，而是记录文件metadata，索引节点和磁盘位置，但也会降低磁盘写入的性能。</p>
 <p><img src="https://i.loli.net/2019/09/17/jl8zEy2fgeLG3dW.png" alt="img_58af43716360e.png.pagespeed.ce.zPapbz0ylw.png"></p>
 <center>图片来自howtogeek</center>
@@ -664,7 +664,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
