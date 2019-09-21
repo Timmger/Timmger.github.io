@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Time Manager">
 <meta property="og:description" content="1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点：不可协同工作，风险集中 集中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-21T12:15:47.159Z">
+<meta property="og:updated_time" content="2019-09-21T13:59:44.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Git漫游指南》">
 <meta name="twitter:description" content="1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点：不可协同工作，风险集中 集中">
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  562
+                  569
                 </span>
               
 
@@ -436,7 +436,10 @@
 <blockquote>
 <p>\$ git config –global user.name “timmger”<br>\$ git config –global user.email <a href="mailto:timmgerable@gmail.com" target="_blank" rel="noopener">timmgerable@gmail.com</a></p>
 </blockquote>
-<h3 id="2-2-仓库"><a href="#2-2-仓库" class="headerlink" title="2.2 仓库"></a>2.2 仓库</h3><p><strong>仓库</strong>(repository), 版本控制中最基本的模块，存储项目积攒的所有版本和元数据。<br><strong>“本地” 仓库</strong>（local repository）: 放置在本地计算机，只有本人有权操作改动该仓库。<br><strong>“远程” 仓库</strong>（remote repository）：位于远程服务器，由“.git”仓库目录组成，由团队进行数据共享与交换</p>
+<h3 id="2-2-仓库"><a href="#2-2-仓库" class="headerlink" title="2.2 仓库"></a>2.2 仓库</h3><p><strong>仓库</strong>(repository), 版本控制中最基本的模块，存储项目积攒的所有版本和元数据。<br><strong>“本地” 仓库</strong>（local repository）: 放置在本地计算机，只有本人有权操作改动该仓库。<br><strong>“远程” 仓库</strong>（remote repository）：位于远程服务器，由“.git”仓库目录组成，团队可进行数据共享与交换。</p>
+<h4 id="获取Git仓库"><a href="#获取Git仓库" class="headerlink" title="获取Git仓库"></a>获取Git仓库</h4><blockquote>
+<p><strong>\$ git init</strong></p>
+</blockquote>
 
       
     </div>
@@ -684,7 +687,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-版本控制"><span class="nav-number">1.</span> <span class="nav-text">1. 版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是版本控制"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是版本控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-版本控制系统类别"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 版本控制系统类别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地版本控制系统"><span class="nav-number">1.2.1.</span> <span class="nav-text">本地版本控制系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集中的版本控制系统（CVCS）"><span class="nav-number">1.2.2.</span> <span class="nav-text">集中的版本控制系统（CVCS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式版本控制系统（DVCS）"><span class="nav-number">1.2.3.</span> <span class="nav-text">分布式版本控制系统（DVCS）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Git工作流程"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Git工作流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-命令行"><span class="nav-number">2.</span> <span class="nav-text">2. 命令行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-初次配置"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 初次配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-仓库"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 仓库</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-版本控制"><span class="nav-number">1.</span> <span class="nav-text">1. 版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是版本控制"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是版本控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-版本控制系统类别"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 版本控制系统类别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地版本控制系统"><span class="nav-number">1.2.1.</span> <span class="nav-text">本地版本控制系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集中的版本控制系统（CVCS）"><span class="nav-number">1.2.2.</span> <span class="nav-text">集中的版本控制系统（CVCS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式版本控制系统（DVCS）"><span class="nav-number">1.2.3.</span> <span class="nav-text">分布式版本控制系统（DVCS）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Git工作流程"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Git工作流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-命令行"><span class="nav-number">2.</span> <span class="nav-text">2. 命令行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-初次配置"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 初次配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-仓库"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取Git仓库"><span class="nav-number">2.2.1.</span> <span class="nav-text">获取Git仓库</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
