@@ -81,18 +81,54 @@
 
 
 
-<meta name="description" content="ザ・ワールド">
+<meta name="description" content="墨池飞出北冥鱼，笔锋杀尽中山兔。  1. 杀手级特性 使用分支可以把工作从开发主线上分离开来，以免影响开发主线。Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。 1.1 git的数据保存在git commit 进行提交操作时，Git仓库会有五个对象：三个 blob 对象（保存着文件快照）、一个树对象（记录着目录结构和 bl">
 <meta name="keywords" content="git,分布式,DVCS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Git漫游指南》- Git分支">
 <meta property="og:url" content="https://timmger.github.io/2019/09/23/《Git漫游指南》-Git分支/index.html">
 <meta property="og:site_name" content="Time Manager">
-<meta property="og:description" content="ザ・ワールド">
+<meta property="og:description" content="墨池飞出北冥鱼，笔锋杀尽中山兔。  1. 杀手级特性 使用分支可以把工作从开发主线上分离开来，以免影响开发主线。Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。 1.1 git的数据保存在git commit 进行提交操作时，Git仓库会有五个对象：三个 blob 对象（保存着文件快照）、一个树对象（记录着目录结构和 bl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-23T11:37:23.099Z">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/fz87xkLJNBO1Csn.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/ShM7DVmPZEen6QO.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/BJhgyS6PY5G1oa8.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/XlzQbo5LnTw3Gpq.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/Rx2S3e4XAP8grVq.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/bFDKS4xvPLMiNo7.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/A2uHcIep8otnlRD.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/AxX4oc5CaYHObzg.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/C2c4vYkGijyQLwM.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/hPaksJ2XyiKp9qR.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/vHV4rIYef2JdSjE.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/vdpAc71OtPDB4LK.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/jZdthifBN9PrauC.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/uQfnqzYSL3wga4y.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/mQ1LeRC3aGKsHU9.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/hKjkdfBAguC519X.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/eFIbCmafxgEsj6w.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/1PXD2JodkfTtvQl.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/LXwbpS8AReEryOQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/V7LJ8oKFNnpzcuT.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/nfwDTcBloV5CP3z.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/hf3D8wFWkCzJMZy.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/QsmoIvDd8PChi2y.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/CofAmeKV48W5JQN.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/PpRUNiC1GraKyIe.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/RslWwyCYdZoiALG.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/lpfJMFogurISdtB.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/jd7rewLQ1RB3fTx.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/Iersw9dg2VAyMn5.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/X3lzhx85srUBRqT.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/9mk4lq1eTfdrRYg.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/7YkTVd5R2oEKcPF.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/sD8TzvkqcoNhd2x.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/WzpP1VKDsbltmdQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/Cib1vkIeL39EpOW.png">
+<meta property="og:updated_time" content="2019-09-24T09:35:31.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Git漫游指南》- Git分支">
-<meta name="twitter:description" content="ザ・ワールド">
+<meta name="twitter:description" content="墨池飞出北冥鱼，笔锋杀尽中山兔。  1. 杀手级特性 使用分支可以把工作从开发主线上分离开来，以免影响开发主线。Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。 1.1 git的数据保存在git commit 进行提交操作时，Git仓库会有五个对象：三个 blob 对象（保存着文件快照）、一个树对象（记录着目录结构和 bl">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/24/fz87xkLJNBO1Csn.png">
 
 
 
@@ -379,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2.1k
                 </span>
               
 
@@ -395,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -416,7 +452,226 @@
       
 
       
-        
+        <blockquote>
+<p><strong>墨池飞出北冥鱼，笔锋杀尽中山兔。</strong></p>
+</blockquote>
+<h2 id="1-杀手级特性"><a href="#1-杀手级特性" class="headerlink" title="1. 杀手级特性"></a>1. 杀手级特性</h2><hr>
+<p>使用分支可以把工作从开发主线上分离开来，以免影响开发主线。Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。</p>
+<h3 id="1-1-git的数据保存"><a href="#1-1-git的数据保存" class="headerlink" title="1.1 git的数据保存"></a>1.1 git的数据保存</h3><p>在<code>git commit</code> 进行提交操作时，Git仓库会有五个对象：三个 blob 对象（保存着文件快照）、一个树对象（记录着目录结构和 blob 对象索引）以及一个提交对象（包含着指向前述树对象的指针和所有提交信息）。</p>
+<p><img src="https://i.loli.net/2019/09/24/fz87xkLJNBO1Csn.png" alt="commit-and-tree.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>若修改后再提交，会产生指向上次提交对象的指针</p>
+<p><img src="https://i.loli.net/2019/09/24/ShM7DVmPZEen6QO.png" alt="commits-and-parents.png"></p>
+<center>图片来自《Pro Git》</center>
+
+
+<p><strong>Git 的分支，其实本质上仅仅是指向提交对象的可变指针</strong><br>master 分支, 它会在每次的提交操作中自动向前移动。</p>
+<p><img src="https://i.loli.net/2019/09/24/BJhgyS6PY5G1oa8.png" alt="branch-and-history.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<h3 id="1-2-分支创建"><a href="#1-2-分支创建" class="headerlink" title="1.2 分支创建"></a>1.2 分支创建</h3><blockquote>
+<p><strong>git branch testing</strong>: 创建一个testing分支</p>
+</blockquote>
+<p>在当前提交对象上创建<br><img src="https://i.loli.net/2019/09/24/XlzQbo5LnTw3Gpq.png" alt="two-branches.png"></p>
+<center>图片来自《Pro Git》</center>
+
+
+<p>HEAD 为当前分支的别名<br>使用<code>git log</code>查看当前分支所指对象<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline --decorate</span><br><span class="line">f30ab (HEAD, master, testing) add feature <span class="comment">#32</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1-3-分支切换"><a href="#1-3-分支切换" class="headerlink" title="1.3 分支切换"></a>1.3 分支切换</h3><blockquote>
+<p><strong>git checkout testing</strong></p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/24/Rx2S3e4XAP8grVq.png" alt="head-to-testing.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>若再次修改提交，HEAD 分支随着提交操作自动向前移动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m <span class="string">'made a change'</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.loli.net/2019/09/24/bFDKS4xvPLMiNo7.png" alt="advance-testing.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>切换回master分支并作修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m <span class="string">'made other changes'</span></span><br></pre></td></tr></table></figure>
+<p>项目产生分叉<br><img src="https://i.loli.net/2019/09/24/A2uHcIep8otnlRD.png" alt="advance-master.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>查看分叉历史<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline --decorate --graph --all</span><br><span class="line">* c2b9e (HEAD, master) made other changes</span><br><span class="line">| * 87ab2 (testing) made a change</span><br><span class="line">|/</span><br><span class="line">* f30ab add feature <span class="comment">#32 - ability to add new formats to the</span></span><br><span class="line">* 34ac2 fixed bug <span class="comment">#1328 - stack overflow under certain conditions</span></span><br><span class="line">* 98ca9 initial commit of my project</span><br></pre></td></tr></table></figure></p>
+<p>Git 的分支实质上仅是包含所指对象校验和（长度为 40 的 SHA-1 值字符串）的文件，所以它的创建和销毁都异常高效。</p>
+<h2 id="2-分支的新建与合并"><a href="#2-分支的新建与合并" class="headerlink" title="2. 分支的新建与合并"></a>2. 分支的新建与合并</h2><hr>
+<p>紧急任务修复</p>
+<ol>
+<li><p>切换到你的线上分支（production branch）。</p>
+</li>
+<li><p>为这个紧急任务新建一个分支，并在其中修复它。</p>
+</li>
+<li><p>在测试通过之后，切换回线上分支，然后合并这个修补分支，最后将改动推送到线上分支。</p>
+</li>
+<li><p>切换回你最初工作的分支上，继续工作。</p>
+</li>
+</ol>
+<h3 id="2-1-新建分支"><a href="#2-1-新建分支" class="headerlink" title="2.1 新建分支"></a>2.1 新建分支</h3><blockquote>
+<p><strong>git checkout -b iss53</strong>: 新建iss53并同时切换</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/24/AxX4oc5CaYHObzg.png" alt="basic-branching-2.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p><strong>修改并提交</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m <span class="string">'added a new footer [issue 53]'</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/09/24/C2c4vYkGijyQLwM.png" alt="basic-branching-3.png"></p>
+<center>图片来自《Pro Git》</center>
+
+
+<p><strong>此时遇到紧急问题，切换回master并新建hotfix</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">Switched to branch <span class="string">'master'</span></span><br><span class="line">$ git checkout -b hotfix</span><br><span class="line">Switched to a new branch <span class="string">'hotfix'</span></span><br><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m <span class="string">'fixed the broken email address'</span></span><br><span class="line">[hotfix 1fb7853] fixed the broken email address</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.loli.net/2019/09/24/hPaksJ2XyiKp9qR.png" alt="basic-branching-4.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p><strong>使用<code>git merge</code>合并</strong></p>
+<blockquote>
+<p><strong>\$ git checkout master</strong><br><strong>\$ git merge hotfix</strong></p>
+</blockquote>
+<p>此时master分支快进到hotfix<br><img src="https://i.loli.net/2019/09/24/vHV4rIYef2JdSjE.png" alt="basic-branching-5.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p><strong>切换回之前工作</strong></p>
+<p>先删除hotfix</p>
+<blockquote>
+<p><strong>git branch -d hotfix</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>git checkout iss53</strong></p>
+</blockquote>
+<h3 id="2-2-合并"><a href="#2-2-合并" class="headerlink" title="2.2 合并"></a>2.2 合并</h3><p>在iss53完成后，合并到master分支<br>master 分支所在提交并不是 iss53 分支所在提交的直接祖先<br>Git 会做一个简单的三方合并。</p>
+<p><img src="https://i.loli.net/2019/09/24/vdpAc71OtPDB4LK.png" alt="basic-merging-1.png"><br><img src="https://i.loli.net/2019/09/24/jZdthifBN9PrauC.png" alt="basic-merging-2.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>此时删除iss53</p>
+<blockquote>
+<p><strong>git branch -d iss53</strong></p>
+</blockquote>
+<h3 id="2-3-遇到冲突时的合并"><a href="#2-3-遇到冲突时的合并" class="headerlink" title="2.3 遇到冲突时的合并"></a>2.3 遇到冲突时的合并</h3><p>两个不同的分支中，对同一个文件的同一个部分进行了不同的修改，Git 就没法干净的合并它们。</p>
+<p>使用 git status 命令来查看未合并（unmerged）状态的文件。<br>解决了所有文件里的冲突之后，对每个文件使用 git add 命令来将其标记为冲突已解决。</p>
+<h2 id="3-分支管理"><a href="#3-分支管理" class="headerlink" title="3. 分支管理"></a>3. 分支管理</h2><hr>
+<p><code>git branch</code>可显示分支列表<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'$ git branch</span></span><br><span class="line"><span class="string">  iss53</span></span><br><span class="line"><span class="string">* master</span></span><br><span class="line"><span class="string">  testing</span></span><br></pre></td></tr></table></figure></p>
+<p><code>git branch -v</code>查看每一个分支的最后一次提交<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -v</span><br><span class="line">  iss53   93b412c fix javascript issue</span><br><span class="line">* master  7a98805 Merge branch <span class="string">'iss53'</span></span><br><span class="line">  testing 782fd34 add scott to the author list <span class="keyword">in</span> the readmes</span><br></pre></td></tr></table></figure></p>
+<p>–merged (已合并) 与 –no-merged（未合并）</p>
+<p>未合并的分支不可用<code>git branch -d</code>删除</p>
+<h2 id="4-分支开发工作流"><a href="#4-分支开发工作流" class="headerlink" title="4. 分支开发工作流"></a>4. 分支开发工作流</h2><hr>
+<h3 id="4-1-长期分支"><a href="#4-1-长期分支" class="headerlink" title="4.1 长期分支"></a>4.1 长期分支</h3><p>通常把他们想象成流水线（work silos），经过测试考验的提交会被遴选到更加稳定的流水线上去。</p>
+<p><img src="https://i.loli.net/2019/09/24/uQfnqzYSL3wga4y.png" alt="lr-branches-2.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<h3 id="4-2-特性分支"><a href="#4-2-特性分支" class="headerlink" title="4.2 特性分支"></a>4.2 特性分支</h3><p>特性分支是一种短期分支，它被用来实现单一特性或其相关工作。使你快速并且完整地进行上下文切换（context-switch）</p>
+<p><img src="https://i.loli.net/2019/09/24/mQ1LeRC3aGKsHU9.png" alt="topic-branches-1.png"></p>
+<p><img src="https://i.loli.net/2019/09/24/hKjkdfBAguC519X.png" alt="topic-branches-2.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<h2 id="5-远程分支"><a href="#5-远程分支" class="headerlink" title="5. 远程分支"></a>5. 远程分支</h2><hr>
+<p>远程跟踪分支是远程分支状态的引用，它们以 (remote)/(branch) 形式命名。<br>克隆之后的服务器与本地仓库</p>
+<p><img src="https://i.loli.net/2019/09/24/eFIbCmafxgEsj6w.png" alt="remote-branches-1.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>本地与远程的工作可以分叉，只要不与 origin 服务器连接，你的 origin/master 指针就不会移动。</p>
+<p><img src="https://i.loli.net/2019/09/24/1PXD2JodkfTtvQl.png" alt="remote-branches-2.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>此时从远程服务器增量更新, origin/master 指针指向新的、更新后的位置。</p>
+<blockquote>
+<p><strong>git fetch origin</strong></p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/24/LXwbpS8AReEryOQ.png" alt="remote-branches-3.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>添加另一个远程仓库，并追踪分支</p>
+<p><img src="https://i.loli.net/2019/09/24/V7LJ8oKFNnpzcuT.png" alt="remote-branches-4.png"></p>
+<p><img src="https://i.loli.net/2019/09/24/nfwDTcBloV5CP3z.png" alt="remote-branches-5.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<h3 id="5-1-推送"><a href="#5-1-推送" class="headerlink" title="5.1 推送"></a>5.1 推送</h3><blockquote>
+<p><strong>git push origin serverfix</strong>: 在origin远程仓库上分享serverfix分支<br><strong>git push origin serverfix:coolbranch</strong>: 将本地的 serverfix 分支推送到远程仓库上的 awesomebranch 分支</p>
+</blockquote>
+<p>其他协作者从服务器上抓取数据时,本地生成一个远程分支 origin/serverfix, 如果想要在自己的 serverfix 分支上工作，可以将其建立在远程跟踪分支之上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b serverfix origin/serverfix</span><br><span class="line">Branch serverfix <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br><span class="line">Switched to a new branch <span class="string">'serverfix'</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-2-跟踪分支"><a href="#5-2-跟踪分支" class="headerlink" title="5.2 跟踪分支"></a>5.2 跟踪分支</h3><p>当克隆一个仓库时，会自动地创建一个跟踪 origin/master 的 master 分支。<br>可以设置其他的跟踪分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout --track origin/serverfix</span><br><span class="line">Branch serverfix <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br><span class="line">Switched to a new branch <span class="string">'serverfix'</span></span><br></pre></td></tr></table></figure></p>
+<p>与 <code>git checkout -b serverfix origin/serverfix</code> 等价</p>
+<p>本地分支与远程分支设置为不同名字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b sf origin/serverfix</span><br><span class="line">Branch sf <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br><span class="line">Switched to a new branch <span class="string">'sf'</span></span><br></pre></td></tr></table></figure></p>
+<p>设置已有的本地分支跟踪刚拉取的远程分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -u origin/serverfix</span><br><span class="line">Branch serverfix <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br></pre></td></tr></table></figure></p>
+<p>查看设置的所有跟踪分支</p>
+<blockquote>
+<p><strong>git branch -vv</strong></p>
+</blockquote>
+<h3 id="5-3-拉取"><a href="#5-3-拉取" class="headerlink" title="5.3 拉取"></a>5.3 拉取</h3><p>git fetch 从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。</p>
+<h3 id="5-4-删除远程分支"><a href="#5-4-删除远程分支" class="headerlink" title="5.4 删除远程分支"></a>5.4 删除远程分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete serverfix</span><br><span class="line">To https://github.com/schacon/simplegit</span><br><span class="line"> - [deleted]         serverfix</span><br></pre></td></tr></table></figure>
+<h2 id="6-变基"><a href="#6-变基" class="headerlink" title="6. 变基"></a>6. 变基</h2><hr>
+<p>整合来自不同分支的修改主要有两种方法：merge 以及 rebase</p>
+<h3 id="6-1-变基的基本操作"><a href="#6-1-变基的基本操作" class="headerlink" title="6.1 变基的基本操作"></a>6.1 变基的基本操作</h3><p>整合分支最容易的方法是 merge ，进行三方合并，合并的结果是生成一个新的快照。<br><img src="https://i.loli.net/2019/09/24/hf3D8wFWkCzJMZy.png" alt="basic-rebase-1.png"></p>
+<p><img src="https://i.loli.net/2019/09/24/QsmoIvDd8PChi2y.png" alt="basic-rebase-2.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p><strong>还有一种方法为变基</strong>：提取在 C4 中引入的补丁和修改，然后在 C3 的基础上应用一次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout experiment</span><br><span class="line">$ git rebase master</span><br><span class="line">First, rewinding head to replay your work on top of it.</span><br></pre></td></tr></table></figure>
+<p>回到 master 分支，进行一次快进合并</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">$ git merge experiment</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/09/24/CofAmeKV48W5JQN.png" alt="basic-rebase-3.png"></p>
+<p><img src="https://i.loli.net/2019/09/24/PpRUNiC1GraKyIe.png" alt="basic-rebase-4.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<h3 id="6-2-更多"><a href="#6-2-更多" class="headerlink" title="6.2 更多"></a>6.2 更多</h3><p>对于特性分支再分出特性分支<br><img src="https://i.loli.net/2019/09/24/RslWwyCYdZoiALG.png" alt="interesting-rebase-1.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>将 client 中的修改合并到主分支并发布，但暂时并不想合并 server 中的修改<br>选中在 client 分支里但不在 server 分支里的修改（即 C8 和 C9），将它们在 master 分支上重放</p>
+<blockquote>
+<p><strong>\$ git rebase –onto master server client</strong></p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/24/lpfJMFogurISdtB.png" alt="interesting-rebase-2.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>快进合并 master 分支</p>
+<blockquote>
+<p><strong>git checkout master</strong><br><strong>git merge client</strong></p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/24/jd7rewLQ1RB3fTx.png" alt="interesting-rebase-3.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>此时变基server分支</p>
+<blockquote>
+<p><strong>git rebase master server</strong></p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/24/Iersw9dg2VAyMn5.png" alt="interesting-rebase-4.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<p>快进合并并删除</p>
+<blockquote>
+<p><strong>git checkout master</strong><br><strong>git merge server</strong><br><strong>git branch -d client</strong><br><strong>git branch -d server</strong></p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/24/X3lzhx85srUBRqT.png" alt="interesting-rebase-5.png"></p>
+<center>图片来自《Pro Git》</center>
+
+<h3 id="6-3-变基的风险"><a href="#6-3-变基的风险" class="headerlink" title="6.3 变基的风险"></a>6.3 变基的风险</h3><p><strong>黄金准则</strong></p>
+<blockquote>
+<p><strong>不要对在你的仓库外有副本的分支执行变基。</strong></p>
+</blockquote>
+<ol>
+<li><p>克隆一个仓库，然后在它的基础上进行了一些开发<br><img src="https://i.loli.net/2019/09/24/9mk4lq1eTfdrRYg.png" alt="perils-of-rebasing-1.png"></p>
+</li>
+<li><p>抓取别人的提交，合并到自己的开发分支<br><img src="https://i.loli.net/2019/09/24/7YkTVd5R2oEKcPF.png" alt="perils-of-rebasing-2.png"></p>
+</li>
+<li><p>有人推送了经过变基的提交，你从服务器抓取更新，会发现多出来一些新的提交<br><img src="https://i.loli.net/2019/09/24/sD8TzvkqcoNhd2x.png" alt="perils-of-rebasing-3.png"></p>
+</li>
+<li><p>执行 git pull 命令, 相同的内容又合并了一次<br><img src="https://i.loli.net/2019/09/24/WzpP1VKDsbltmdQ.png" alt="perils-of-rebasing-4.png"></p>
+</li>
+</ol>
+<p>C4 和 C6，通过变基丢弃的提交</p>
+<h3 id="6-4-用变基解决变基"><a href="#6-4-用变基解决变基" class="headerlink" title="6.4 用变基解决变基"></a>6.4 用变基解决变基</h3><p>在步骤3时，不进行合并，而执行</p>
+<blockquote>
+<p><strong>git rebase teamone/master</strong></p>
+</blockquote>
+<p>另一种简单的方法</p>
+<blockquote>
+<p><strong>git pull –rebase</strong></p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/09/24/Cib1vkIeL39EpOW.png" alt="perils-of-rebasing-5.png"></p>
+<p>因此<font color="#CD5C5C">只在从未推送至共用仓库的提交上执行变基命令，就不会有事。 </font></p>
+<h2 id="7-参考"><a href="#7-参考" class="headerlink" title="7. 参考"></a>7. 参考</h2><hr>
+<p>《Pro Git》</p>
+
       
     </div>
     
@@ -538,8 +793,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -644,6 +908,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-杀手级特性"><span class="nav-number">1.</span> <span class="nav-text">1. 杀手级特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-git的数据保存"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 git的数据保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-分支创建"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 分支创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-分支切换"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 分支切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-分支的新建与合并"><span class="nav-number">2.</span> <span class="nav-text">2. 分支的新建与合并</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-新建分支"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 新建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-合并"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-遇到冲突时的合并"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 遇到冲突时的合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-分支管理"><span class="nav-number">3.</span> <span class="nav-text">3. 分支管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-分支开发工作流"><span class="nav-number">4.</span> <span class="nav-text">4. 分支开发工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-长期分支"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 长期分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-特性分支"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 特性分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-远程分支"><span class="nav-number">5.</span> <span class="nav-text">5. 远程分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-推送"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 推送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-跟踪分支"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 跟踪分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-拉取"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 拉取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-删除远程分支"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 删除远程分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-变基"><span class="nav-number">6.</span> <span class="nav-text">6. 变基</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-变基的基本操作"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 变基的基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-更多"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 更多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-变基的风险"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 变基的风险</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-用变基解决变基"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 用变基解决变基</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-参考"><span class="nav-number">7.</span> <span class="nav-text">7. 参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
