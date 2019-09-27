@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="git,分布式,DVCS,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="两岸青山相对出，孤帆一片日边来。  1. 服务器上搭建Git 把现有仓库导出为裸仓库(不包含当前工作目录)123$ git clone --bare my_project my_project.gitCloning into bare repository &apos;my_project.git&apos;...done. 把裸仓库放到服务器上所有的仓库放在 /opt/git 目录下1$ scp -r my_pr">
+<meta name="keywords" content="git,分布式,DVCS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://timmger.github.io/2018/11/09/hello-world/index.html">
+<meta property="og:title" content="《Git漫游指南》- 在服务器上搭建Git">
+<meta property="og:url" content="https://timmger.github.io/2019/09/24/《Git漫游指南》-在服务器上搭建Git/index.html">
 <meta property="og:site_name" content="Time Manager">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="两岸青山相对出，孤帆一片日边来。  1. 服务器上搭建Git 把现有仓库导出为裸仓库(不包含当前工作目录)123$ git clone --bare my_project my_project.gitCloning into bare repository &apos;my_project.git&apos;...done. 把裸仓库放到服务器上所有的仓库放在 /opt/git 目录下1$ scp -r my_pr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-09T02:53:34.815Z">
+<meta property="og:updated_time" content="2019-09-25T23:48:57.435Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="《Git漫游指南》- 在服务器上搭建Git">
+<meta name="twitter:description" content="两岸青山相对出，孤帆一片日边来。  1. 服务器上搭建Git 把现有仓库导出为裸仓库(不包含当前工作目录)123$ git clone --bare my_project my_project.gitCloning into bare repository &apos;my_project.git&apos;...done. 把裸仓库放到服务器上所有的仓库放在 /opt/git 目录下1$ scp -r my_pr">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://timmger.github.io/2018/11/09/hello-world/">
+  <link rel="canonical" href="https://timmger.github.io/2019/09/24/《Git漫游指南》-在服务器上搭建Git/">
 
 
 
 
 
-  <title>Hello World | Time Manager</title>
+  <title>《Git漫游指南》- 在服务器上搭建Git | Time Manager</title>
   
 
 
@@ -274,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2018/11/09/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2019/09/24/《Git漫游指南》-在服务器上搭建Git/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Allen Timmger">
@@ -291,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">《Git漫游指南》- 在服务器上搭建Git</h1>
         
 
         <div class="post-meta">
@@ -303,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T10:53:34+08:00">
-                2018-11-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T21:27:59+08:00">
+                2019-09-24
               </time>
             
 
@@ -314,6 +315,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -322,8 +345,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/09/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/09/hello-world/" itemprop="commentCount"></span>
+                <a href="/2019/09/24/《Git漫游指南》-在服务器上搭建Git/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/24/《Git漫游指南》-在服务器上搭建Git/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -331,7 +354,7 @@
 
           
           
-             <span id="/2018/11/09/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/2019/09/24/《Git漫游指南》-在服务器上搭建Git/" class="leancloud_visitors" data-flag-title="《Git漫游指南》- 在服务器上搭建Git">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -356,7 +379,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  73
+                  503
                 </span>
               
 
@@ -372,7 +395,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -393,15 +416,25 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <blockquote>
+<p><strong>两岸青山相对出，孤帆一片日边来。</strong></p>
+</blockquote>
+<h2 id="1-服务器上搭建Git"><a href="#1-服务器上搭建Git" class="headerlink" title="1. 服务器上搭建Git"></a>1. 服务器上搭建Git</h2><hr>
+<h3 id="把现有仓库导出为裸仓库-不包含当前工作目录"><a href="#把现有仓库导出为裸仓库-不包含当前工作目录" class="headerlink" title="把现有仓库导出为裸仓库(不包含当前工作目录)"></a>把现有仓库导出为裸仓库(不包含当前工作目录)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> --bare my_project my_project.git</span><br><span class="line">Cloning into bare repository <span class="string">'my_project.git'</span>...</span><br><span class="line"><span class="keyword">done</span>.</span><br></pre></td></tr></table></figure>
+<h3 id="把裸仓库放到服务器上"><a href="#把裸仓库放到服务器上" class="headerlink" title="把裸仓库放到服务器上"></a>把裸仓库放到服务器上</h3><p>所有的仓库放在 /opt/git 目录下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp -r my_project.git user@git.example.com:/opt/git</span><br></pre></td></tr></table></figure></p>
+<p>其他拥有可读权限的使用者访问<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> user@git.example.com:/opt/git/my_project.git</span><br></pre></td></tr></table></figure></p>
+<p>修改该仓库目录的组权限为可写。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh user@git.example.com</span><br><span class="line">$ <span class="built_in">cd</span> /opt/git/my_project.git</span><br><span class="line">$ git init --bare --shared</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-配置SSH公钥"><a href="#2-配置SSH公钥" class="headerlink" title="2. 配置SSH公钥"></a>2. 配置SSH公钥</h2><hr>
+<h3 id="本地上传"><a href="#本地上传" class="headerlink" title="本地上传"></a>本地上传</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/schacon/.ssh/id_rsa):</span><br><span class="line">Created directory <span class="string">'/home/schacon/.ssh'</span>.</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /home/schacon/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /home/schacon/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh</span><br><span class="line">$ ls</span><br><span class="line">authorized_keys2  id_rsa</span><br><span class="line">config            id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>上传至服务器端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;username&gt;@&lt;host&gt; -p 端口号</span><br></pre></td></tr></table></figure></p>
+<p>此时id_rsa.pub位于服务器的~/.ssh/authorized_keys中</p>
+<h3 id="自定义服务器端"><a href="#自定义服务器端" class="headerlink" title="自定义服务器端"></a>自定义服务器端</h3><p>添加git用户，建立.ssh目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo adduser git</span><br><span class="line">$ su git</span><br><span class="line">$ <span class="built_in">cd</span></span><br><span class="line">$ mkdir .ssh &amp;&amp; chmod 700 .ssh</span><br><span class="line">$ touch .ssh/authorized_keys &amp;&amp; chmod 600 .ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>临时文件中的公钥加入authorized_keys<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat /tmp/id_rsa.john.pub &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">$ cat /tmp/id_rsa.josie.pub &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">$ cat /tmp/id_rsa.jessica.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>新建一个空仓库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /opt/git</span><br><span class="line">$ mkdir project.git</span><br><span class="line">$ <span class="built_in">cd</span> project.git</span><br><span class="line">$ git init --bare</span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> /opt/git/project.git/</span><br></pre></td></tr></table></figure></p>
+<p>开发者本地推送（用户git，主机名gitserver）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> myproject</span><br><span class="line">$ git init</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">'initial commit'</span></span><br><span class="line">$ git remote add origin git@gitserver:/opt/git/project.git</span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure></p>
+<p>其他开发着可克隆并推送<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@gitserver:/opt/git/project.git</span><br><span class="line">$ <span class="built_in">cd</span> project</span><br><span class="line">$ vim README</span><br><span class="line">$ git commit -am <span class="string">'fix for the README file'</span></span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h2><p><font color="#CD5C5C">在自己服务器上搭建Git会消耗大量时间维护和设置，不如将其托管在第三方平台(全球最大托管网站 <a href="https://github.com/" target="_blank" rel="noopener">github</a>)</font></p>
 
       
     </div>
@@ -422,7 +455,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://timmger.github.io/2018/11/09/hello-world/" title="Hello World">https://timmger.github.io/2018/11/09/hello-world/</a>
+    <a href="https://timmger.github.io/2019/09/24/《Git漫游指南》-在服务器上搭建Git/" title="《Git漫游指南》- 在服务器上搭建Git">https://timmger.github.io/2019/09/24/《Git漫游指南》-在服务器上搭建Git/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -435,6 +468,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
+          
+            <a href="/tags/分布式/" rel="tag"><i class="fa fa-tag"></i> 分布式</a>
+          
+            <a href="/tags/DVCS/" rel="tag"><i class="fa fa-tag"></i> DVCS</a>
+          
+        </div>
+      
 
       
       
@@ -444,14 +487,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/09/23/《Git漫游指南》-Git分支/" rel="next" title="《Git漫游指南》- Git分支">
+                <i class="fa fa-chevron-left"></i> 《Git漫游指南》- Git分支
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/09/斐讯路由修改DNS使用Google-Home/" rel="prev" title="斐讯路由修改DNS使用Google Home">
-                斐讯路由修改DNS使用Google Home <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/26/我为什么学编程/" rel="prev" title="我为什么学编程">
+                我为什么学编程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -639,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-服务器上搭建Git"><span class="nav-number">1.</span> <span class="nav-text">1. 服务器上搭建Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#把现有仓库导出为裸仓库-不包含当前工作目录"><span class="nav-number">1.1.</span> <span class="nav-text">把现有仓库导出为裸仓库(不包含当前工作目录)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把裸仓库放到服务器上"><span class="nav-number">1.2.</span> <span class="nav-text">把裸仓库放到服务器上</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置SSH公钥"><span class="nav-number">2.</span> <span class="nav-text">2. 配置SSH公钥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地上传"><span class="nav-number">2.1.</span> <span class="nav-text">本地上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义服务器端"><span class="nav-number">2.2.</span> <span class="nav-text">自定义服务器端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-总结"><span class="nav-number">3.</span> <span class="nav-text">3. 总结</span></a></li></ol></div>
             
 
           </div>
@@ -802,9 +849,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://timmger.github.io/2018/11/09/hello-world/';
-          this.page.identifier = '2018/11/09/hello-world/';
-          this.page.title = 'Hello World';
+          this.page.url = 'https://timmger.github.io/2019/09/24/《Git漫游指南》-在服务器上搭建Git/';
+          this.page.identifier = '2019/09/24/《Git漫游指南》-在服务器上搭建Git/';
+          this.page.title = '《Git漫游指南》- 在服务器上搭建Git';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://Timmger.disqus.com/embed.js';

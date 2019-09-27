@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Time Manager">
 <meta property="og:description" content="山随平野尽，江入大荒流。  1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-24T00:55:31.770Z">
+<meta property="og:updated_time" content="2019-09-25T02:44:29.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Git漫游指南》- Git命令">
 <meta name="twitter:description" content="山随平野尽，江入大荒流。  1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点">
@@ -518,7 +518,7 @@
 <h3 id="2-6-远程仓库的使用"><a href="#2-6-远程仓库的使用" class="headerlink" title="2.6 远程仓库的使用"></a>2.6 远程仓库的使用</h3><h4 id="显示远程仓库"><a href="#显示远程仓库" class="headerlink" title="显示远程仓库"></a>显示远程仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/schacon/ticgit</span><br><span class="line">$ <span class="built_in">cd</span> ticgit</span><br><span class="line">$ git remote</span><br><span class="line">origin</span><br></pre></td></tr></table></figure>
 <p>指定选项 -v，会显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin	https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin	https://github.com/schacon/ticgit (push)</span><br></pre></td></tr></table></figure></p>
 <h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><blockquote>
-<p><strong>git remote add \&lt;shortname> url</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">origin</span><br><span class="line">$ git remote add pb https://github.com/paulboone/ticgit</span><br><span class="line">$ git remote -v</span><br><span class="line">origin	https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin	https://github.com/schacon/ticgit (push)</span><br><span class="line">pb	https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb	https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure></p>
+<p><strong>git remote add &lt;shortname> url</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">origin</span><br><span class="line">$ git remote add pb https://github.com/paulboone/ticgit</span><br><span class="line">$ git remote -v</span><br><span class="line">origin	https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin	https://github.com/schacon/ticgit (push)</span><br><span class="line">pb	https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb	https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>指定pd代替整个url, 使用<code>git fetch pd</code>可拉取</p>
 <h4 id="从远程仓库抓取和拉取"><a href="#从远程仓库抓取和拉取" class="headerlink" title="从远程仓库抓取和拉取"></a>从远程仓库抓取和拉取</h4><blockquote>
@@ -725,7 +725,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -736,7 +736,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -747,7 +747,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
