@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="java,虚拟机,">
 
 
 
@@ -81,16 +81,21 @@
 
 
 
-<meta name="description" content="ザ・ワールド">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Time Manager">
-<meta property="og:url" content="https://timmger.github.io/tags/正则表达式/index.html">
+<meta name="description" content="1. Java概述1.1 Java技术体系以组成部分划分 JDK(Java Development Kit) – 开发最小环境:  Java程序设计语言 Java虚拟机 Java API类库  JRE(Java Runtime Environment) – 运行标准环境:  Java API类库中的Java SE API Java虚拟机   Java技术体系   以平台划分  Java Card:">
+<meta name="keywords" content="java,虚拟机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《deep dive in JVM》">
+<meta property="og:url" content="https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/index.html">
 <meta property="og:site_name" content="Time Manager">
-<meta property="og:description" content="ザ・ワールド">
+<meta property="og:description" content="1. Java概述1.1 Java技术体系以组成部分划分 JDK(Java Development Kit) – 开发最小环境:  Java程序设计语言 Java虚拟机 Java API类库  JRE(Java Runtime Environment) – 运行标准环境:  Java API类库中的Java SE API Java虚拟机   Java技术体系   以平台划分  Java Card:">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/09/28/nyTDYCaXb93SIc6.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/28/Zp5cDYjyQPnROS6.png">
+<meta property="og:updated_time" content="2019-10-02T14:36:29.401Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Time Manager">
-<meta name="twitter:description" content="ザ・ワールド">
+<meta name="twitter:title" content="《deep dive in JVM》">
+<meta name="twitter:description" content="1. Java概述1.1 Java技术体系以组成部分划分 JDK(Java Development Kit) – 开发最小环境:  Java程序设计语言 Java虚拟机 Java API类库  JRE(Java Runtime Environment) – 运行标准环境:  Java API类库中的Java SE API Java虚拟机   Java技术体系   以平台划分  Java Card:">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/28/nyTDYCaXb93SIc6.png">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://timmger.github.io/tags/正则表达式/">
+  <link rel="canonical" href="https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/">
 
 
 
 
 
-  <title>标签: 正则表达式 | Time Manager</title>
+  <title>《deep dive in JVM》 | Time Manager</title>
   
 
 
@@ -155,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -259,52 +264,270 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>正则表达式<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Timmger">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Time Manager">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/09/22/《python爬虫手记》-正则表达式/" itemprop="url">
-              
-                <span itemprop="name">《python爬虫手记》- 正则表达式</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">《deep dive in JVM》</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-22T09:57:59+08:00" content="2019-09-22">
-          09-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-28T15:45:06+08:00">
+                2019-09-28
+              </time>
+            
 
-    </header>
-  </article>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/28/《deep-dive-in-JVM》/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/28/《deep-dive-in-JVM》/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/28/《deep-dive-in-JVM》/" class="leancloud_visitors" data-flag-title="《deep dive in JVM》">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  127
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Java概述"><a href="#1-Java概述" class="headerlink" title="1. Java概述"></a>1. Java概述</h2><h3 id="1-1-Java技术体系"><a href="#1-1-Java技术体系" class="headerlink" title="1.1 Java技术体系"></a>1.1 Java技术体系</h3><p><code>以组成部分划分</code></p>
+<p><strong>JDK(Java Development Kit)</strong> – 开发最小环境:</p>
+<ul>
+<li>Java程序设计语言</li>
+<li>Java虚拟机</li>
+<li>Java API类库</li>
+</ul>
+<p><strong>JRE(Java Runtime Environment)</strong> – 运行标准环境:</p>
+<ul>
+<li>Java API类库中的Java SE API</li>
+<li>Java虚拟机</li>
+</ul>
+<p><img src="https://i.loli.net/2019/09/28/nyTDYCaXb93SIc6.png" alt="javaSystem.png"></p>
+<center>Java技术体系</center>
+
+
+<p><code>以平台划分</code></p>
+<ul>
+<li>Java Card: 小内存设备</li>
+<li>Java ME(Micro Edition): 移动终端（手机、PDA）</li>
+<li>Java SE(Standard Edition): 桌面级应用(Windows)</li>
+<li>Java EE(Enterprise Edition): 使用多层架构的企业应用</li>
+</ul>
+<h3 id="1-2-Java简史"><a href="#1-2-Java简史" class="headerlink" title="1.2 Java简史"></a>1.2 Java简史</h3><p><img src="https://i.loli.net/2019/09/28/Zp5cDYjyQPnROS6.png" alt="javaHistory.png"></p>
+<center>the timeline of Java history</center>
 
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Allen Timmger
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/" title="《deep dive in JVM》">https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          
+            <a href="/tags/虚拟机/" rel="tag"><i class="fa fa-tag"></i> 虚拟机</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/24/《Git漫游指南》-在服务器上搭建Git/" rel="next" title="《Git漫游指南》- 在服务器上搭建Git">
+                <i class="fa fa-chevron-left"></i> 《Git漫游指南》- 在服务器上搭建Git
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/05/《Dynamic-Programming》/" rel="prev" title="《Dynamic Programming》">
+                《Dynamic Programming》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -312,6 +535,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -332,8 +569,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -438,6 +684,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Java概述"><span class="nav-number">1.</span> <span class="nav-text">1. Java概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Java技术体系"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java技术体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Java简史"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java简史</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -571,6 +833,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -588,6 +854,18 @@
       <script id="dsq-count-scr" src="https://Timmger.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/';
+          this.page.identifier = '2019/09/28/《deep-dive-in-JVM》/';
+          this.page.title = '《deep dive in JVM》';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Timmger.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
