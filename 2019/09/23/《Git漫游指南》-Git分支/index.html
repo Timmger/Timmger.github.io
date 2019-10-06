@@ -6,7 +6,7 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -186,7 +186,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -196,7 +196,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -279,8 +279,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-portfolio">
-          <a href="/portfolio/" rel="section">
+        <li class="menu-item menu-item-design">
+          <a href="https://www.baidu.com" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-vcard (alias)"></i> <br>
             
@@ -316,20 +316,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2019/09/23/《Git漫游指南》-Git分支/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Allen Timmger">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Time Manager">
     </span>
 
@@ -372,7 +372,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Git/" itemprop="url" rel="index">
                     <span itemprop="name">Git</span>
                   </a>
@@ -425,7 +425,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.1k
+                  
                 </span>
               
 
@@ -441,7 +441,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  
                 </span>
               
             </div>
@@ -487,23 +487,30 @@
 <center>图片来自《Pro Git》</center>
 
 
-<p>HEAD 为当前分支的别名<br>使用<code>git log</code>查看当前分支所指对象<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline --decorate</span><br><span class="line">f30ab (HEAD, master, testing) add feature <span class="comment">#32</span></span><br></pre></td></tr></table></figure></p>
+<p>HEAD 为当前分支的别名<br>使用<code>git log</code>查看当前分支所指对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline --decorate</span><br><span class="line">f30ab (HEAD, master, testing) add feature <span class="comment">#32</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="1-3-分支切换"><a href="#1-3-分支切换" class="headerlink" title="1.3 分支切换"></a>1.3 分支切换</h3><blockquote>
 <p><strong>git checkout testing</strong></p>
 </blockquote>
 <p><img src="https://i.loli.net/2019/09/24/Rx2S3e4XAP8grVq.png" alt="head-to-testing.png"></p>
 <center>图片来自《Pro Git》</center>
 
-<p>若再次修改提交，HEAD 分支随着提交操作自动向前移动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m <span class="string">'made a change'</span></span><br></pre></td></tr></table></figure></p>
+<p>若再次修改提交，HEAD 分支随着提交操作自动向前移动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m <span class="string">'made a change'</span></span><br></pre></td></tr></table></figure>
+
 <p><img src="https://i.loli.net/2019/09/24/bFDKS4xvPLMiNo7.png" alt="advance-testing.png"></p>
 <center>图片来自《Pro Git》</center>
 
 <p>切换回master分支并作修改</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">$ vim test.rb</span><br><span class="line">$ git commit -a -m <span class="string">'made other changes'</span></span><br></pre></td></tr></table></figure>
+
 <p>项目产生分叉<br><img src="https://i.loli.net/2019/09/24/A2uHcIep8otnlRD.png" alt="advance-master.png"></p>
 <center>图片来自《Pro Git》</center>
 
-<p>查看分叉历史<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline --decorate --graph --all</span><br><span class="line">* c2b9e (HEAD, master) made other changes</span><br><span class="line">| * 87ab2 (testing) made a change</span><br><span class="line">|/</span><br><span class="line">* f30ab add feature <span class="comment">#32 - ability to add new formats to the</span></span><br><span class="line">* 34ac2 fixed bug <span class="comment">#1328 - stack overflow under certain conditions</span></span><br><span class="line">* 98ca9 initial commit of my project</span><br></pre></td></tr></table></figure></p>
+<p>查看分叉历史</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --oneline --decorate --graph --all</span><br><span class="line">* c2b9e (HEAD, master) made other changes</span><br><span class="line">| * 87ab2 (testing) made a change</span><br><span class="line">|/</span><br><span class="line">* f30ab add feature <span class="comment">#32 - ability to add new formats to the</span></span><br><span class="line">* 34ac2 fixed bug <span class="comment">#1328 - stack overflow under certain conditions</span></span><br><span class="line">* 98ca9 initial commit of my project</span><br></pre></td></tr></table></figure>
+
 <p>Git 的分支实质上仅是包含所指对象校验和（长度为 40 的 SHA-1 值字符串）的文件，所以它的创建和销毁都异常高效。</p>
 <h2 id="2-分支的新建与合并"><a href="#2-分支的新建与合并" class="headerlink" title="2. 分支的新建与合并"></a>2. 分支的新建与合并</h2><hr>
 <p>紧急任务修复</p>
@@ -525,17 +532,20 @@
 
 <p><strong>修改并提交</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m <span class="string">'added a new footer [issue 53]'</span></span><br></pre></td></tr></table></figure>
+
 <p><img src="https://i.loli.net/2019/09/24/C2c4vYkGijyQLwM.png" alt="basic-branching-3.png"></p>
 <center>图片来自《Pro Git》</center>
 
 
-<p><strong>此时遇到紧急问题，切换回master并新建hotfix</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">Switched to branch <span class="string">'master'</span></span><br><span class="line">$ git checkout -b hotfix</span><br><span class="line">Switched to a new branch <span class="string">'hotfix'</span></span><br><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m <span class="string">'fixed the broken email address'</span></span><br><span class="line">[hotfix 1fb7853] fixed the broken email address</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure></p>
+<p><strong>此时遇到紧急问题，切换回master并新建hotfix</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">Switched to branch <span class="string">'master'</span></span><br><span class="line">$ git checkout -b hotfix</span><br><span class="line">Switched to a new branch <span class="string">'hotfix'</span></span><br><span class="line">$ vim index.html</span><br><span class="line">$ git commit -a -m <span class="string">'fixed the broken email address'</span></span><br><span class="line">[hotfix 1fb7853] fixed the broken email address</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://i.loli.net/2019/09/24/hPaksJ2XyiKp9qR.png" alt="basic-branching-4.png"></p>
 <center>图片来自《Pro Git》</center>
 
 <p><strong>使用<code>git merge</code>合并</strong></p>
 <blockquote>
-<p><strong>\$ git checkout master</strong><br><strong>\$ git merge hotfix</strong></p>
+<p><strong>$ git checkout master</strong><br><strong>$ git merge hotfix</strong></p>
 </blockquote>
 <p>此时master分支快进到hotfix<br><img src="https://i.loli.net/2019/09/24/vHV4rIYef2JdSjE.png" alt="basic-branching-5.png"></p>
 <center>图片来自《Pro Git》</center>
@@ -559,8 +569,12 @@
 <h3 id="2-3-遇到冲突时的合并"><a href="#2-3-遇到冲突时的合并" class="headerlink" title="2.3 遇到冲突时的合并"></a>2.3 遇到冲突时的合并</h3><p>两个不同的分支中，对同一个文件的同一个部分进行了不同的修改，Git 就没法干净的合并它们。</p>
 <p>使用 git status 命令来查看未合并（unmerged）状态的文件。<br>解决了所有文件里的冲突之后，对每个文件使用 git add 命令来将其标记为冲突已解决。</p>
 <h2 id="3-分支管理"><a href="#3-分支管理" class="headerlink" title="3. 分支管理"></a>3. 分支管理</h2><hr>
-<p><code>git branch</code>可显示分支列表<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'$ git branch</span></span><br><span class="line"><span class="string">  iss53</span></span><br><span class="line"><span class="string">* master</span></span><br><span class="line"><span class="string">  testing</span></span><br></pre></td></tr></table></figure></p>
-<p><code>git branch -v</code>查看每一个分支的最后一次提交<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -v</span><br><span class="line">  iss53   93b412c fix javascript issue</span><br><span class="line">* master  7a98805 Merge branch <span class="string">'iss53'</span></span><br><span class="line">  testing 782fd34 add scott to the author list <span class="keyword">in</span> the readmes</span><br></pre></td></tr></table></figure></p>
+<p><code>git branch</code>可显示分支列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'$ git branch</span></span><br><span class="line"><span class="string">  iss53</span></span><br><span class="line"><span class="string">* master</span></span><br><span class="line"><span class="string">  testing</span></span><br></pre></td></tr></table></figure>
+
+<p><code>git branch -v</code>查看每一个分支的最后一次提交</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -v</span><br><span class="line">  iss53   93b412c fix javascript issue</span><br><span class="line">* master  7a98805 Merge branch <span class="string">'iss53'</span></span><br><span class="line">  testing 782fd34 add scott to the author list <span class="keyword">in</span> the readmes</span><br></pre></td></tr></table></figure>
+
 <p>–merged (已合并) 与 –no-merged（未合并）</p>
 <p>未合并的分支不可用<code>git branch -d</code>删除</p>
 <h2 id="4-分支开发工作流"><a href="#4-分支开发工作流" class="headerlink" title="4. 分支开发工作流"></a>4. 分支开发工作流</h2><hr>
@@ -599,16 +613,24 @@
 </blockquote>
 <p>其他协作者从服务器上抓取数据时,本地生成一个远程分支 origin/serverfix, 如果想要在自己的 serverfix 分支上工作，可以将其建立在远程跟踪分支之上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b serverfix origin/serverfix</span><br><span class="line">Branch serverfix <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br><span class="line">Switched to a new branch <span class="string">'serverfix'</span></span><br></pre></td></tr></table></figure>
-<h3 id="5-2-跟踪分支"><a href="#5-2-跟踪分支" class="headerlink" title="5.2 跟踪分支"></a>5.2 跟踪分支</h3><p>当克隆一个仓库时，会自动地创建一个跟踪 origin/master 的 master 分支。<br>可以设置其他的跟踪分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout --track origin/serverfix</span><br><span class="line">Branch serverfix <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br><span class="line">Switched to a new branch <span class="string">'serverfix'</span></span><br></pre></td></tr></table></figure></p>
+
+<h3 id="5-2-跟踪分支"><a href="#5-2-跟踪分支" class="headerlink" title="5.2 跟踪分支"></a>5.2 跟踪分支</h3><p>当克隆一个仓库时，会自动地创建一个跟踪 origin/master 的 master 分支。<br>可以设置其他的跟踪分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout --track origin/serverfix</span><br><span class="line">Branch serverfix <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br><span class="line">Switched to a new branch <span class="string">'serverfix'</span></span><br></pre></td></tr></table></figure>
+
 <p>与 <code>git checkout -b serverfix origin/serverfix</code> 等价</p>
-<p>本地分支与远程分支设置为不同名字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b sf origin/serverfix</span><br><span class="line">Branch sf <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br><span class="line">Switched to a new branch <span class="string">'sf'</span></span><br></pre></td></tr></table></figure></p>
-<p>设置已有的本地分支跟踪刚拉取的远程分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -u origin/serverfix</span><br><span class="line">Branch serverfix <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br></pre></td></tr></table></figure></p>
+<p>本地分支与远程分支设置为不同名字</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b sf origin/serverfix</span><br><span class="line">Branch sf <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br><span class="line">Switched to a new branch <span class="string">'sf'</span></span><br></pre></td></tr></table></figure>
+
+<p>设置已有的本地分支跟踪刚拉取的远程分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -u origin/serverfix</span><br><span class="line">Branch serverfix <span class="built_in">set</span> up to track remote branch serverfix from origin.</span><br></pre></td></tr></table></figure>
+
 <p>查看设置的所有跟踪分支</p>
 <blockquote>
 <p><strong>git branch -vv</strong></p>
 </blockquote>
 <h3 id="5-3-拉取"><a href="#5-3-拉取" class="headerlink" title="5.3 拉取"></a>5.3 拉取</h3><p>git fetch 从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。</p>
 <h3 id="5-4-删除远程分支"><a href="#5-4-删除远程分支" class="headerlink" title="5.4 删除远程分支"></a>5.4 删除远程分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete serverfix</span><br><span class="line">To https://github.com/schacon/simplegit</span><br><span class="line"> - [deleted]         serverfix</span><br></pre></td></tr></table></figure>
+
 <h2 id="6-变基"><a href="#6-变基" class="headerlink" title="6. 变基"></a>6. 变基</h2><hr>
 <p>整合来自不同分支的修改主要有两种方法：merge 以及 rebase</p>
 <h3 id="6-1-变基的基本操作"><a href="#6-1-变基的基本操作" class="headerlink" title="6.1 变基的基本操作"></a>6.1 变基的基本操作</h3><p>整合分支最容易的方法是 merge ，进行三方合并，合并的结果是生成一个新的快照。<br><img src="https://i.loli.net/2019/09/24/hf3D8wFWkCzJMZy.png" alt="basic-rebase-1.png"></p>
@@ -617,8 +639,10 @@
 
 <p><strong>还有一种方法为变基</strong>：提取在 C4 中引入的补丁和修改，然后在 C3 的基础上应用一次</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout experiment</span><br><span class="line">$ git rebase master</span><br><span class="line">First, rewinding head to replay your work on top of it.</span><br></pre></td></tr></table></figure>
+
 <p>回到 master 分支，进行一次快进合并</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">$ git merge experiment</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://i.loli.net/2019/09/24/CofAmeKV48W5JQN.png" alt="basic-rebase-3.png"></p>
 <p><img src="https://i.loli.net/2019/09/24/PpRUNiC1GraKyIe.png" alt="basic-rebase-4.png"></p>
 <center>图片来自《Pro Git》</center>
@@ -628,7 +652,7 @@
 
 <p>将 client 中的修改合并到主分支并发布，但暂时并不想合并 server 中的修改<br>选中在 client 分支里但不在 server 分支里的修改（即 C8 和 C9），将它们在 master 分支上重放</p>
 <blockquote>
-<p><strong>\$ git rebase –onto master server client</strong></p>
+<p><strong>$ git rebase –onto master server client</strong></p>
 </blockquote>
 <p><img src="https://i.loli.net/2019/09/24/lpfJMFogurISdtB.png" alt="interesting-rebase-2.png"></p>
 <center>图片来自《Pro Git》</center>
@@ -819,7 +843,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Allen Timmger">
             
@@ -834,7 +858,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

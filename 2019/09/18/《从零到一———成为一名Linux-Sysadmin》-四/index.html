@@ -6,7 +6,7 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -155,7 +155,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -165,7 +165,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -248,8 +248,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-portfolio">
-          <a href="/portfolio/" rel="section">
+        <li class="menu-item menu-item-design">
+          <a href="https://www.baidu.com" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-vcard (alias)"></i> <br>
             
@@ -285,20 +285,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2019/09/18/《从零到一———成为一名Linux-Sysadmin》-四/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Allen Timmger">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Time Manager">
     </span>
 
@@ -341,7 +341,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
                   </a>
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  978
+                  
                 </span>
               
 
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  
                 </span>
               
             </div>
@@ -449,7 +449,7 @@
 </blockquote>
 <p><img src="https://i.loli.net/2019/09/18/IeyouQibAnr4DTB.png" alt="Snipaste_2019-09-18_16-48-35.png"></p>
 <h4 id="切换窗格"><a href="#切换窗格" class="headerlink" title="切换窗格"></a>切换窗格</h4><blockquote>
-<p><strong>C-b \&lt;箭头键></strong>：使用方向键左右上下移动</p>
+<p><strong>C-b &lt;箭头键&gt;</strong>：使用方向键左右上下移动</p>
 </blockquote>
 <h4 id="关闭窗格"><a href="#关闭窗格" class="headerlink" title="关闭窗格"></a>关闭窗格</h4><blockquote>
 <p><strong>C-d</strong> 或者 <strong>exit</strong></p>
@@ -459,7 +459,7 @@
 </blockquote>
 <p><img src="https://i.loli.net/2019/09/18/tTm8njsxACWJa7G.png" alt="Snipaste_2019-09-18_17-28-45.png"></p>
 <blockquote>
-<p><strong>C-b p</strong>: 切换到上一个窗口<br><strong>C-b n</strong>: 切换到下一个窗口<br><strong>C-b \&lt;number></strong>: 切换到指定窗口（显示在状态栏上窗口名前的数字）<br><strong>C-b ,</strong>: 重命名窗口</p>
+<p><strong>C-b p</strong>: 切换到上一个窗口<br><strong>C-b n</strong>: 切换到下一个窗口<br><strong>C-b &lt;number&gt;</strong>: 切换到指定窗口（显示在状态栏上窗口名前的数字）<br><strong>C-b ,</strong>: 重命名窗口</p>
 </blockquote>
 <h4 id="会话处理"><a href="#会话处理" class="headerlink" title="会话处理"></a>会话处理</h4><blockquote>
 <p><strong>C-b d</strong>: detach当前的session<br><strong>C-b D</strong>: 选择你想退出的session</p>
@@ -469,6 +469,7 @@
 <p><strong>tmux ls</strong>: 列出正在运行的session</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ tmux ls</span><br><span class="line">0: 2 windows (created Wed Sep 18 08:50:40 2019) [80x20]</span><br><span class="line">timmger@timmger-virtual-machine:~$</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><strong>tmux attach -t 0</strong>: 连接到指定(-t 0 指定第一个)的session</p>
 </blockquote>
@@ -476,10 +477,12 @@
 <p><strong>tmux new -s cat</strong>: 命名并创建一个名为“cat”的session</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ tmux new -s cat</span><br><span class="line">[detached]</span><br><span class="line">timmger@timmger-virtual-machine:~$ tmux ls</span><br><span class="line">0: 2 windows (created Wed Sep 18 08:50:40 2019) [80x20]</span><br><span class="line">cat: 1 windows (created Wed Sep 18 17:47:46 2019) [80x20]</span><br><span class="line">timmger@timmger-virtual-machine:~$</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><strong>tmux rename-session -t 0 cute</strong>: 重命名已存在的session</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">timmger@timmger-virtual-machine:~$ tmux rename-session -t 0 cute</span><br><span class="line">timmger@timmger-virtual-machine:~$ tmux ls</span><br><span class="line">cat: 1 windows (created Wed Sep 18 17:47:46 2019) [80x20]</span><br><span class="line">cute: 2 windows (created Wed Sep 18 08:50:40 2019) [80x20]</span><br><span class="line">timmger@timmger-virtual-machine:~$</span><br></pre></td></tr></table></figure>
+
 <h4 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h4><p>使用 <code>C-b ?</code> 来查看更多可用的命令。</p>
 <blockquote>
 <p><strong>C-b z</strong>: 使一个窗格全屏，再次按可缩小<br><strong>C-b C-&lt;箭头键&gt;</strong>：指定方向改变窗格大小</p>
@@ -517,7 +520,8 @@
 <blockquote>
 <p><strong>tar -xzvf archive.tar.gz -C /tmp</strong> : 解压archive.tar.gz存档到/tmp</p>
 </blockquote>
-<p><br></p>
+<br>
+
 <p><strong>参考文章</strong>：</p>
 <ol>
 <li><a href="https://www.howtogeek.com/248780/how-to-compress-and-extract-files-using-the-tar-command-on-linux/" target="_blank" rel="noopener">https://www.howtogeek.com/248780/how-to-compress-and-extract-files-using-the-tar-command-on-linux/</a></li>
@@ -662,7 +666,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Allen Timmger">
             
@@ -677,7 +681,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

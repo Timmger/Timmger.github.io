@@ -6,7 +6,7 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -150,7 +150,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -160,7 +160,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -243,8 +243,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-portfolio">
-          <a href="/portfolio/" rel="section">
+        <li class="menu-item menu-item-design">
+          <a href="https://www.baidu.com" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-vcard (alias)"></i> <br>
             
@@ -280,20 +280,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2018/11/09/斐讯路由修改DNS使用Google-Home/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Allen Timmger">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Time Manager">
     </span>
 
@@ -336,7 +336,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/瞎折腾/" itemprop="url" rel="index">
                     <span itemprop="name">瞎折腾</span>
                   </a>
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  243
+                  
                 </span>
               
 
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  
                 </span>
               
             </div>
@@ -434,11 +434,13 @@
 <li>斐讯k2p(A2)银色</li>
 <li>原厂固件：V22.7.8.5</li>
 <li>刷机固件：斐讯K2P MTK版本的官方固件修改版本</li>
-<li>刷机参考：<a href="https://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=221578&amp;page=1&amp;authorid=140971" target="_blank" rel="noopener">斐讯K2P MTK官方固件定制版，加adb、S-S R、KMS等【V1.8】</a></li>
+<li>刷机参考：<a href="https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=221578&page=1&authorid=140971" target="_blank" rel="noopener">斐讯K2P MTK官方固件定制版，加adb、S-S R、KMS等【V1.8】</a></li>
 </ul>
 </blockquote>
 <h2 id="1-添加google-public-dns"><a href="#1-添加google-public-dns" class="headerlink" title="1. 添加google public dns"></a>1. 添加google public dns</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用telnet登录：</span></span><br><span class="line">telnet 192.168.2.1</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改dns:</span></span><br><span class="line">vi /etc/dnsmasq.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">#在文件最下面添加两行：</span></span><br><span class="line">server=8.8.8.8</span><br><span class="line">server=8.8.4.4</span><br><span class="line"></span><br><span class="line"><span class="comment">#保存退出</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="2-设置iptables"><a href="#2-设置iptables" class="headerlink" title="2.设置iptables"></a>2.设置iptables</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -s <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>/<span class="number">24</span> -p udp --dport <span class="number">53</span> -j DNAT --to <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span></span><br><span class="line">iptables -t nat -A PREROUTING -s <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>/<span class="number">24</span> -p tcp --dport <span class="number">53</span> -j DNAT --to <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span></span><br><span class="line">iptables -I PREROUTING -t nat -p udp -d <span class="number">8</span>.<span class="number">8</span>.<span class="number">4</span>.<span class="number">4</span> --dport <span class="number">53</span> -j REDIRECT --to-ports <span class="number">53</span></span><br><span class="line">iptables -I PREROUTING -t nat -p udp -d <span class="number">8</span>.<span class="number">8</span>.<span class="number">8</span>.<span class="number">8</span> --dport <span class="number">53</span> -j REDIRECT --to-ports <span class="number">53</span></span><br><span class="line">iptables -I PREROUTING -t nat -p tcp -d <span class="number">8</span>.<span class="number">8</span>.<span class="number">4</span>.<span class="number">4</span> --dport <span class="number">53</span> -j REDIRECT --to-ports <span class="number">53</span></span><br><span class="line">iptables -I PREROUTING -t nat -p tcp -d <span class="number">8</span>.<span class="number">8</span>.<span class="number">8</span>.<span class="number">8</span> --dport <span class="number">53</span> -j REDIRECT --to-ports <span class="number">53</span></span><br></pre></td></tr></table></figure>
+
 <p>以上，设置完毕</p>
 
       
@@ -489,10 +491,6 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/11/09/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
             
           </div>
 
@@ -576,7 +574,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Allen Timmger">
             
@@ -591,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
