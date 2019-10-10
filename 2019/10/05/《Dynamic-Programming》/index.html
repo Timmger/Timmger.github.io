@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="dynamic programming,optimization,">
+  <meta name="keywords" content="dynamic programming,leetcode,">
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
-<meta name="keywords" content="dynamic programming,optimization">
+<meta name="keywords" content="dynamic programming,leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Dynamic Programming》">
 <meta property="og:url" content="https://timmger.github.io/2019/10/05/《Dynamic-Programming》/index.html">
@@ -91,7 +91,10 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/10/05/UwtEFVuheSJaZGb.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/05/m2xOn7RuJjYsrLt.png">
-<meta property="og:updated_time" content="2019-10-07T08:56:28.640Z">
+<meta property="og:image" content="https://i.loli.net/2019/10/08/Mbez7q3S28ocD16.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/08/Av1ImlLMyRW9sP6.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/10/7UzpIxFtPwuv8rQ.png">
+<meta property="og:updated_time" content="2019-10-10T08:08:19.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Dynamic Programming》">
 <meta name="twitter:description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
@@ -392,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  722
+                  1.3k
                 </span>
               
 
@@ -408,7 +411,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  5
                 </span>
               
             </div>
@@ -447,12 +450,22 @@
 <li>通过数学归纳法，假设已知$L(i)$（$i$为$j$ 的父节点）,只要找到$L(i)的最大值, $L(j)$就等于$max{L(i):(i,j)\in E} + 1$</li>
 <li>对于$j = 1,2,…,n$, 返回最大值</li>
 </ol>
-<p>Java表示：</p>
+<p>Java代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">LengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] L = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</span><br><span class="line">    <span class="comment">// 初始化 L 数组为1</span></span><br><span class="line">    Arrays.fill(L,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; j; i++) &#123;</span><br><span class="line">            <span class="comment">//判断 i 是否为 j 的父节点</span></span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt; a[i]) &#123;</span><br><span class="line">                L[j] = Math.max(L[j], L[i] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 求出L数组的最大元素</span></span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; L.length; i++) &#123;</span><br><span class="line">        len = Math.max(len, L[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>算法的<strong>时间复杂度</strong>为$O(n^2)$, <strong>空间复杂度</strong>为$O(n)$<br>因此，可以看到，动态规划的核心思想即：<strong>数学归纳</strong>思想，对于一个最优解，我们假设给定一个较小的子问题，如何根据已知条件求解出它，并递归划分成更小的子问题，最终求出最优解</p>
-<p><strong>注</strong>： 该题还有一个二分查找解法，时间复杂度为$O(nlogn)$,<br>该解涉及到叫“Patience Sorting”的排序算法，有兴趣可以了解一下(<a href="https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/</a>)</p>
-
+<p>【<strong>注</strong>】： 该题还有一个二分查找解法，时间复杂度为$O(nlogn)$,<br>该解涉及到叫“Patience Sorting”的排序算法，有兴趣的童鞋可以了解一下(<a href="https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/</a>)</p>
+<h2 id="3-编辑距离-Edit-distance"><a href="#3-编辑距离-Edit-distance" class="headerlink" title="3. 编辑距离(Edit distance)"></a>3. 编辑距离(Edit distance)</h2><p>在机器翻译中，当拼写检查器遇到一个可能的单词拼写错误时，它就会在字典里寻找其他近似的单词，这种情况下，怎么根据近似度找出最合适的单词？<br>一种衡量两个字符串距离的方法是比较它们对齐或匹配的程度，比如 <code>SNOWY</code> 和 <code>SUNNY</code>:  </p>
+<p><img src="https://i.loli.net/2019/10/08/Mbez7q3S28ocD16.png" alt="资源 3.png"></p>
+<p><code>&quot;--&quot;</code> 表示“间断(gap)”，任何数量的”gap”可以插入到字符串的任何位置, <code>cost</code> 表示字母不同的列数，而<strong>编辑距离</strong>就是最小的 <code>cost</code> 的值。比如<code>SNOWY</code> 和 <code>SUNNY</code> 的编辑距离为3。<br>编辑距离之所以如此命名，是因为它表示了将一个字符串转换为另一个字符串时，字符编辑操作(删除，插入，替换)的最小数，本例中，编辑距离显示三个操作：插入 U， 替换 O –&gt; N, 删除 W。</p>
+<h3 id="动态规划解法"><a href="#动态规划解法" class="headerlink" title="动态规划解法"></a>动态规划解法</h3><p>当解决一个动态规划问题时，最关键的问题是，它的<strong>子问题</strong>是什么？只要找到它，就可以通过<strong>数学归纳</strong>的思想来解决：按照递增的顺序，迭代地解决子问题。  </p>
+<p>OK, 我们的目标是找到两个字符串 $x[1…m]$ 和 $y[1…n]$ 的编辑距离，怎么定义一个好的子问题，它应该是解决<strong>整个问题的一部分</strong>的方法。好，我们不妨来计算两个字符串的前部分 $x[1…i]$ 和 $y[1…j]$ 的编辑距离，称之为 $E(i,j)$, 我们的最终目标就是计算出 $E(m,n)$。</p>
+<p><strong>例</strong>: 计算 <code>EXPONENTIAL</code> 和 <code>POLYNOMIAL</code> 的编辑距离</p>
+<p><img src="https://i.loli.net/2019/10/08/Av1ImlLMyRW9sP6.png" alt="资源 4.png"></p>
+<p>接着，我们需要知道怎么把 $E(i,j)$ 划分成更小的子问题：<br>首先考虑 $x[1…i]$ 和 $y[1…j]$ 的最右列的排列情况，可分为以下三种：</p>
+<p><img src="https://i.loli.net/2019/10/10/7UzpIxFtPwuv8rQ.png" alt="资源 5.png"></p>
+<p>第一种情况的列的 <code>cost</code> 为1，剩余对齐的部分为 $x[1…i-1]$ 和 $y[1…j]$ ，同时也是子问题 $E(i-1,j)$<br>第二种类似，剩余对齐部分的子问题为 $E(i,j-1)$<br>第三种，最右列的 <code>cost</code> 为 1 ($x[i]\neq y[j]$) 或 0 ($x[i] = y[j]$), 剩余部分的子问题表示为 $E(i-1,j-1)$<br><strong>综上</strong>，$E(i,j)$ 表示为：  </p>
+<center>$$E(i,j) = min\{1+E(i-1,j), 1+E(i,j-1), diff(i,j)+E(i-1,j-1)\}$$</center>
       
     </div>
     
@@ -489,7 +502,7 @@
           
             <a href="/tags/dynamic-programming/" rel="tag"><i class="fa fa-tag"></i> dynamic programming</a>
           
-            <a href="/tags/optimization/" rel="tag"><i class="fa fa-tag"></i> optimization</a>
+            <a href="/tags/leetcode/" rel="tag"><i class="fa fa-tag"></i> leetcode</a>
           
         </div>
       
@@ -697,7 +710,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最长递增子序列"><span class="nav-number">2.</span> <span class="nav-text">2. 最长递增子序列</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最长递增子序列"><span class="nav-number">2.</span> <span class="nav-text">2. 最长递增子序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-编辑距离-Edit-distance"><span class="nav-number">3.</span> <span class="nav-text">3. 编辑距离(Edit distance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划解法"><span class="nav-number">3.1.</span> <span class="nav-text">动态规划解法</span></a></li></ol></li></ol></div>
             
 
           </div>
