@@ -92,9 +92,13 @@
 <meta property="og:image" content="https://i.loli.net/2019/10/05/UwtEFVuheSJaZGb.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/05/m2xOn7RuJjYsrLt.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/08/Mbez7q3S28ocD16.png">
-<meta property="og:image" content="https://i.loli.net/2019/10/08/Av1ImlLMyRW9sP6.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/10/7UzpIxFtPwuv8rQ.png">
-<meta property="og:updated_time" content="2019-10-10T08:08:19.177Z">
+<meta property="og:image" content="https://i.loli.net/2019/10/08/Av1ImlLMyRW9sP6.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/10/hmELgBH4jUM2rGt.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/11/Q9g6xmfCcouhXsz.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/11/FIAzTwonWUYaj7m.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/11/hsLqm1FMdEV6rzu.png">
+<meta property="og:updated_time" content="2019-10-11T15:09:58.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Dynamic Programming》">
 <meta name="twitter:description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
@@ -395,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  1.9k
                 </span>
               
 
@@ -411,7 +415,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  8
                 </span>
               
             </div>
@@ -453,19 +457,45 @@
 <p>Java代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">LengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] L = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</span><br><span class="line">    <span class="comment">// 初始化 L 数组为1</span></span><br><span class="line">    Arrays.fill(L,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; j; i++) &#123;</span><br><span class="line">            <span class="comment">//判断 i 是否为 j 的父节点</span></span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt; a[i]) &#123;</span><br><span class="line">                L[j] = Math.max(L[j], L[i] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 求出L数组的最大元素</span></span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; L.length; i++) &#123;</span><br><span class="line">        len = Math.max(len, L[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>算法的<strong>时间复杂度</strong>为$O(n^2)$, <strong>空间复杂度</strong>为$O(n)$<br>因此，可以看到，动态规划的核心思想即：<strong>数学归纳</strong>思想，对于一个最优解，我们假设给定一个较小的子问题，如何根据已知条件求解出它，并递归划分成更小的子问题，最终求出最优解</p>
+<p>算法的<strong>时间复杂度</strong>为$O(n^2)$, <strong>空间复杂度</strong>为$O(n)$<br>因此，可以看到，动态规划的核心思想即：<strong>数学归纳</strong>思想，对于一个最优解，我们假设给定一个较小的子问题，如何根据已知条件求解出它，并递归划分成更小的子问题，最终求出最优解。</p>
 <p>【<strong>注</strong>】： 该题还有一个二分查找解法，时间复杂度为$O(nlogn)$,<br>该解涉及到叫“Patience Sorting”的排序算法，有兴趣的童鞋可以了解一下(<a href="https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/</a>)</p>
 <h2 id="3-编辑距离-Edit-distance"><a href="#3-编辑距离-Edit-distance" class="headerlink" title="3. 编辑距离(Edit distance)"></a>3. 编辑距离(Edit distance)</h2><p>在机器翻译中，当拼写检查器遇到一个可能的单词拼写错误时，它就会在字典里寻找其他近似的单词，这种情况下，怎么根据近似度找出最合适的单词？<br>一种衡量两个字符串距离的方法是比较它们对齐或匹配的程度，比如 <code>SNOWY</code> 和 <code>SUNNY</code>:  </p>
 <p><img src="https://i.loli.net/2019/10/08/Mbez7q3S28ocD16.png" alt="资源 3.png"></p>
 <p><code>&quot;--&quot;</code> 表示“间断(gap)”，任何数量的”gap”可以插入到字符串的任何位置, <code>cost</code> 表示字母不同的列数，而<strong>编辑距离</strong>就是最小的 <code>cost</code> 的值。比如<code>SNOWY</code> 和 <code>SUNNY</code> 的编辑距离为3。<br>编辑距离之所以如此命名，是因为它表示了将一个字符串转换为另一个字符串时，字符编辑操作(删除，插入，替换)的最小数，本例中，编辑距离显示三个操作：插入 U， 替换 O –&gt; N, 删除 W。</p>
 <h3 id="动态规划解法"><a href="#动态规划解法" class="headerlink" title="动态规划解法"></a>动态规划解法</h3><p>当解决一个动态规划问题时，最关键的问题是，它的<strong>子问题</strong>是什么？只要找到它，就可以通过<strong>数学归纳</strong>的思想来解决：按照递增的顺序，迭代地解决子问题。  </p>
 <p>OK, 我们的目标是找到两个字符串 $x[1…m]$ 和 $y[1…n]$ 的编辑距离，怎么定义一个好的子问题，它应该是解决<strong>整个问题的一部分</strong>的方法。好，我们不妨来计算两个字符串的前部分 $x[1…i]$ 和 $y[1…j]$ 的编辑距离，称之为 $E(i,j)$, 我们的最终目标就是计算出 $E(m,n)$。</p>
-<p><strong>例</strong>: 计算 <code>EXPONENTIAL</code> 和 <code>POLYNOMIAL</code> 的编辑距离</p>
-<p><img src="https://i.loli.net/2019/10/08/Av1ImlLMyRW9sP6.png" alt="资源 4.png"></p>
 <p>接着，我们需要知道怎么把 $E(i,j)$ 划分成更小的子问题：<br>首先考虑 $x[1…i]$ 和 $y[1…j]$ 的最右列的排列情况，可分为以下三种：</p>
 <p><img src="https://i.loli.net/2019/10/10/7UzpIxFtPwuv8rQ.png" alt="资源 5.png"></p>
 <p>第一种情况的列的 <code>cost</code> 为1，剩余对齐的部分为 $x[1…i-1]$ 和 $y[1…j]$ ，同时也是子问题 $E(i-1,j)$<br>第二种类似，剩余对齐部分的子问题为 $E(i,j-1)$<br>第三种，最右列的 <code>cost</code> 为 1 ($x[i]\neq y[j]$) 或 0 ($x[i] = y[j]$), 剩余部分的子问题表示为 $E(i-1,j-1)$<br><strong>综上</strong>，$E(i,j)$ 表示为：  </p>
 <center>$$E(i,j) = min\{1+E(i-1,j), 1+E(i,j-1), diff(i,j)+E(i-1,j-1)\}$$</center>
+
+<p>方便起见，定义 $diff(i,j)$ 输出 1（$x[i]\neq y[j]$） 或 0（$x[i] = y[j]$）。 </p>
+<p><strong>例</strong>: 计算 <code>EXPONENTIAL</code> 和 <code>POLYNOMIAL</code> 的编辑距离</p>
+<p><img src="https://i.loli.net/2019/10/08/Av1ImlLMyRW9sP6.png" alt="资源 4.png"></p>
+<p>本例中，子问题 $E(4,3)$ 为 <code>EXPO</code> 和 <code>POL</code>，最右列的对齐情况肯定是以下的一种（删除，插入，替换）：</p>
+<p><img src="https://i.loli.net/2019/10/10/hmELgBH4jUM2rGt.png" alt="资源 6.png"></p>
+<p>因此,  $E(4,3) = min{1+E(3,3), 1+E(4,2), 1+E(3,2)}$</p>
+<p>所有的子问题 $E(i,j)$ 可以用二维图表表示, 在求解 $E(i,j)$ 前，需要先处理 $E(i-1,j)$，$E(i,j-1)$，$E(i-1,j-1)$</p>
+<p><img src="https://i.loli.net/2019/10/11/Q9g6xmfCcouhXsz.png" alt="资源 9.png"></p>
+<p>最小子问题 $E(0,.)$ 和 $E(,.0)$ 为”base cases”（递归基）,显然：<br>$$E(0,j)=j \qquad E(i,0)=i$$</p>
+<p>下面给出代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">editDistance</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = s1.length();</span><br><span class="line">    <span class="keyword">int</span> n = s2.length();</span><br><span class="line">    <span class="keyword">int</span>[][] E = <span class="keyword">new</span> <span class="keyword">int</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归基</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        E[i][<span class="number">0</span>] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n + <span class="number">1</span>; j++) &#123;</span><br><span class="line">        E[<span class="number">0</span>][j] = j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自底向上递归</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n + <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="comment">// 根据公式计算</span></span><br><span class="line">            <span class="keyword">int</span> cp1 = E[i-<span class="number">1</span>][j] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> cp2 = E[i][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> cp3 = E[i-<span class="number">1</span>][j-<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (s1.charAt(i - <span class="number">1</span>) != s2.charAt(j - <span class="number">1</span>)) &#123;</span><br><span class="line">                cp3 += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            E[i][j] = Math.min(cp1, Math.min(cp2, cp3));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> E[m][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>算法的<strong>时间复杂度</strong>为$O(mn)$, <strong>空间复杂度</strong>为$O(mn)$<br>本例中，<code>EXPONENTIAL</code> 和 <code>POLYNOMIAL</code> 的最终编辑距离为 6:</p>
+<p><img src="https://i.loli.net/2019/10/11/FIAzTwonWUYaj7m.png" alt="资源 10.png"></p>
+<h2 id="4-潜在的DAG结构"><a href="#4-潜在的DAG结构" class="headerlink" title="4. 潜在的DAG结构"></a>4. 潜在的DAG结构</h2><p>每个动态规划问题都有一个 <strong>底层的DAG(有向无环图)</strong> 结构：  </p>
+<p>想象一下，每个图<strong>节点</strong>代表了一个<strong>子问题</strong>，每条<strong>边</strong>对应了解决子问题之间的一个<strong>优先级限制条件</strong>，比如节点 $v_1,…,v_k$ 指向节点 $n$，意味着“子问题 $n$ 只能在求得 $v_1,…,v_k$ 之后解出”。   </p>
+<p>在编辑距离的例子中，节点对应了图表中的位置 $(i,j)$, 边 $(i-1,j) \to (i,j),\quad (i,j-1) \to (i,j),\quad (i-1,j-1) \to (i,j)$ 显示优先级。<br>更进一步，我们可以给每条边加上权重，就能够计算出DAG的最短路径(参考Bellman-Ford算法)。比如，把所有边 ${(i-1,j-1) \to (i,j) : x[i]=y[j]}$ 权重（cost）设为 0，其余边设为 1，最终我们要求出从节点 $s(0,0)$ 到 $t(m,n)$ 的最短路径。如图所示：图中显示路径向下为删除，向右为插入，对角为替换($x[i] \neq y[j]$) 或匹配（$x[i]=y[j]$,权重为 0）。</p>
+<p><img src="https://i.loli.net/2019/10/11/hsLqm1FMdEV6rzu.png" alt="资源 12.png"></p>
+<br>
+
+<p><strong>参考文章</strong></p>
+<ol>
+<li>Leetcode</li>
+<li>《ALgorithms》by Sanjoy Dasgupta</li>
+<li>《Algorithms》4th</li>
+</ol>
+
       
     </div>
     
@@ -710,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最长递增子序列"><span class="nav-number">2.</span> <span class="nav-text">2. 最长递增子序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-编辑距离-Edit-distance"><span class="nav-number">3.</span> <span class="nav-text">3. 编辑距离(Edit distance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划解法"><span class="nav-number">3.1.</span> <span class="nav-text">动态规划解法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最长递增子序列"><span class="nav-number">2.</span> <span class="nav-text">2. 最长递增子序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-编辑距离-Edit-distance"><span class="nav-number">3.</span> <span class="nav-text">3. 编辑距离(Edit distance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划解法"><span class="nav-number">3.1.</span> <span class="nav-text">动态规划解法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-潜在的DAG结构"><span class="nav-number">4.</span> <span class="nav-text">4. 潜在的DAG结构</span></a></li></ol></div>
             
 
           </div>
