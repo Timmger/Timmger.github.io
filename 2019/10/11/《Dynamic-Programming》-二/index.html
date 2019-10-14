@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java,虚拟机,">
+  <meta name="keywords" content="dynamic programming,leetcode,">
 
 
 
@@ -81,21 +81,20 @@
 
 
 
-<meta name="description" content="1. Java概述1.1 Java技术体系以组成部分划分 JDK(Java Development Kit) – 开发最小环境:  Java程序设计语言 Java虚拟机 Java API类库  JRE(Java Runtime Environment) – 运行标准环境:  Java API类库中的Java SE API Java虚拟机   Java技术体系   以平台划分  Java Card:">
-<meta name="keywords" content="java,虚拟机">
+<meta name="description" content="1. 背包问题(Knapsack)问题描述给定一个能够承重 W 磅的背包(knapsack), 有 n 个物体可供挑选，每个物体都有重量(weight)和价值(value)，怎么挑选才能使背包所装物体价值最大？在如下例子中，取 W = 10 并且               Item         Weight         Value                   1">
+<meta name="keywords" content="dynamic programming,leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《deep dive in JVM》">
-<meta property="og:url" content="https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/index.html">
+<meta property="og:title" content="《Dynamic Programming》(二)">
+<meta property="og:url" content="https://timmger.github.io/2019/10/11/《Dynamic-Programming》-二/index.html">
 <meta property="og:site_name" content="Time Manager">
-<meta property="og:description" content="1. Java概述1.1 Java技术体系以组成部分划分 JDK(Java Development Kit) – 开发最小环境:  Java程序设计语言 Java虚拟机 Java API类库  JRE(Java Runtime Environment) – 运行标准环境:  Java API类库中的Java SE API Java虚拟机   Java技术体系   以平台划分  Java Card:">
+<meta property="og:description" content="1. 背包问题(Knapsack)问题描述给定一个能够承重 W 磅的背包(knapsack), 有 n 个物体可供挑选，每个物体都有重量(weight)和价值(value)，怎么挑选才能使背包所装物体价值最大？在如下例子中，取 W = 10 并且               Item         Weight         Value                   1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2019/09/28/nyTDYCaXb93SIc6.png">
-<meta property="og:image" content="https://i.loli.net/2019/09/28/Zp5cDYjyQPnROS6.png">
-<meta property="og:updated_time" content="2019-10-02T14:36:29.401Z">
+<meta property="og:image" content="https://i.loli.net/2019/10/14/QDTRcdJxYWj2FOz.png">
+<meta property="og:updated_time" content="2019-10-14T09:12:44.185Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《deep dive in JVM》">
-<meta name="twitter:description" content="1. Java概述1.1 Java技术体系以组成部分划分 JDK(Java Development Kit) – 开发最小环境:  Java程序设计语言 Java虚拟机 Java API类库  JRE(Java Runtime Environment) – 运行标准环境:  Java API类库中的Java SE API Java虚拟机   Java技术体系   以平台划分  Java Card:">
-<meta name="twitter:image" content="https://i.loli.net/2019/09/28/nyTDYCaXb93SIc6.png">
+<meta name="twitter:title" content="《Dynamic Programming》(二)">
+<meta name="twitter:description" content="1. 背包问题(Knapsack)问题描述给定一个能够承重 W 磅的背包(knapsack), 有 n 个物体可供挑选，每个物体都有重量(weight)和价值(value)，怎么挑选才能使背包所装物体价值最大？在如下例子中，取 W = 10 并且               Item         Weight         Value                   1">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/14/QDTRcdJxYWj2FOz.png">
 
 
 
@@ -125,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/">
+  <link rel="canonical" href="https://timmger.github.io/2019/10/11/《Dynamic-Programming》-二/">
 
 
 
 
 
-  <title>《deep dive in JVM》 | Time Manager</title>
+  <title>《Dynamic Programming》(二) | Time Manager</title>
   
 
 
@@ -288,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/">
+    <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2019/10/11/《Dynamic-Programming》-二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Allen Timmger">
@@ -305,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《deep dive in JVM》</h1>
+          <h1 class="post-title" itemprop="name headline">《Dynamic Programming》(二)</h1>
         
 
         <div class="post-meta">
@@ -317,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-28T15:45:06+08:00">
-                2019-09-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-11T23:17:33+08:00">
+                2019-10-11
               </time>
             
 
@@ -340,8 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JVM/" itemprop="url" rel="index">
-                    <span itemprop="name">JVM</span>
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
                   </a>
                 </span>
 
@@ -358,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/28/《deep-dive-in-JVM》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/28/《deep-dive-in-JVM》/" itemprop="commentCount"></span>
+                <a href="/2019/10/11/《Dynamic-Programming》-二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/11/《Dynamic-Programming》-二/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,7 +366,7 @@
 
           
           
-             <span id="/2019/09/28/《deep-dive-in-JVM》/" class="leancloud_visitors" data-flag-title="《deep dive in JVM》">
+             <span id="/2019/10/11/《Dynamic-Programming》-二/" class="leancloud_visitors" data-flag-title="《Dynamic Programming》(二)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -392,7 +391,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  127
+                  1.1k
                 </span>
               
 
@@ -408,7 +407,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -429,33 +428,89 @@
       
 
       
-        <h2 id="1-Java概述"><a href="#1-Java概述" class="headerlink" title="1. Java概述"></a>1. Java概述</h2><h3 id="1-1-Java技术体系"><a href="#1-1-Java技术体系" class="headerlink" title="1.1 Java技术体系"></a>1.1 Java技术体系</h3><p><code>以组成部分划分</code></p>
-<p><strong>JDK(Java Development Kit)</strong> – 开发最小环境:</p>
-<ul>
-<li>Java程序设计语言</li>
-<li>Java虚拟机</li>
-<li>Java API类库</li>
-</ul>
-<p><strong>JRE(Java Runtime Environment)</strong> – 运行标准环境:</p>
-<ul>
-<li>Java API类库中的Java SE API</li>
-<li>Java虚拟机</li>
-</ul>
-<p><img src="https://i.loli.net/2019/09/28/nyTDYCaXb93SIc6.png" alt="javaSystem.png"></p>
-<center>Java技术体系</center>
+        <h2 id="1-背包问题-Knapsack"><a href="#1-背包问题-Knapsack" class="headerlink" title="1. 背包问题(Knapsack)"></a>1. 背包问题(Knapsack)</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>给定一个能够承重 W 磅的背包(knapsack), 有 n 个物体可供挑选，每个物体都有<strong>重量</strong>(weight)和<strong>价值</strong>(value)，怎么挑选才能使背包所装物体价值最大？在如下例子中，取 W = 10 并且</p>
+<table border="1">
+    <tr>
+        <th>Item</th>
+        <th>Weight</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>6</td>
+        <td>$30</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>3</td>
+        <td>$14</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>4</td>
+        <td>$16</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>$9</td>
+    </tr>
+</table>
 
+<p>这个问题有两个版本，如果物品的数量没有限制，又叫<strong>完全背包</strong>，最优的选择是一个 item 1 和两个 item 4(总价值 $48)。如果数量仅限为1，又叫 <code>0-1</code> 背包问题，最优为 item 1 和 item 3(价值$46)。</p>
+<h3 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h3><p>让我们从不限制数量的版本开始，一如既往，对于动态规划，首先需要知道子问题是什么？本例中，我们有两种方法来”缩短”问题：取更小的背包容量 $w\leq W$, 或者取更少的物品(如取 $1,2,…,j$,其中 $j\leq n$)。通常需要实验得知哪个方法更合适。  </p>
+<p>第一种方法要求更小的容量。相应地，我们定义:  </p>
+<center>$K(w)$ = 容量为 $w$ 的背包可取的最大价值</center>
 
-<p><code>以平台划分</code></p>
-<ul>
-<li>Java Card: 小内存设备</li>
-<li>Java ME(Micro Edition): 移动终端（手机、PDA）</li>
-<li>Java SE(Standard Edition): 桌面级应用(Windows)</li>
-<li>Java EE(Enterprise Edition): 使用多层架构的企业应用</li>
-</ul>
-<h3 id="1-2-Java简史"><a href="#1-2-Java简史" class="headerlink" title="1.2 Java简史"></a>1.2 Java简史</h3><p><img src="https://i.loli.net/2019/09/28/Zp5cDYjyQPnROS6.png" alt="javaHistory.png"></p>
-<center>the timeline of Java history</center>
+<p>我们能用更小的子问题来表示 $K(w)$ 吗？思考一下，如果 $K(w)$ 的最优解包含物品 $i$，那么我们移除 $i$ 的话，剩余物品就构成 $K(w-w_i)$ 的最优解。换句话说，<strong>对于某个特定的 $i$, $K(w)$ 就是 $K(w-w_i)+v_i$</strong>，我们不知道物品 $i$ 是哪个，所以尝试所有的可能性。  </p>
+<center>$$\max_{i:w_i\leq w}\{K(w-w_i)+v_i\}$$</center>
 
+<p>根据惯例，一个空集的最大取值为 0(递归基为 0)，Java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">knapsackWithRepetition</span><span class="params">(<span class="keyword">int</span> W, <span class="keyword">int</span>[] weight, <span class="keyword">int</span>[] value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] K = <span class="keyword">new</span> <span class="keyword">int</span>[W+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 递归基</span></span><br><span class="line">    K[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自底向上（背包容量）递归求解</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">1</span>; w &lt; K.length; w++) &#123;</span><br><span class="line">        <span class="comment">// 遍历weight[]，找出所有小于等于w的物品</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; weight.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(weight[i] &lt;= w) &#123;</span><br><span class="line">                K[w] = Math.max(K[w], K[w - weight[i]] + value[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> K[W];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>算法的<strong>时间复杂度</strong>为$O(Wn)$, <strong>空间复杂度</strong>为$O(n)$  </p>
+<h3 id="0-1-背包"><a href="#0-1-背包" class="headerlink" title="0-1 背包"></a>0-1 背包</h3><p>第二种：物品的数量不允许重复，之前的状态转移方程就完全失效了，我们必须重新提炼子问题来传递额外的信息：<strong>哪些物品已经被使用</strong>。可以添加一个第二参数，$0\leq j\leq n$  </p>
+<center>$K(w,j)$ = 物品 $1,...,j$ 放入容量为 $w$ 的背包的最大价值</center>
+
+<p>最终要求 $K(W,n)$<br>怎么把 $K(w,j)$ 表示为更小的子问题? 非常简单，对于物品 $j$，可以用它来获取最优解，或者不需要它。那么可得到如下状态转移方程：  </p>
+<center>$$K(w,j) = max\{K(w-w_j,j-1)+v_j,K(w,j-1)\}$$</center> 
+
+<p>只有当 $w_j\leq w$ 时才可以选择物品 $j$，换句话说，我们可以把 $K(w,j) $ 表示成 $K(.,j-1)$<br>根据方程，我们能够填一张 <code>W + 1</code> $\times$ <code>n + 1</code> 的图表，每个表格花费常数时间，时间复杂度依然是 $O(nW)$</p>
+<p><img src="https://i.loli.net/2019/10/14/QDTRcdJxYWj2FOz.png" alt="资源 13.png"></p>
+<br>
+
+<p>Java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">knapsackWithoutRepetition</span><span class="params">(<span class="keyword">int</span> W, <span class="keyword">int</span>[] weight, <span class="keyword">int</span>[] value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = weight.length;</span><br><span class="line">    <span class="keyword">int</span>[][] K = <span class="keyword">new</span> <span class="keyword">int</span>[W+<span class="number">1</span>][n+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化 base cases</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n + <span class="number">1</span>; j++) &#123;</span><br><span class="line">        K[<span class="number">0</span>][j] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; W + <span class="number">1</span>; w++) &#123;</span><br><span class="line">        K[w][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自底向上递归</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n + <span class="number">1</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">1</span>; w &lt; W + <span class="number">1</span>; w++) &#123;</span><br><span class="line">            <span class="comment">// weight[j-1] 为 wj</span></span><br><span class="line">            <span class="keyword">if</span> (weight[j-<span class="number">1</span>] &gt; w) &#123;</span><br><span class="line">                K[w][j] = K[w][j-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// value[j-1] 为 vj</span></span><br><span class="line">                <span class="keyword">int</span> cp1 = K[w-weight[j-<span class="number">1</span>]][j-<span class="number">1</span>] + value[j-<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> cp2 = K[w][j-<span class="number">1</span>];</span><br><span class="line">                K[w][j] = Math.max(cp1, cp2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> K[W][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-矩阵链乘"><a href="#2-矩阵链乘" class="headerlink" title="2. 矩阵链乘"></a>2. 矩阵链乘</h2><p>假设四个矩阵相乘，$A\times B\times C\times D$, 维度分别为 $50\times 20,20\times 1,1\times 10,10\times 100$，它将会反复地同时乘两个矩阵。矩阵乘法不符合交换律($A\times B \neq B\times A$)，但它符合结合律，$A\times (B\times C) = (A\times B)\times C$，因此我们可以通过加括号的方式，用不同顺序来计算矩阵的乘积。</p>
+<p>$m\times n$ 矩阵和 $n\times p$ 矩阵相乘会有 $m\times n\times p$ 次乘法计算，让我们来比较不同方法的花费：</p>
+<table border="1">
+    <tr>
+        <th>组合方式</th>
+        <th>mnp</th>
+        <th>总次数</th>
+    </tr>
+    <tr>
+        <td>$A\times((B\times C)\times D)$</td>
+        <td>6</td>
+        <td>$30</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>3</td>
+        <td>$14</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>4</td>
+        <td>$16</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>$9</td>
+    </tr>
+</table>
       
     </div>
     
@@ -475,7 +530,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/" title="《deep dive in JVM》">https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/</a>
+    <a href="https://timmger.github.io/2019/10/11/《Dynamic-Programming》-二/" title="《Dynamic Programming》(二)">https://timmger.github.io/2019/10/11/《Dynamic-Programming》-二/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -490,9 +545,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+            <a href="/tags/dynamic-programming/" rel="tag"><i class="fa fa-tag"></i> dynamic programming</a>
           
-            <a href="/tags/虚拟机/" rel="tag"><i class="fa fa-tag"></i> 虚拟机</a>
+            <a href="/tags/leetcode/" rel="tag"><i class="fa fa-tag"></i> leetcode</a>
           
         </div>
       
@@ -505,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/24/《Git漫游指南》-在服务器上搭建Git/" rel="next" title="《Git漫游指南》- 在服务器上搭建Git">
-                <i class="fa fa-chevron-left"></i> 《Git漫游指南》- 在服务器上搭建Git
+              <a href="/2019/10/05/《Dynamic-Programming》/" rel="next" title="《Dynamic Programming》(一)">
+                <i class="fa fa-chevron-left"></i> 《Dynamic Programming》(一)
               </a>
             
           </div>
@@ -514,10 +569,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/05/《Dynamic-Programming》/" rel="prev" title="《Dynamic Programming》(一)">
-                《Dynamic Programming》(一) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -704,7 +755,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Java概述"><span class="nav-number">1.</span> <span class="nav-text">1. Java概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Java技术体系"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java技术体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Java简史"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java简史</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-背包问题-Knapsack"><span class="nav-number">1.</span> <span class="nav-text">1. 背包问题(Knapsack)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完全背包"><span class="nav-number">1.2.</span> <span class="nav-text">完全背包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-1-背包"><span class="nav-number">1.3.</span> <span class="nav-text">0-1 背包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-矩阵链乘"><span class="nav-number">2.</span> <span class="nav-text">2. 矩阵链乘</span></a></li></ol></div>
             
 
           </div>
@@ -867,9 +918,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://timmger.github.io/2019/09/28/《deep-dive-in-JVM》/';
-          this.page.identifier = '2019/09/28/《deep-dive-in-JVM》/';
-          this.page.title = '《deep dive in JVM》';
+          this.page.url = 'https://timmger.github.io/2019/10/11/《Dynamic-Programming》-二/';
+          this.page.identifier = '2019/10/11/《Dynamic-Programming》-二/';
+          this.page.title = '《Dynamic Programming》(二)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://Timmger.disqus.com/embed.js';
