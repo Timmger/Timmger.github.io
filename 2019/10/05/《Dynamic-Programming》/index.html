@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/10/11/Q9g6xmfCcouhXsz.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/11/FIAzTwonWUYaj7m.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/11/hsLqm1FMdEV6rzu.png">
-<meta property="og:updated_time" content="2019-10-11T15:17:40.268Z">
+<meta property="og:updated_time" content="2019-10-24T02:22:25.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Dynamic Programming》(一)">
 <meta name="twitter:description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
@@ -451,7 +451,7 @@
 <p>所以问题转变为求解<strong>有向无环图</strong> DAG(V,E) 的<strong>最长路径</strong>:  </p>
 <ol>
 <li>首先，我们定义$L(j)$为最长路径的长度（即结束于j的最长路径上的顶点数）</li>
-<li>通过数学归纳法，假设已知$L(i)$（$i$为$j$ 的父节点）,只要找到$L(i)的最大值, $L(j)$就等于$max{L(i):(i,j)\in E} + 1$</li>
+<li>通过数学归纳法，假设已知$L(i)$（$i$为$j$ 的父节点）,只要找到$L(i)$的最大值, $L(j)$就等于 $max{L(i):(i,j)\in E} + 1$</li>
 <li>对于$j = 1,2,…,n$, 返回最大值</li>
 </ol>
 <p>Java代码如下：</p>
