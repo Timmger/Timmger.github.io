@@ -90,7 +90,7 @@
 <meta property="og:description" content="1. 每 k 个结点为一组反转链表原题链接：https://leetcode.com/problems/reverse-nodes-in-k-group/ 问题描述给定一个链表，同时反转 k 个结点，并且返回反转后的链表。其中 k 是一个正整数，小于等于链表的长度。如果链表的结点总数不是 k 的倍数，那么最后剩下的结点不反转。如： 12345Given this linked list: 1-&amp;g">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/10/26/nC2Z5YvTPF7dlEk.png">
-<meta property="og:updated_time" content="2019-10-26T08:36:45.530Z">
+<meta property="og:updated_time" content="2019-10-26T08:47:29.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Leetcode题解》-- 25. Reverse Nodes in k-Group">
 <meta name="twitter:description" content="1. 每 k 个结点为一组反转链表原题链接：https://leetcode.com/problems/reverse-nodes-in-k-group/ 问题描述给定一个链表，同时反转 k 个结点，并且返回反转后的链表。其中 k 是一个正整数，小于等于链表的长度。如果链表的结点总数不是 k 的倍数，那么最后剩下的结点不反转。如： 12345Given this linked list: 1-&amp;g">
@@ -391,7 +391,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  953
+                  949
                 </span>
               
 
@@ -438,8 +438,13 @@
 <li>不能修改结点的值，只有结点本身可以改动</li>
 </ul>
 <h3 id="解法一-：递归解法"><a href="#解法一-：递归解法" class="headerlink" title="解法一 ：递归解法"></a>解法一 ：递归解法</h3><p>注意，该解法所需要的空间复杂度为 $O(n)$, 不符合题设，但还是记录一下。</p>
-<p>设 $T(n)$ 为问题规模为 $n$ 的总执行时间，反转单链表 k 所需的时间为 $O(k)$。<br>则有：<br>$$T(n) = \begin{cases}<br>O(1),  &amp; \text{$n = 1$} \<br>T(n-k)+O(k), &amp; \text{$n \ge 2$}<br>\end{cases}$$</p>
-<p>根据递推式可求得时间复杂度:<br>$$T(n)={n(n+1)}\over2 \times O(k)=O(n^2)$$</p>
+<p>设 $T(n)$ 为问题规模为 $n$ 的总执行时间，反转单链表 k 所需的时间为 $O(k)$。<br>则有：  </p>
+<center>$T(n) = \begin{cases}
+O(1),  & n = 1 \\
+T(n-k)+O(k), & n \ge 2
+\end{cases}$</center>
+
+<p>根据递推式可求得时间复杂度:<br>$$T(n)={n(n+1)\over2} \times O(k)=O(n^2)$$</p>
 <p><img src="https://i.loli.net/2019/10/26/nC2Z5YvTPF7dlEk.png" alt="资源 22.png"></p>
 <p>下面给出代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseKGroup</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//解法一：递归解法</span></span><br><span class="line">        <span class="comment">//空间复杂度为O(n)</span></span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//指针移到第k+1个结点</span></span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span> &amp;&amp; count != k) &#123;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (count == k) &#123;</span><br><span class="line">            <span class="comment">//cur为反转链表的首结点</span></span><br><span class="line">            cur = reverseKGroup(cur, k);</span><br><span class="line">            <span class="keyword">while</span>(count-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 保存head.next</span></span><br><span class="line">                ListNode temp = head.next;</span><br><span class="line">                <span class="comment">// head为未反转的前k个结点的首结点</span></span><br><span class="line">                <span class="comment">//把head指向cur</span></span><br><span class="line">                head.next = cur;</span><br><span class="line">                <span class="comment">//更新cur</span></span><br><span class="line">                cur = head;</span><br><span class="line">                <span class="comment">//更新head</span></span><br><span class="line">                head = temp;</span><br><span class="line">                <span class="comment">//循环执行</span></span><br><span class="line">            &#125;</span><br><span class="line">            head = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
