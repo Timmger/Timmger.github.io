@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/10/11/Q9g6xmfCcouhXsz.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/11/FIAzTwonWUYaj7m.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/11/hsLqm1FMdEV6rzu.png">
-<meta property="og:updated_time" content="2019-10-24T02:33:21.811Z">
+<meta property="og:updated_time" content="2019-10-24T02:38:19.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Dynamic Programming》(一)">
 <meta name="twitter:description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
@@ -485,7 +485,7 @@
 <p><img src="https://i.loli.net/2019/10/11/FIAzTwonWUYaj7m.png" alt="资源 10.png"></p>
 <h2 id="4-潜在的DAG结构"><a href="#4-潜在的DAG结构" class="headerlink" title="4. 潜在的DAG结构"></a>4. 潜在的DAG结构</h2><p>每个动态规划问题都有一个 <strong>底层的DAG(有向无环图)</strong> 结构：  </p>
 <p>想象一下，每个图<strong>节点</strong>代表了一个<strong>子问题</strong>，每条<strong>边</strong>对应了解决子问题之间的一个<strong>优先级限制条件</strong>，比如节点 $v_1,…,v_k$ 指向节点 $n$，意味着“子问题 $n$ 只能在求得 $v_1,…,v_k$ 之后解出”。   </p>
-<p>在编辑距离的例子中，节点对应了图表中的位置 $(i,j)$, 边 $(i-1,j) \to (i,j),\quad (i,j-1) \to (i,j),\quad (i-1,j-1) \to (i,j)$ 显示优先级。<br>更进一步，我们可以给每条边加上权重，就能够计算出DAG的最短路径(参考Bellman-Ford算法)。比如，把所有边 ${(i-1,j-1) \to (i,j) : x[i]=y[j]}$ 权重（cost）设为 0，其余边设为 1，最终我们要求出从节点 $s(0,0)$ 到 $t(m,n)$ 的最短路径。如图所示：图中显示路径向下为删除，向右为插入，对角为替换($x[i] \neq y[j]$) 或匹配（$x[i]=y[j]$,权重为 0）。</p>
+<p>在编辑距离的例子中，节点对应了图表中的位置 $(i,j)$, 边 $(i-1,j) \to (i,j),\quad (i,j-1) \to (i,j),\quad (i-1,j-1) \to (i,j)$ 显示优先级。<br>更进一步，我们可以给每条边加上权重，就能够计算出DAG的最短路径(参考Bellman-Ford算法)。比如，把所有边 $\{(i-1,j-1) \to (i,j) : x[i]=y[j]\}$ 权重（cost）设为 0，其余边设为 1，最终我们要求出从节点 $s(0,0)$ 到 $t(m,n)$ 的最短路径。如图所示：图中显示路径向下为删除，向右为插入，对角为替换($x[i] \neq y[j]$) 或匹配（$x[i]=y[j]$,权重为 0）。</p>
 <p><img src="https://i.loli.net/2019/10/11/hsLqm1FMdEV6rzu.png" alt="资源 12.png"></p>
 <br>
 
@@ -646,7 +646,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
