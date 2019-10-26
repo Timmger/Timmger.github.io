@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/10/25/OJmwNMKczjpxInd.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/25/xCyNieXJPtZFuR6.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/25/2xWsmqRBdD4jlu7.png">
-<meta property="og:updated_time" content="2019-10-25T01:56:37.374Z">
+<meta property="og:updated_time" content="2019-10-26T01:51:17.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Leetcode题解》-- 23. Merge k sorted Lists">
 <meta name="twitter:description" content="1. 合并 k 个有序链表原题链接：https://leetcode.com/problems/merge-k-sorted-lists/ 问题描述合并 k 个有序链表为一个有序链表并返回，分析并描述它的算法复杂度，如: 1234567Input:[  1-&amp;gt;4-&amp;gt;5,  1-&amp;gt;3-&amp;gt;4,  2-&amp;gt;6]Output: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4">
@@ -451,7 +451,7 @@
 </blockquote>
 <p>在二叉堆中，位置 $k$ 的结点的父结点的位置为 $\lfloor {k\over 2} \rfloor$, 而它的两个子结点的位置为 $2k$ 和 $2k+1$</p>
 <p><img src="https://i.loli.net/2019/10/25/pVjBZHQJk3fnCix.png" alt="资源 18.png"></p>
-<p>二叉树的高度为 $\lfoor lgN \rfloor$</p>
+<p>二叉树的高度为 $\lfloor lgN \rfloor$</p>
 <p><strong>由下至上的堆有序化(上浮)</strong></p>
 <p>当一个结点比它的父结点大时，我们可以把该结点与父结点交换，并不断向上移动到合适的位置，称之为 <strong>上浮(swim)</strong>。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swim</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(k &gt; <span class="number">1</span> &amp;&amp; less(k/<span class="number">2</span>, k)) &#123;</span><br><span class="line">        exchange(k/<span class="number">2</span>, k);</span><br><span class="line">        k = k/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
