@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="dynamic programming,leetcode,">
+  <meta name="keywords" content="leetcode,dynamic programming,">
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
-<meta name="keywords" content="dynamic programming,leetcode">
+<meta name="keywords" content="leetcode,dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Dynamic Programming》(一)">
 <meta property="og:url" content="https://timmger.github.io/2019/10/05/《Dynamic-Programming》/index.html">
@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/10/11/Q9g6xmfCcouhXsz.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/11/FIAzTwonWUYaj7m.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/11/hsLqm1FMdEV6rzu.png">
-<meta property="og:updated_time" content="2019-10-24T02:38:19.908Z">
+<meta property="og:updated_time" content="2019-11-05T11:06:39.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Dynamic Programming》(一)">
 <meta name="twitter:description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
@@ -463,7 +463,7 @@
 <p><img src="https://i.loli.net/2019/10/08/Mbez7q3S28ocD16.png" alt="资源 3.png"></p>
 <p><code>&quot;--&quot;</code> 表示“间断(gap)”，任何数量的”gap”可以插入到字符串的任何位置, <code>cost</code> 表示字母不同的列数，而<strong>编辑距离</strong>就是最小的 <code>cost</code> 的值。比如<code>SNOWY</code> 和 <code>SUNNY</code> 的编辑距离为3。<br>编辑距离之所以如此命名，是因为它表示了将一个字符串转换为另一个字符串时，字符编辑操作(删除，插入，替换)的最小数，本例中，编辑距离显示三个操作：插入 U， 替换 O –&gt; N, 删除 W。</p>
 <h3 id="动态规划解法"><a href="#动态规划解法" class="headerlink" title="动态规划解法"></a>动态规划解法</h3><p>当解决一个动态规划问题时，最关键的问题是，它的<strong>子问题</strong>是什么？只要找到它，就可以通过<strong>数学归纳</strong>的思想来解决：按照递增的顺序，迭代地解决子问题。  </p>
-<p>OK, 我们的目标是找到两个字符串 $x[1…m]$ 和 $y[1…n]$ 的编辑距离，怎么定义一个好的子问题，它应该是解决<strong>整个问题的一部分</strong>的方法。好，我们不妨来计算两个字符串的前部分 $x[1…i]$ 和 $y[1…j]$ 的编辑距离，称之为 $E(i,j)$, 我们的最终目标就是计算出 $E(m,n)$。</p>
+<p>OK, 我们的目标是找到两个字符串 $x[1…m]$ 和 $y[1…n]$ 的编辑距离，怎么定义一个好的子问题，它应该是解决<strong>整个问题的一部分</strong>的方法。好，我们不妨来计算两个字符串的前缀部分 $x[1…i]$ 和 $y[1…j]$ 的编辑距离，称之为 $E(i,j)$, 我们的最终目标就是计算出 $E(m,n)$。</p>
 <p>接着，我们需要知道怎么把 $E(i,j)$ 划分成更小的子问题：<br>首先考虑 $x[1…i]$ 和 $y[1…j]$ 的最右列的排列情况，可分为以下三种：</p>
 <p><img src="https://i.loli.net/2019/10/10/7UzpIxFtPwuv8rQ.png" alt="资源 5.png"></p>
 <p>第一种情况的列的 <code>cost</code> 为1，剩余对齐的部分为 $x[1…i-1]$ 和 $y[1…j]$ ，同时也是子问题 $E(i-1,j)$<br>第二种类似，剩余对齐部分的子问题为 $E(i,j-1)$<br>第三种，最右列的 <code>cost</code> 为 1 ($x[i]\neq y[j]$) 或 0 ($x[i] = y[j]$), 剩余部分的子问题表示为 $E(i-1,j-1)$<br><strong>综上</strong>，$E(i,j)$ 表示为：  </p>
@@ -530,9 +530,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/dynamic-programming/" rel="tag"><i class="fa fa-tag"></i> dynamic programming</a>
-          
             <a href="/tags/leetcode/" rel="tag"><i class="fa fa-tag"></i> leetcode</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"><i class="fa fa-tag"></i> dynamic programming</a>
           
         </div>
       
@@ -646,7 +646,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -657,7 +657,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -668,7 +668,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
