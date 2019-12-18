@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/11/21/C12UqOPgIXku4ZF.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/21/fSQgKPTxpY6EqLU.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/21/sD1Q3PzEXZeMNCu.png">
-<meta property="og:updated_time" content="2019-11-21T07:43:33.038Z">
+<meta property="og:updated_time" content="2019-11-28T14:06:10.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Java8 函数式编程实战》">
 <meta name="twitter:description" content="一. 重构改善代码的可读性 使用三种方式重构，以改善代码的可读性：  用Lambda表达式取代匿名类 通过方法引用重构Lambda表达式 用Stream API重构命令式的数据处理  1. 从匿名类到 Lambda 表达式的转换比如创建一个Runnable对象的匿名类，传统的方式是: 12345Runnable r1 = new Runnable() &amp;#123;    public void r">
@@ -463,7 +463,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (logger.isLoggable(Log.FINER)) &#123;</span><br><span class="line">    logger.finer(<span class="string">"Problem: "</span> + generateDiagnostic());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>可将对象封装</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(Level level, Supplier&lt;String&gt; supplier)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(logger.isLoggable(Log.FINER)) &#123;</span><br><span class="line">        logger.finer(<span class="string">"Problem: "</span> + generateDiagnostic());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(Level level, Supplier&lt;String&gt; supplier)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(logger.isLoggable(Log.FINER)) &#123;</span><br><span class="line">        log(level, supplier.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>以下方式调用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger.log(Level.FINER, () -&gt; <span class="string">"Problem: "</span> + generateDiagnostic());</span><br></pre></td></tr></table></figure>
@@ -710,7 +710,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -721,7 +721,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -732,7 +732,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

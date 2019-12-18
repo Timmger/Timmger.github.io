@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SQL,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Time Manager" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="1. CASE 表达式1.1 CASE 表达式的写法：12345678910-- 简单CASE表达式(不推荐)CASE sexWHEN &apos;1&apos; THEN &apos;男&apos;WHEN &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END-- 搜索CASE 表达式CASE WHEN sex = &apos;1&apos; THEN &apos;男&apos;WHEN sex = &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END  注意事项：  统一各分">
+<meta name="keywords" content="SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL 进阶教程">
+<meta property="og:url" content="https://timmger.github.io/2019/12/05/SQLAdvance/index.html">
+<meta property="og:site_name" content="Time Manager">
+<meta property="og:description" content="1. CASE 表达式1.1 CASE 表达式的写法：12345678910-- 简单CASE表达式(不推荐)CASE sexWHEN &apos;1&apos; THEN &apos;男&apos;WHEN &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END-- 搜索CASE 表达式CASE WHEN sex = &apos;1&apos; THEN &apos;男&apos;WHEN sex = &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END  注意事项：  统一各分">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-18T07:26:08.542Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL 进阶教程">
+<meta name="twitter:description" content="1. CASE 表达式1.1 CASE 表达式的写法：12345678910-- 简单CASE表达式(不推荐)CASE sexWHEN &apos;1&apos; THEN &apos;男&apos;WHEN &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END-- 搜索CASE 表达式CASE WHEN sex = &apos;1&apos; THEN &apos;男&apos;WHEN sex = &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END  注意事项：  统一各分">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://timmger.github.io/2019/12/05/SQLAdvance/">
+
+
+
+
+
+  <title>SQL 进阶教程 | Time Manager</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?40bd810474dac7f259f8afb92a8d103f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Timmger" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Time Manager</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">時は動き出す</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-design">
+          <a href="http://design.timmger.site/dist/design.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-vcard (alias)"></i> <br>
+            
+            设计
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2019/12/05/SQLAdvance/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Timmger">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Time Manager">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL 进阶教程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-05T18:13:53+08:00">
+                2019-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/05/SQLAdvance/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/05/SQLAdvance/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/05/SQLAdvance/" class="leancloud_visitors" data-flag-title="SQL 进阶教程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  34
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-CASE-表达式"><a href="#1-CASE-表达式" class="headerlink" title="1. CASE 表达式"></a>1. CASE 表达式</h2><h3 id="1-1-CASE-表达式的写法："><a href="#1-1-CASE-表达式的写法：" class="headerlink" title="1.1 CASE 表达式的写法："></a>1.1 CASE 表达式的写法：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 简单CASE表达式(不推荐)</span></span><br><span class="line">CASE sex</span><br><span class="line">WHEN '1' THEN '男'</span><br><span class="line">WHEN '2' THEN '女'</span><br><span class="line">ELSE '其他' <span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 搜索CASE 表达式</span></span><br><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex = <span class="string">'1'</span> <span class="keyword">THEN</span> <span class="string">'男'</span></span><br><span class="line"><span class="keyword">WHEN</span> sex = <span class="string">'2'</span> <span class="keyword">THEN</span> <span class="string">'女'</span></span><br><span class="line"><span class="keyword">ELSE</span> <span class="string">'其他'</span> <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li>统一各分支返回的数据类型</li>
+<li>不要忘了写END</li>
+<li>养成写ELSE 子句的习惯</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 把县编号转换成地区编号(2) ：将CASE 表达式归纳到一处</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CASE</span> pref_name</span><br><span class="line">            <span class="keyword">WHEN</span> <span class="string">'德岛'</span> <span class="keyword">THEN</span> <span class="string">'四国'</span></span><br><span class="line">            <span class="keyword">WHEN</span> <span class="string">'香川'</span> <span class="keyword">THEN</span> <span class="string">'四国'</span></span><br><span class="line">            <span class="keyword">WHEN</span> <span class="string">'爱媛'</span> <span class="keyword">THEN</span> <span class="string">'四国'</span></span><br><span class="line">            <span class="keyword">WHEN</span> <span class="string">'高知'</span> <span class="keyword">THEN</span> <span class="string">'四国'</span></span><br><span class="line">            <span class="keyword">WHEN</span> <span class="string">'福冈'</span> <span class="keyword">THEN</span> <span class="string">'九州'</span></span><br><span class="line">            <span class="keyword">WHEN</span> <span class="string">'佐贺'</span> <span class="keyword">THEN</span> <span class="string">'九州'</span></span><br><span class="line">            <span class="keyword">WHEN</span> <span class="string">'长崎'</span> <span class="keyword">THEN</span> <span class="string">'九州'</span></span><br><span class="line">        <span class="keyword">ELSE</span> <span class="string">'其他'</span> <span class="keyword">END</span> <span class="keyword">AS</span> district,</span><br><span class="line">        <span class="keyword">SUM</span>(population)</span><br><span class="line">    <span class="keyword">FROM</span> PopTbl</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> district;</span><br></pre></td></tr></table></figure>
+
+<p>SELECT 子句的执行顺序在GROUP BY 子句之后，ORDER BY 子句之前，因此理论上GROUP BY使用别名会出错，但MySQL和PostgreSQL可以执行。</p>
+<h3 id="1-2-一条语句不同条件统计"><a href="#1-2-一条语句不同条件统计" class="headerlink" title="1.2 一条语句不同条件统计"></a>1.2 一条语句不同条件统计</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> pref_name,</span><br><span class="line">        <span class="comment">-- 男性人口</span></span><br><span class="line">        <span class="keyword">SUM</span>( <span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex = <span class="string">'1'</span> <span class="keyword">THEN</span> population <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="keyword">AS</span> cnt_m,</span><br><span class="line">        <span class="comment">-- 女性人口</span></span><br><span class="line">        <span class="keyword">SUM</span>( <span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex = <span class="string">'2'</span> <span class="keyword">THEN</span> population <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="keyword">AS</span> cnt_f</span><br><span class="line">    <span class="keyword">FROM</span> PopTbl2</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> pref_name;</span><br></pre></td></tr></table></figure>
+
+<p>新手用WHERE 子句进行条件分支，高手用SELECT 子句进行条件分支。</p>
+<h3 id="1-3-CHECK-约束"><a href="#1-3-CHECK-约束" class="headerlink" title="1.3 CHECK 约束"></a>1.3 CHECK 约束</h3><p>CHECK 用于限制列中值的范围</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--创建表时</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Persons</span><br><span class="line">(<span class="keyword">id</span> <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">...</span><br><span class="line"><span class="keyword">CHECK</span>(<span class="keyword">id</span> &gt; <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+
+<p>多个列定义约束<br>逻辑与, 记作P ∧ Q</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONSTRAINT check_salary <span class="keyword">CHECK</span> (sex = <span class="string">'2'</span> <span class="keyword">AND</span> salary &lt;= <span class="number">200000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>CASE 与 CHECK 结合，形成蕴含式（conditional）的逻辑表达式，记作 P → Q。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CONSTRAINT check_salary <span class="keyword">CHECK</span></span><br><span class="line">( <span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex = <span class="string">'2'</span> <span class="comment">--命题P</span></span><br><span class="line">        <span class="keyword">THEN</span> <span class="keyword">CASE</span> <span class="keyword">WHEN</span> salary &lt;= <span class="number">200000</span> <span class="comment">--命题Q</span></span><br><span class="line">                <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span></span><br><span class="line">        <span class="keyword">ELSE</span> <span class="number">1</span> <span class="keyword">END</span> = <span class="number">1</span> )</span><br></pre></td></tr></table></figure>
+
+<p>蕴含式P → Q 为真，需要命题P 和命题Q 均为真，或者P 为假，或者P 无法判定真假</p>
+<h3 id="1-4-UPDATE-语句里进行条件分支"><a href="#1-4-UPDATE-语句里进行条件分支" class="headerlink" title="1.4 UPDATE 语句里进行条件分支"></a>1.4 UPDATE 语句里进行条件分支</h3><p>实现以下需求：</p>
+<ol>
+<li>对当前工资为30 万日元以上的员工，降薪10%。</li>
+<li>对当前工资为25 万日元以上且不满28 万日元的员工，加薪20%。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> Salaries</span><br><span class="line">        <span class="keyword">SET</span> salary = <span class="keyword">CASE</span> <span class="keyword">WHEN</span> salary &gt;= <span class="number">300000</span></span><br><span class="line">                          <span class="keyword">THEN</span> salary * <span class="number">0.9</span></span><br><span class="line">                          <span class="keyword">WHEN</span> salary &gt;= <span class="number">250000</span> <span class="keyword">AND</span> salary &lt; <span class="number">280000</span></span><br><span class="line">                          <span class="keyword">THEN</span> salary * <span class="number">1.2</span></span><br><span class="line">                          <span class="keyword">ELSE</span> salary <span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用这个技巧还可以完成主键值调换</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 用CASE 表达式调换主键值</span></span><br><span class="line"><span class="keyword">UPDATE</span> SomeTable</span><br><span class="line">    <span class="keyword">SET</span> p_key = <span class="keyword">CASE</span> <span class="keyword">WHEN</span> p_key = <span class="string">'a'</span></span><br><span class="line">                     <span class="keyword">THEN</span> <span class="string">'b'</span></span><br><span class="line">                     <span class="keyword">WHEN</span> p_key = <span class="string">'b'</span></span><br><span class="line">                     <span class="keyword">THEN</span> <span class="string">'a'</span></span><br><span class="line">                     <span class="keyword">ELSE</span> p_key <span class="keyword">END</span></span><br><span class="line"><span class="keyword">WHERE</span> p_key <span class="keyword">IN</span> (<span class="string">'a'</span>, <span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-表之间的数据匹配"><a href="#1-5-表之间的数据匹配" class="headerlink" title="1.5 表之间的数据匹配"></a>1.5 表之间的数据匹配</h3><p>在CASE 表达式里，我们可以使用BETWEEN、LIKE 和&lt;、 &gt; 等便利的谓词组合，以及能嵌套子查询的IN 和EXISTS 谓词。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 表的匹配：使用IN 谓词</span></span><br><span class="line"><span class="keyword">SELECT</span> course_name,</span><br><span class="line">       <span class="keyword">CASE</span> <span class="keyword">WHEN</span> course_id <span class="keyword">IN</span></span><br><span class="line">                    (<span class="keyword">SELECT</span> course_id <span class="keyword">FROM</span> OpenCourses</span><br><span class="line">                     <span class="keyword">WHERE</span> <span class="keyword">month</span> = <span class="number">200706</span>) <span class="keyword">THEN</span> <span class="string">'○'</span></span><br><span class="line">            <span class="keyword">ELSE</span> <span class="string">'×'</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"6 月"</span>,</span><br><span class="line">       <span class="keyword">CASE</span> <span class="keyword">WHEN</span> course_id <span class="keyword">IN</span></span><br><span class="line">                    (<span class="keyword">SELECT</span> course_id <span class="keyword">FROM</span> OpenCourses</span><br><span class="line">                     <span class="keyword">WHERE</span> <span class="keyword">month</span> = <span class="number">200707</span>) <span class="keyword">THEN</span> <span class="string">'○'</span></span><br><span class="line">            <span class="keyword">ELSE</span> <span class="string">'×'</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"7 月"</span></span><br><span class="line">    <span class="keyword">FROM</span> CourseMaster;</span><br><span class="line"><span class="comment">-- 表的匹配：使用EXISTS 谓词</span></span><br><span class="line"><span class="keyword">SELECT</span> CM.course_name,</span><br><span class="line">        <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">EXISTS</span></span><br><span class="line">                    (<span class="keyword">SELECT</span> course_id <span class="keyword">FROM</span> OpenCourses <span class="keyword">AS</span> OC</span><br><span class="line">                     <span class="keyword">WHERE</span> <span class="keyword">month</span> = <span class="number">200706</span></span><br><span class="line">                        <span class="keyword">AND</span> OC.course_id = CM.course_id) <span class="keyword">THEN</span> <span class="string">'○'</span></span><br><span class="line">             <span class="keyword">ELSE</span> <span class="string">'×'</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"6 月"</span>,</span><br><span class="line">        <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">EXISTS</span></span><br><span class="line">                    (<span class="keyword">SELECT</span> course_id <span class="keyword">FROM</span> OpenCourses <span class="keyword">AS</span> OC</span><br><span class="line">                     <span class="keyword">WHERE</span> <span class="keyword">month</span> = <span class="number">200707</span></span><br><span class="line">                        <span class="keyword">AND</span> OC.course_id = CM.course_id) <span class="keyword">THEN</span> <span class="string">'○'</span></span><br><span class="line">             <span class="keyword">ELSE</span> <span class="string">'×'</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"7 月"</span></span><br><span class="line"><span class="keyword">FROM</span> CourseMaster <span class="keyword">AS</span> CM;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-使用聚合函数"><a href="#1-6-使用聚合函数" class="headerlink" title="1.6 使用聚合函数"></a>1.6 使用聚合函数</h3><ol>
+<li>获取只加入了一个社团的学生的社团ID。</li>
+<li>获取加入了多个社团的学生的主社团ID。<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> std_id,</span><br><span class="line">        <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">COUNT</span>(*) = <span class="number">1</span> <span class="comment">-- 只加入了一个社团的学生</span></span><br><span class="line">             <span class="keyword">THEN</span> <span class="keyword">MAX</span>(club_id)</span><br><span class="line">             <span class="keyword">ELSE</span> <span class="keyword">MAX</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> main_club_flg = <span class="string">'Y'</span></span><br><span class="line">             <span class="keyword">THEN</span> club_id</span><br><span class="line">             <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>)</span><br><span class="line">        <span class="keyword">END</span> <span class="keyword">AS</span> main_club</span><br><span class="line">    <span class="keyword">FROM</span> StudentClub</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> std_id;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>MySQL有求一行中最大值或最小值的函数： GREATEST 和LEAST</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">key</span>, <span class="keyword">GREATEST</span>(<span class="keyword">GREATEST</span>(x,y), z) <span class="keyword">AS</span> <span class="keyword">greatest</span></span><br><span class="line"><span class="keyword">FROM</span> Greatests;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-自连接的用法"><a href="#2-自连接的用法" class="headerlink" title="2. 自连接的用法"></a>2. 自连接的用法</h2><p>针对相同的表进行的连接被称为“自连接”（self join）。</p>
+<h3 id="2-1-可重排列、排列、组合"><a href="#2-1-可重排列、排列、组合" class="headerlink" title="2.1 可重排列、排列、组合"></a>2.1 可重排列、排列、组合</h3><table border="1">
+    <caption>Products</caption>
+    <tr>
+        <th>name</th>
+        <th>price</th>
+    </tr>
+    <tr>
+        <td>苹果</td>
+        <td>50</td>
+    </tr>
+    <tr>
+        <td>橘子</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>香蕉</td>
+        <td>80</td>
+    </tr>
+</table>
+
+<p>生成有序对(排列)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> P1.name <span class="keyword">AS</span> name_1, P2.name <span class="keyword">AS</span> name_2</span><br><span class="line">        <span class="keyword">FROM</span> Products <span class="keyword">AS</span> P1 <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> Products <span class="keyword">AS</span> P2;</span><br></pre></td></tr></table></figure>
+
+<p>结果会生成可重排列，会出现由相同元素构成的对。</p>
+<p>去除相同元素对,添加如下行：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE P1.name &lt;&gt; P2.name;</span><br></pre></td></tr></table></figure>
+
+<p>对相同元素对以及 (a,b) 和 (b,a) 这样的对去重, 添加如下行：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE P1.name &gt; P2.name;</span><br></pre></td></tr></table></figure>
+
+<p>结果生成组合。</p>
+<p>获取3个元素的组合：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> P1.name <span class="keyword">AS</span> name_1, P2.name <span class="keyword">AS</span> name_2, P3.name <span class="keyword">AS</span> name_3</span><br><span class="line">        <span class="keyword">FROM</span> Products <span class="keyword">AS</span> P1 <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> Products <span class="keyword">AS</span> P2 </span><br><span class="line">                                      <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> Products <span class="keyword">AS</span> P3</span><br><span class="line"><span class="keyword">WHERE</span> P1.name &gt; P2.name <span class="keyword">AND</span> P2.name &gt; P3.name;</span><br></pre></td></tr></table></figure>
+
+<p>使用等号“＝”以外的比较运算符，如“&lt;、&gt;、&lt;&gt;” 进行的连接称为“非等值连接”, 与自连接结合时，成为 <strong>非等值自连接</strong></p>
+<h3 id="2-2-删除重复行"><a href="#2-2-删除重复行" class="headerlink" title="2.2 删除重复行"></a>2.2 删除重复行</h3><p>使用关联子查询删除重复行</p>
+<p>Oracle 提供了虚拟列(rowid), 代表了任何表都可以使用的主键（1，2，3…）</p>
+<table border="1">
+    <caption>Products</caption>
+    <tr>
+        <th>rowid</th>
+        <th>name</th>
+        <th>price</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>苹果</td>
+        <td>50</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>橘子</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>橘子</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>香蕉</td>
+        <td>80</td>
+    </tr>
+</table>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 用于删除重复行的SQL 语句(1) ：使用极值函数</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> Products <span class="keyword">AS</span> P1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">rowid</span> &lt; (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(P2.rowid)</span><br><span class="line">                <span class="keyword">FROM</span> Products <span class="keyword">AS</span> P2</span><br><span class="line">                <span class="keyword">WHERE</span> P1.name = P2.name <span class="keyword">AND</span> P1.price = P2.price);</span><br></pre></td></tr></table></figure>
+
+<p>对于“橘子”，返回的行是“3：橘子”，rowid 比3 小的——“2：橘子”会被删除。</p>
+<p>也可用非等值连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> Products <span class="keyword">AS</span> P1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> *</span><br><span class="line">                <span class="keyword">FROM</span> Products <span class="keyword">AS</span> P2</span><br><span class="line">              <span class="keyword">WHERE</span> P1.name = P2.name <span class="keyword">AND</span> P1.price = P2.price</span><br><span class="line">                                      <span class="keyword">AND</span> P1.rowid &lt; P2.rowid);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-查找局部不一致的列"><a href="#2-3-查找局部不一致的列" class="headerlink" title="2.3 查找局部不一致的列"></a>2.3 查找局部不一致的列</h3><table border="1">
+    <caption>Addresses</caption>
+    <tr>
+        <th>name</th>
+        <th>family_id</th>
+        <th>address</th>
+    </tr>
+    <tr>
+        <td>小明</td>
+        <td>100</td>
+        <td>A区B楼87号</td>
+    </tr>
+    <tr>
+        <td>小美</td>
+        <td>100</td>
+        <td>A区B楼88号</td>
+    </tr>
+    <tr>
+        <td>福尔摩斯</td>
+        <td>200</td>
+        <td>贝克街221B</td>
+    </tr>
+    <tr>
+        <td>华生</td>
+        <td>300</td>
+        <td>贝克街221B</td>
+    </tr>
+</table>
+
+<p>查找同一家人，但住址不同的记录：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用非等值自连接</span></span><br><span class="line"><span class="comment">--加DISTINCT去除重复行</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> A1.name, A1.address</span><br><span class="line">        <span class="keyword">FROM</span> Addresses <span class="keyword">AS</span> A1 <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> Addresses <span class="keyword">AS</span> A2</span><br><span class="line"><span class="keyword">WHERE</span> A1.family_id = A2.family_id <span class="keyword">AND</span> A1.address &lt;&gt; A2.address;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用关联子查询</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>, address</span><br><span class="line">        <span class="keyword">FROM</span> Addresses <span class="keyword">AS</span> A1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> address</span><br><span class="line">                    <span class="keyword">FROM</span> Addresses <span class="keyword">AS</span> A2</span><br><span class="line">                <span class="keyword">WHERE</span> A1.family_id = A2.family_id</span><br><span class="line">                    <span class="keyword">AND</span> A1.address &lt;&gt; A2.address);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-排序"><a href="#2-4-排序" class="headerlink" title="2.4 排序"></a>2.4 排序</h3><ul>
+<li><p>RANK函数:<br>计算排序时，如果存在相同位次的记录，则会跳过之后的位次。<br>有3 条记录排在第1 位时：1 位、1 位、1 位、4 位……</p>
+</li>
+<li><p>DENSE_RANK函数:<br>存在相同位次的记录，也不会跳过之后的位次。<br>有3 条记录排在第1 位时：1 位、1 位、1 位、2 位……</p>
+</li>
+<li><p>ROW_NUMBER函数:<br>赋予唯一的连续位次。<br>有3 条记录排在第1 位时：1 位、2 位、3 位、4 位……</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 排序：使用窗口函数</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>, price,</span><br><span class="line">        <span class="keyword">RANK</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> price <span class="keyword">DESC</span>) <span class="keyword">AS</span> rank_1,</span><br><span class="line">        <span class="keyword">DENSE_RANK</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> price <span class="keyword">DESC</span>) <span class="keyword">AS</span> rank_2</span><br><span class="line">    <span class="keyword">FROM</span> Products;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 排序：使用非等值自连接</span></span><br><span class="line"><span class="comment">-- 排序从1 开始。如果已出现相同位次，则跳过之后的位次</span></span><br><span class="line"><span class="keyword">SELECT</span> P1.name, P1.price,</span><br><span class="line">        (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(P2.price)</span><br><span class="line">            <span class="keyword">FROM</span> Products P2</span><br><span class="line">         <span class="keyword">WHERE</span> P2.price &gt; P1.price) + <span class="number">1</span> <span class="keyword">AS</span> rank_1</span><br><span class="line">    <span class="keyword">FROM</span> Products P1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> rank_1;</span><br></pre></td></tr></table></figure>
+
+<p>如果不跳过位次：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--修改COUNT</span></span><br><span class="line">COUNT(DISTINCT P2.price)</span><br></pre></td></tr></table></figure>
+
+<p>实际上，以上就是通过集合来定义COUNT数</p>
+<p>改用外连接改写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 排序：使用自连接</span></span><br><span class="line"><span class="keyword">SELECT</span> P1.name,</span><br><span class="line">        <span class="keyword">MAX</span>(P1.price) <span class="keyword">AS</span> price,</span><br><span class="line">        <span class="keyword">COUNT</span>(P2.name) +<span class="number">1</span> <span class="keyword">AS</span> rank_1</span><br><span class="line">   <span class="keyword">FROM</span> Products P1 <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Products P2</span><br><span class="line">        <span class="keyword">ON</span> P1.price &lt; P2.price</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> P1.name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> rank_1;</span><br></pre></td></tr></table></figure>
+
+<p>自连接的性能开销更大，应尽量给用于连接的列建立索引或使用主键。</p>
+<h2 id="3-三值逻辑和-NULL"><a href="#3-三值逻辑和-NULL" class="headerlink" title="3. 三值逻辑和 NULL"></a>3. 三值逻辑和 NULL</h2><h3 id="3-1-定义"><a href="#3-1-定义" class="headerlink" title="3.1 定义"></a>3.1 定义</h3><p>SQL 三个布尔型真值：true, false, unknown</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 以下的式子都会被判为 unknown</span></span><br><span class="line">1 = NULL</span><br><span class="line">2 &gt; NULL</span><br><span class="line">3 &lt; NULL</span><br><span class="line">4 &lt;&gt; NULL</span><br><span class="line">NULL = NULL</span><br></pre></td></tr></table></figure>
+
+<p>NULL 只是一个表示“没有值”的标记，而比较谓词只适用于值。<br><strong>注：大写UNKNOWN为 NULL 的一种，注意区分</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 这个是明确的真值的比较</span></span><br><span class="line">unknown = unknown → true</span><br><span class="line"><span class="comment">-- 这个相当于NULL = NULL</span></span><br><span class="line">UNKNOWN = UNKNOWN → unknown</span><br></pre></td></tr></table></figure>
+
+<table border="1">
+    <caption>三值逻辑的真值表（NOT）</caption>
+    <tr>
+        <th>x</th>
+        <th>NOT x</th>
+    </tr>
+    <tr>
+        <th>t</th>
+        <td>f</td>
+    </tr>
+    <tr>
+        <th>u</th>
+        <td>u</td>
+    </tr>
+    <tr>
+        <th>f</th>
+        <td>t</td>
+    </tr>
+</table>
+
+<br>
+
+<table border="1">
+    <caption>三值逻辑的真值表（AND）</caption>
+    <tr>
+        <th>AND</th>
+        <th>t</th>
+        <th>u</th>
+        <th>f</th>
+    </tr>
+    <tr>
+        <th>t</th>
+        <td>t</td>
+        <td>u</td>
+        <td>f</td>
+    </tr>
+    <tr>
+        <th>u</th>
+        <td>u</td>
+        <td>u</td>
+        <td>f</td>
+    </tr>
+    <tr>
+        <th>f</th>
+        <td>f</td>
+        <td>f</td>
+        <td>f</td>
+    </tr>
+</table>
+
+<br>
+
+<table border="1">
+    <caption>三值逻辑的真值表（OR）</caption>
+    <tr>
+        <th>OR</th>
+        <th>t</th>
+        <th>u</th>
+        <th>f</th>
+    </tr>
+    <tr>
+        <th>t</th>
+        <td>t</td>
+        <td>t</td>
+        <td>t</td>
+    </tr>
+    <tr>
+        <th>u</th>
+        <td>t</td>
+        <td>u</td>
+        <td>u</td>
+    </tr>
+    <tr>
+        <th>f</th>
+        <td>f</td>
+        <td>u</td>
+        <td>f</td>
+    </tr>
+</table>
+
+<p>优先级顺序：</p>
+<ul>
+<li>AND 的情况： false ＞ unknown ＞ true</li>
+<li>OR 的情况： true ＞ unknown ＞ false</li>
+</ul>
+<h3 id="3-2-实践"><a href="#3-2-实践" class="headerlink" title="3.2 实践"></a>3.2 实践</h3><blockquote>
+<p>排中律(Law of Excluded Middle): 把命题和它的否命题通过‘OR’连接而成的命题全都是真命题.</p>
+</blockquote>
+<p>SQL 并不支持排中律</p>
+<h4 id="3-2-1-WHERE"><a href="#3-2-1-WHERE" class="headerlink" title="3.2.1 WHERE"></a>3.2.1 WHERE</h4><p>所以对于存在 NULL 的表，以下无法选出所有行：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line">    <span class="keyword">FROM</span> Students</span><br><span class="line"><span class="keyword">WHERE</span> age = <span class="number">22</span></span><br><span class="line">    <span class="keyword">OR</span> age &lt;&gt; <span class="number">22</span>;</span><br></pre></td></tr></table></figure>
+
+<p>需要添加：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">age = 22 OR age &lt;&gt; 22 OR age = NULL;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-2-CASE"><a href="#3-2-2-CASE" class="headerlink" title="3.2.2 CASE"></a>3.2.2 CASE</h4><p>以下CASE 表达式也不会返回 ‘X’</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CASE col_1</span><br><span class="line">    WHEN 1 THEN 'O'</span><br><span class="line">    WHEN NULL THEN 'X'</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+
+<p>因为 col_1 = NULL 会返回 unknown, 而 CASE 表达式只认可真值为 true 的情况。</p>
+<p>正确的写法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CASE WHEN col_1 = 1 THEN 'O'</span><br><span class="line">     WHEN col_1 IS NULL THEN 'X'</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-3-NOT-IN-和-NOT-EXISTS"><a href="#3-2-3-NOT-IN-和-NOT-EXISTS" class="headerlink" title="3.2.3 NOT IN 和 NOT EXISTS"></a>3.2.3 NOT IN 和 NOT EXISTS</h4><p>当NOT IN 列表中含有 NULL 时：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE age NOT IN (22, 23, NULL)</span><br></pre></td></tr></table></figure>
+
+<p>可等价转换为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE NOT (age = 22) AND NOT (age = 23) AND NOT (age = NULL)</span><br></pre></td></tr></table></figure>
+
+<p>即：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE age &lt;&gt; 22 AND age &lt;&gt; 23 AND age &lt;&gt; NULL</span><br></pre></td></tr></table></figure>
+
+<p>结果明显为 unknown , 而 WHERE 只能选出真值 true。</p>
+<p>使用 EXISTS 就没有问题：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line">    <span class="keyword">FROM</span> Class_A <span class="keyword">AS</span> A</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> *</span><br><span class="line">                    <span class="keyword">FROM</span> Class_B <span class="keyword">AS</span> B</span><br><span class="line">                    <span class="keyword">WHERE</span> A.age = B.age <span class="keyword">AND</span> B.city = <span class="string">'东京’)；</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 Class_B 含有 NULL:<br>子查询 AND 返回结果为 unknown 或者 false, 因为EXISTS 谓词永远不会返回unknown, 所以 NOT EXISTS 为 true.</p>
+<h4 id="3-2-4-限定词和-NULL-以及极值函数"><a href="#3-2-4-限定词和-NULL-以及极值函数" class="headerlink" title="3.2.4 限定词和 NULL 以及极值函数"></a>3.2.4 限定词和 NULL 以及极值函数</h4><p>SQL 里有ALL 和ANY 两个限定谓词</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE age &lt; ALL (22, 23, NULL)</span><br></pre></td></tr></table></figure>
+
+<p>ALL 谓词可改写为 AND </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE age &lt; 22 AND age &lt; 23 AND age &lt; NULL</span><br></pre></td></tr></table></figure>
+
+<p>如果AND 运算里包含unknown，则结果不为true</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE false 或者 unknown</span><br></pre></td></tr></table></figure>
+
+<p><strong>极值函数在统计时，会把NULL的数据排除掉</strong><br><strong>但是极值函数在输入为空表（空集）时会返回NULL</strong><br>此时可使用COALESCE 函数将极值函数返回的NULL 处理成合适的值。</p>
+<p><strong>COUNT 以外的聚合函数也会在输入为空表的情况下，返回 NULL。</strong></p>
+<p>要想解决NULL 带来的各种问题，最佳方法应该是往表里添加NOT NULL 约束来尽力排除NULL</p>
+<h2 id="4-HAVING-子句"><a href="#4-HAVING-子句" class="headerlink" title="4. HAVING 子句"></a>4. HAVING 子句</h2><h3 id="4-1-前言"><a href="#4-1-前言" class="headerlink" title="4.1 前言"></a>4.1 前言</h3><ul>
+<li><p>对于 SQL, 表是被当作集合来处理的，表中的记录是没有顺序的</p>
+</li>
+<li><p>HAVING 子句不一定和 GROUP BY 组合使用，是可以单独使用的，这种情况下把整张表当作一个分组</p>
+</li>
+<li><p><strong>但不能在SELECT 子句里引用原来的表里的列</strong>，只能 SELECT <strong>常量</strong>或者<strong>聚合函数</strong>。</p>
+</li>
+</ul>
+<h3 id="4-2-用HAVING-子句进行子查询：求众数"><a href="#4-2-用HAVING-子句进行子查询：求众数" class="headerlink" title="4.2 用HAVING 子句进行子查询：求众数"></a>4.2 用HAVING 子句进行子查询：求众数</h3><p>对于以下表：</p>
+<table border="1">
+    <caption>Graduates</caption>
+    <tr>
+        <th>name</th>
+        <th>income</th>
+    </tr>
+    <tr>
+        <td>Allen</td>
+        <td>50000</td>
+    </tr>
+    <tr>
+        <td>Mike</td>
+        <td>10000</td>
+    </tr>
+    <tr>
+        <td>James</td>
+        <td>80000</td>
+    </tr>
+        <tr>
+        <td>Leela</td>
+        <td>50000</td>
+    </tr>
+    <tr>
+        <td>Amy</td>
+        <td>50000</td>
+    </tr>
+    <tr>
+        <td>Mary</td>
+        <td>60000</td>
+    </tr>
+</table>
+
+<p>求收入的众数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用谓词ALL</span></span><br><span class="line"><span class="keyword">SELECT</span> income, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> cnt</span><br><span class="line">    <span class="keyword">FROM</span> Graduates</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> income</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= <span class="keyword">ALL</span> (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*)</span><br><span class="line">                            <span class="keyword">FROM</span> Graduates</span><br><span class="line">                        <span class="keyword">GROUP</span> <span class="keyword">BY</span> income);</span><br></pre></td></tr></table></figure>
+
+<p>但ALL 谓词用于NULL 或空集时会出现问题，使用极限函数代替：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> income, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> cnt</span><br><span class="line">    <span class="keyword">FROM</span> Graduates</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> income</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) &gt;= (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(cnt)</span><br><span class="line">                        <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> cnt</span><br><span class="line">                                    <span class="keyword">FROM</span> Graduates</span><br><span class="line">                              <span class="keyword">GROUP</span> <span class="keyword">BY</span> income) TMP);<span class="comment">--临时表名</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-用HAVING-子句进行自连接：求中位数"><a href="#4-3-用HAVING-子句进行自连接：求中位数" class="headerlink" title="4.3 用HAVING 子句进行自连接：求中位数"></a>4.3 用HAVING 子句进行自连接：求中位数</h3><p>将集合里的元素按照大小分为上半部分 S1 和下半部分 S2 两个子集，<br>同时让这2 个子集共同拥有集合正中间的元素。这样，共同部分的元素的<br>平均值就是中位数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 求中位数的SQL 语句：在HAVING 子句中使用非等值自连接</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(<span class="keyword">DISTINCT</span> income)</span><br><span class="line">    <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> T1.income</span><br><span class="line">            <span class="keyword">FROM</span> Graduates T1, Graduates T2</span><br><span class="line">          <span class="keyword">GROUP</span> <span class="keyword">BY</span> T1.income</span><br><span class="line">          <span class="keyword">HAVING</span> <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> T2.income &gt;= T1.income <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) &gt;= <span class="keyword">COUNT</span>(*) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">AND</span> <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> T2.income &lt;= T1.income <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) &gt;= <span class="keyword">COUNT</span>(*) / <span class="number">2</span>) TMP;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-查询不包含NULL的集合"><a href="#4-4-查询不包含NULL的集合" class="headerlink" title="4.4 查询不包含NULL的集合"></a>4.4 查询不包含NULL的集合</h3><p>COUNT(*) 选取所有行，而 COUNT(列名) 选取不包含 NULL 的行。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询“提交日期”列内不包含NULL 的学院(dpt) ：使用CASE 表达式</span></span><br><span class="line"><span class="keyword">SELECT</span> dpt</span><br><span class="line">    <span class="keyword">FROM</span> Students</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> dpt</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) = <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sbmt_date <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">                           <span class="keyword">THEN</span> <span class="number">1</span></span><br><span class="line">                           <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-用关系除法运算进行购物篮分析"><a href="#4-5-用关系除法运算进行购物篮分析" class="headerlink" title="4.5 用关系除法运算进行购物篮分析"></a>4.5 用关系除法运算进行购物篮分析</h3><table border="1">
+    <caption>Items</caption>
+    <tr>
+        <th>item(商品)</th>
+    </tr>
+    <tr>
+        <td>啤酒</td>
+    </tr>
+    <tr>
+        <td>纸尿裤</td>
+    </tr><tr>
+</tr></table>
+
+<br>
+
+<table border="1">
+    <caption>ShopItems</caption>
+    <tr>
+        <th>shop(店铺)</th>
+        <th>item(商品)</th>
+    </tr>
+    <tr>
+        <td>仙台</td>
+        <td>啤酒</td>
+    </tr>
+    <tr>
+        <td>仙台</td>
+        <td>纸尿裤</td>
+    </tr>
+    <tr>
+        <td>仙台</td>
+        <td>自行车</td>
+    </tr>
+    <tr>
+        <td>东京</td>
+        <td>啤酒</td>
+    </tr>
+    <tr>
+        <td>东京</td>
+        <td>纸尿裤</td>
+    </tr>
+    <tr>
+        <td>大阪</td>
+        <td>电视</td>
+    </tr>
+</table>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询啤酒、纸尿裤同时在库的店铺</span></span><br><span class="line"><span class="keyword">SELECT</span> SI.shop</span><br><span class="line">    <span class="keyword">FROM</span> ShopItems <span class="keyword">AS</span> SI, Items <span class="keyword">As</span> I</span><br><span class="line"><span class="keyword">WHERE</span> SI.item = I.item</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> SI.shop</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(SI.item) = (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(item) <span class="keyword">FROM</span> Items);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--精确关系除法运算：使用外连接和COUNT 函数</span></span><br><span class="line"><span class="comment">--查询只含有啤酒、纸尿裤的店铺</span></span><br><span class="line"><span class="keyword">SELECT</span> SI.shop</span><br><span class="line">    <span class="keyword">FROM</span> ShopItems <span class="keyword">AS</span> SI <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Items <span class="keyword">AS</span> I</span><br><span class="line">        <span class="keyword">ON</span> SI.item = I.item</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> SI.shop</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(SI.item) = (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(item) <span class="keyword">FROM</span> Items)</span><br><span class="line">    <span class="keyword">AND</span> <span class="keyword">COUNT</span>(I.item) = (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(item) <span class="keyword">FROM</span> Items);</span><br></pre></td></tr></table></figure>
+
+<table border="1">
+    <caption>ShopItems为主表外连接的结果</caption>
+    <tr>
+        <th>shop</th>
+        <th>SI.item</th>        <th>I.item</th>
+    </tr>
+    <tr>
+        <td>仙台</td>
+        <td>啤酒</td>
+        <td>啤酒</td>
+    </tr>
+    <tr>
+        <td>仙台</td>
+        <td>纸尿裤</td>
+        <td>纸尿裤</td>
+    </tr>
+    <tr>
+        <td>仙台</td>
+        <td>自行车</td>
+        <td>NULL</td>
+    </tr>
+    <tr>
+        <td>东京</td>
+        <td>啤酒</td>
+        <td>啤酒</td>
+    </tr>
+    <tr>
+        <td>东京</td>
+        <td>纸尿裤</td>
+        <td>纸尿裤</td>
+    </tr>
+    <tr>
+        <td>大阪</td>
+        <td>电视</td>
+        <td>NULL</td>
+    </tr>
+</table>
+
+<h2 id="5-外连接的用法"><a href="#5-外连接的用法" class="headerlink" title="5. 外连接的用法"></a>5. 外连接的用法</h2><h3 id="5-1-用外连接进行行列转换-1-（行→列）：制作交叉表"><a href="#5-1-用外连接进行行列转换-1-（行→列）：制作交叉表" class="headerlink" title="5.1 用外连接进行行列转换(1)（行→列）：制作交叉表"></a>5.1 用外连接进行行列转换(1)（行→列）：制作交叉表</h3><p>考虑以下表:</p>
+<table border="1">
+    <caption>Courses</caption>
+    <tr>
+        <th>name</th>
+        <th>course</th>
+    </tr>
+    <tr>
+        <td>樱木花道</td>
+        <td>篮球</td>
+    </tr>
+    <tr>
+        <td>赤木刚宪</td>
+        <td>篮球</td>
+    </tr>
+    <tr>
+        <td>工藤新一</td>
+        <td>刑侦学</td>
+    </tr>
+        <tr>
+        <td>工藤新一</td>
+        <td>篮球</td>
+    </tr>
+    <tr>
+        <td>流川枫</td>
+        <td>篮球</td>
+    </tr>
+    <tr>
+        <td>石神哲哉</td>
+        <td>具体数学</td>
+    </tr>
+    <tr>
+        <td>汤川学</td>
+        <td>刑侦学</td>
+    </tr>
+</table>
+
+<p>需要生成以下表：</p>
+<table border="1">
+    <caption>交叉表</caption>
+    <tr>
+        <th></th>
+        <th>篮球</th>
+        <th>具体数学</th>
+        <th>刑侦学</th>
+    </tr>
+    <tr>
+        <td>樱木花道</td>
+        <td>○</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>赤木刚宪</td>
+         <td>○</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>工藤新一</td>
+        <td>○</td>
+        <td></td>
+        <td>○</td>
+    </tr>
+    <tr>
+        <td>流川枫</td>
+        <td>○</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>石神哲哉</td>
+        <td></td>
+        <td>○</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>汤川学</td>
+        <td></td>
+        <td></td>
+        <td>○</td>
+    </tr>
+</table>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用外连接</span></span><br><span class="line"><span class="keyword">SELECT</span> C0.name,</span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> C1.name <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">THEN</span> <span class="string">'○'</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"篮球"</span>,</span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> C2.name <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">THEN</span> <span class="string">'○'</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"具体数学"</span>, </span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> C3.name <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">THEN</span> <span class="string">'○'</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"刑侦学"</span></span><br><span class="line">    <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> Courses) <span class="keyword">AS</span> C0</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> Courses <span class="keyword">WHERE</span> course = <span class="string">'篮球'</span>) <span class="keyword">AS</span> C1</span><br><span class="line">    <span class="keyword">ON</span> C0.name = C1.name</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> Courses <span class="keyword">WHERE</span> course = <span class="string">'具体数学'</span> ) <span class="keyword">AS</span> C2</span><br><span class="line">        <span class="keyword">ON</span> C0.name = C2.name</span><br><span class="line">        <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> Courses <span class="keyword">WHERE</span> course = <span class="string">'刑侦学'</span> ) <span class="keyword">AS</span> C3</span><br><span class="line">            <span class="keyword">ON</span> C0.name = C3.name;</span><br></pre></td></tr></table></figure>
+
+<p>以上生成四个集合外连接：C0(主表){樱，赤，工，流，汤，石），C1(篮球){樱，赤，工，流}, C2(刑侦学){工，汤}, C3(具体数学){石}</p>
+<p>使用标量子查询简化代码：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> C0.name,</span><br><span class="line">        (<span class="keyword">SELECT</span> <span class="string">'○'</span> <span class="keyword">FROM</span> Courses <span class="keyword">AS</span> C1</span><br><span class="line">        <span class="keyword">WHERE</span> course = <span class="string">'篮球'</span></span><br><span class="line">            <span class="keyword">AND</span> C1.name = C0.name) <span class="keyword">AS</span> <span class="string">"篮球"</span>,</span><br><span class="line">        (<span class="keyword">SELECT</span> <span class="string">'○'</span> <span class="keyword">FROM</span> Courses <span class="keyword">AS</span> C2</span><br><span class="line">        <span class="keyword">WHERE</span> course = <span class="string">'刑侦学'</span></span><br><span class="line">            <span class="keyword">AND</span> C2.name = C0.name) <span class="keyword">AS</span> <span class="string">"刑侦学"</span>,</span><br><span class="line">        (<span class="keyword">SELECT</span> <span class="string">'○'</span> <span class="keyword">FROM</span> Courses <span class="keyword">AS</span> C3</span><br><span class="line">        <span class="keyword">WHERE</span> course = <span class="string">'具体数学'</span></span><br><span class="line">            <span class="keyword">AND</span> C3.name = C0.name) <span class="keyword">AS</span> <span class="string">"具体数学"</span></span><br><span class="line">    <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> Courses) <span class="keyword">AS</span> C0;</span><br></pre></td></tr></table></figure>
+
+<p>第三种方法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用CASE表达式</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>,</span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> course = <span class="string">'篮球'</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) = <span class="number">1</span></span><br><span class="line">         <span class="keyword">THEN</span> <span class="string">'○'</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"SQL 入门"</span>,</span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> course = <span class="string">'刑侦学'</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) = <span class="number">1</span></span><br><span class="line">         <span class="keyword">THEN</span> <span class="string">'○'</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"刑侦学"</span>,</span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> course = <span class="string">'具体数学'</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) = <span class="number">1</span></span><br><span class="line">         <span class="keyword">THEN</span> <span class="string">'○'</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"具体数学"</span></span><br><span class="line">    <span class="keyword">FROM</span> Courses</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">name</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-用外连接进行行列转换-2-（列→行）：汇总重复项于一列"><a href="#5-2-用外连接进行行列转换-2-（列→行）：汇总重复项于一列" class="headerlink" title="5.2 用外连接进行行列转换(2)（列→行）：汇总重复项于一列"></a>5.2 用外连接进行行列转换(2)（列→行）：汇总重复项于一列</h3><p>考虑以下表：</p>
+<table border="1">
+    <caption>Personnel</caption>
+    <tr>
+        <th>employee</th>
+        <th>child_1</th>
+        <th>child_2</th>
+        <th>child_3</th>
+    </tr>
+    <tr>
+        <td>樱木花道</td>
+        <td>一郎</td>
+        <td>二郎</td>
+        <td>三郎</td>
+    </tr>
+    <tr>
+        <td>赤木刚宪</td>
+         <td>春子</td>
+        <td>夏子</td>
+        <td>小兰</td>
+    </tr>
+        <tr>
+        <td>毛利小五郎</td>
+        <td>小兰</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>工藤新一</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+
+<p>首先生成一个视图：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> Children(<span class="keyword">child</span>)</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> child_1 <span class="keyword">FROM</span> Personnel</span><br><span class="line">    <span class="keyword">UNION</span></span><br><span class="line">    <span class="keyword">SELECT</span> child_2 <span class="keyword">FROM</span> Personnel</span><br><span class="line">    <span class="keyword">UNION</span></span><br><span class="line">    <span class="keyword">SELECT</span> child_3 <span class="keyword">FROM</span> Personnel;</span><br></pre></td></tr></table></figure>
+
+<p>外连接：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 获取员工子女列表的SQL 语句（没有孩子的员工也要输出）</span></span><br><span class="line"><span class="keyword">SELECT</span> EMP.employee, CHI.child</span><br><span class="line">    <span class="keyword">FROM</span> Personnel <span class="keyword">AS</span> EMP</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Children <span class="keyword">AS</span> CHI</span><br><span class="line"><span class="keyword">ON</span> CHI.child <span class="keyword">IN</span> (EMP.child_1, EMP.child_2, EMP.child_3);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-作为乘法运算的连接"><a href="#5-3-作为乘法运算的连接" class="headerlink" title="5.3 作为乘法运算的连接"></a>5.3 作为乘法运算的连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 解答(2) ：先进行一对多的连接再聚合</span></span><br><span class="line"><span class="keyword">SELECT</span> I.item_no, <span class="keyword">SUM</span>(SH.quantity) <span class="keyword">AS</span> total_qty</span><br><span class="line"><span class="keyword">FROM</span> Items I <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> SalesHistory SH</span><br><span class="line"><span class="keyword">ON</span> I.item_no = SH.item_no <span class="comment">--一对多的连接</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> I.item_no;</span><br></pre></td></tr></table></figure>
+
+<p>一对一或一对多关系的两个集合，在进行连接操作后行数不会（异常地）增加。</p>
+<h3 id="5-4-用外连接进行集合运算"><a href="#5-4-用外连接进行集合运算" class="headerlink" title="5.4 用外连接进行集合运算"></a>5.4 用外连接进行集合运算</h3><h4 id="5-4-1-外连接求差集"><a href="#5-4-1-外连接求差集" class="headerlink" title="5.4.1 外连接求差集"></a>5.4.1 外连接求差集</h4><p>从集合论的角度来说，内连接相当交集运算，而全外连接（FULL OUTER JOIN）相当于并集运算(UNION).</p>
+<p>那么如何求差集：A - B, 只需要判断相关字段是否为NULL</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.id <span class="keyword">AS</span> <span class="keyword">id</span>, A.name <span class="keyword">AS</span> A_name</span><br><span class="line">    <span class="keyword">FROM</span> Class_A <span class="keyword">AS</span> A <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Class_B <span class="keyword">AS</span> B</span><br><span class="line">    <span class="keyword">ON</span> A.id = B.id</span><br><span class="line"><span class="keyword">WHERE</span> B.name <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p>类似地，求 B - A:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> B.id <span class="keyword">AS</span> <span class="keyword">id</span>, B.name <span class="keyword">AS</span> B_name</span><br><span class="line">    <span class="keyword">FROM</span> Class_A <span class="keyword">AS</span> A <span class="keyword">RIGHT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Class_B <span class="keyword">AS</span> B</span><br><span class="line">    <span class="keyword">ON</span> A.id = B.id</span><br><span class="line"><span class="keyword">WHERE</span> A.name <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-4-2-全外连接求异或集"><a href="#5-4-2-全外连接求异或集" class="headerlink" title="5.4.2 全外连接求异或集"></a>5.4.2 全外连接求异或集</h4><p>A{樱，工，赤} ， B{工，赤，汤}，求异或集{樱，赤}</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COALESCE</span>(A.id, B.id) <span class="keyword">AS</span> <span class="keyword">id</span>,</span><br><span class="line">       <span class="keyword">COALESCE</span>(A.name, B.name) <span class="keyword">AS</span> <span class="keyword">name</span></span><br><span class="line">    <span class="keyword">FROM</span> Class_A A <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Class_B B</span><br><span class="line"><span class="keyword">WHERE</span> A.name <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">AND</span> B.name <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-用关联子查询比较行与行"><a href="#6-用关联子查询比较行与行" class="headerlink" title="6. 用关联子查询比较行与行"></a>6. 用关联子查询比较行与行</h2><h3 id="6-1-增加、减少、维持不变"><a href="#6-1-增加、减少、维持不变" class="headerlink" title="6.1 增加、减少、维持不变"></a>6.1 增加、减少、维持不变</h3><p>假设有一张记录每年的营业额的表Sales。</p>
+<table border="1">
+    <caption>Sales</caption>
+    <tr>
+        <th>year</th>
+        <th>sale</th>
+    </tr>
+    <tr>
+        <td>1997</td>
+        <td>50</td>
+    </tr>
+    <tr>
+        <td>1998</td>
+        <td>51</td>
+    </tr>
+    <tr>
+        <td>1999</td>
+        <td>52</td>
+    </tr>
+        <tr>
+        <td>2000</td>
+        <td>52</td>
+    </tr>
+    <tr>
+        <td>2001</td>
+        <td>50</td>
+    </tr>
+</table>
+
+
+<p>我们需要找出与上一年营业额一样的年份：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用关联子查询</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">year</span>, sale</span><br><span class="line">    <span class="keyword">FROM</span> Sales <span class="keyword">AS</span> S1</span><br><span class="line"><span class="keyword">WHERE</span> sale = (<span class="keyword">SELECT</span> sale</span><br><span class="line">                <span class="keyword">FROM</span> Sales <span class="keyword">AS</span> S2</span><br><span class="line">              <span class="keyword">WHERE</span> S2.year = S1.year - <span class="number">1</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用自连接</span></span><br><span class="line"><span class="keyword">SELECT</span> S1.year, S1.sale</span><br><span class="line">    <span class="keyword">FROM</span> Sales S1, Sales S2</span><br><span class="line"><span class="keyword">WHERE</span> S2.sale = S1.sale <span class="keyword">AND</span></span><br><span class="line">      S2.year = S1.year - <span class="number">1</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用箭头展示比较结果:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 求出是增长了还是减少了，抑或是维持现状(1)：使用关联子查询</span></span><br><span class="line"><span class="keyword">SELECT</span> S1.year, S1.sale,</span><br><span class="line">        <span class="keyword">CASE</span> <span class="keyword">WHEN</span> sale = </span><br><span class="line">            (<span class="keyword">SELECT</span> sale <span class="keyword">FROM</span> Sales S2</span><br><span class="line">             <span class="keyword">WHERE</span> S2.year = S1.year - <span class="number">1</span>) <span class="keyword">THEN</span> <span class="string">'→'</span></span><br><span class="line">            <span class="keyword">WHEN</span> sale &gt;</span><br><span class="line">            (<span class="keyword">SELECT</span> sale <span class="keyword">FROM</span> Sales S2</span><br><span class="line">             <span class="keyword">WHERE</span> S2.year = S1.year - <span class="number">1</span>) <span class="keyword">THEN</span> <span class="string">'↑'</span></span><br><span class="line">            <span class="keyword">WHEN</span> sale &gt;</span><br><span class="line">            (<span class="keyword">SELECT</span> sale <span class="keyword">FROM</span> Sales S2</span><br><span class="line">             <span class="keyword">WHERE</span> S2.year = S1.year - <span class="number">1</span>) <span class="keyword">THEN</span> <span class="string">'↓'</span></span><br><span class="line">        <span class="keyword">ELSE</span> <span class="string">'—'</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="keyword">var</span></span><br><span class="line">    <span class="keyword">FROM</span> Sales S1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用SIGN函数简化代码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> S1.year, S1.sale,</span><br><span class="line">        <span class="keyword">CASE</span> <span class="keyword">SIGN</span>(sale -</span><br><span class="line">                (<span class="keyword">SELECT</span> sale <span class="keyword">FROM</span> Sales S2</span><br><span class="line">                 <span class="keyword">WHERE</span> S2.year = S1.year - <span class="number">1</span>) )</span><br><span class="line">        <span class="keyword">WHEN</span> <span class="number">0</span> <span class="keyword">THEN</span> <span class="string">'→'</span> <span class="comment">-- 持平</span></span><br><span class="line">        <span class="keyword">WHEN</span> <span class="number">1</span> <span class="keyword">THEN</span> <span class="string">'↑'</span> <span class="comment">-- 增长</span></span><br><span class="line">        <span class="keyword">WHEN</span> <span class="number">-1</span> <span class="keyword">THEN</span> <span class="string">'↓'</span> <span class="comment">-- 减少</span></span><br><span class="line">        <span class="keyword">ELSE</span> <span class="string">' - '</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="keyword">var</span></span><br><span class="line">    <span class="keyword">FROM</span> Sales S1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用自连接</span></span><br><span class="line"><span class="keyword">SELECT</span> S1.year, S1.sale,</span><br><span class="line">        <span class="keyword">CASE</span> <span class="keyword">WHEN</span> S1.sale = S2.sale <span class="keyword">THEN</span> <span class="string">'→'</span></span><br><span class="line">             <span class="keyword">WHEN</span> S1.sale &gt; S2.sale <span class="keyword">THEN</span> <span class="string">'↑'</span></span><br><span class="line">             <span class="keyword">WHEN</span> S1.sale &lt; S2.sale <span class="keyword">THEN</span> <span class="string">'↓'</span></span><br><span class="line">        <span class="keyword">ELSE</span> <span class="string">' — '</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="keyword">var</span></span><br><span class="line">    <span class="keyword">FROM</span> Sales S1, Sales S2</span><br><span class="line"><span class="keyword">WHERE</span> S2.year = S1.year - <span class="number">1</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-时间轴有间断时：和过去最临近的时间进行比较"><a href="#6-2-时间轴有间断时：和过去最临近的时间进行比较" class="headerlink" title="6.2 时间轴有间断时：和过去最临近的时间进行比较"></a>6.2 时间轴有间断时：和过去最临近的时间进行比较</h3><p>假设 Sales2有年份缺失.<br>查询与过去最临近的年份营业额相同的年份</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> S1.year, S1.sale</span><br><span class="line">    <span class="keyword">FROM</span> Sales2 S1, Sales2 S2</span><br><span class="line"><span class="keyword">WHERE</span> S1.sale = S2.sale <span class="keyword">AND</span></span><br><span class="line">      S2.year = (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">year</span>)<span class="keyword">FROM</span> Sales2 S3</span><br><span class="line">                 <span class="keyword">WHERE</span> S1.year &gt; S3.year)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span>;</span><br></pre></td></tr></table></figure>
+
+<p>查询每一年与过去最临近的年份之间的营业额之差。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> S2.year <span class="keyword">AS</span> pre_year,</span><br><span class="line">       S1.year <span class="keyword">AS</span> now_year,</span><br><span class="line">       S2.sale <span class="keyword">AS</span> pre_sale,</span><br><span class="line">       S1.sale <span class="keyword">AS</span> now_sale,</span><br><span class="line">       S1.sale - S2.sale <span class="keyword">AS</span> diff</span><br><span class="line">    <span class="keyword">FROM</span> Sales2 S1, Sales2 S2</span><br><span class="line"><span class="keyword">WHERE</span> S2.year = (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">year</span>)</span><br><span class="line">                    <span class="keyword">FROM</span> Sales2 S3</span><br><span class="line">                 <span class="keyword">WHERE</span> S1.year &gt; S3.year)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> now_year;</span><br></pre></td></tr></table></figure>
+
+<p>但最早年份被排除掉了，使用自外连接可显示：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line">    <span class="keyword">FROM</span> Sales2 S1 <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Sales2 S2</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3-移动累计值和移动平均值"><a href="#6-3-移动累计值和移动平均值" class="headerlink" title="6.3 移动累计值和移动平均值"></a>6.3 移动累计值和移动平均值</h3><p>求累计值：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用窗口函数</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">year</span>, sale,</span><br><span class="line">        <span class="keyword">SUM</span>(sale) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span>) <span class="keyword">AS</span> acc_sale</span><br><span class="line">    <span class="keyword">FROM</span> Sales;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用关联子查询</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">year</span>, S1.sale,</span><br><span class="line">        (<span class="keyword">SELECT</span> <span class="keyword">SUM</span>(sale)</span><br><span class="line">            <span class="keyword">FROM</span> Sales <span class="keyword">AS</span> S2</span><br><span class="line">        <span class="keyword">WHERE</span> S1.year &gt;= S2.year) <span class="keyword">AS</span> acc_sale</span><br><span class="line">    <span class="keyword">FROM</span> Sales S1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span>;</span><br></pre></td></tr></table></figure>
+
+<p>以 3 次处理为单位, 一行一行偏移求累计值，即移动累计值。</p>
+<p>使用窗口函数可以指定 ROWS:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">year</span>, sale, </span><br><span class="line">        <span class="keyword">SUM</span>(sale) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">year</span></span><br><span class="line">                        <span class="keyword">ROWS</span> <span class="number">2</span> <span class="keyword">PRECEDING</span>) <span class="keyword">AS</span> acc_sale</span><br><span class="line">    <span class="keyword">FROM</span> Sales;</span><br></pre></td></tr></table></figure>
+
+<p>使用关联子查询:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--在之前的子查询添加</span></span><br><span class="line">...</span><br><span class="line">    (...</span><br><span class="line">        WHERE S1.year &gt;= S2.year AND</span><br><span class="line">            (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> Sales <span class="keyword">AS</span> S3</span><br><span class="line">            <span class="keyword">WHERE</span> S3.year <span class="keyword">BETWEEN</span> S2.year <span class="keyword">AND</span> S1.year) &lt;= <span class="number">3</span>) <span class="keyword">AS</span> acc_sale</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>还可以不满 3 行的不予显示：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--添加HAVING</span></span><br><span class="line">...</span><br><span class="line">    (...</span><br><span class="line">        HAVING COUNT(*) = 3) AS acc_sale</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-查询重叠的时间区间"><a href="#6-4-查询重叠的时间区间" class="headerlink" title="6.4 查询重叠的时间区间"></a>6.4 查询重叠的时间区间</h3><p>考虑以下酒店某房间预约表：</p>
+<table border="1">
+    <caption>Reservations</caption>
+    <tr>
+        <th>reserver</th>
+        <th>start_date</th>
+        <th>end_date</th>
+    </tr>
+    <tr>
+        <td>樱木花道</td>
+        <td>2019-10-26</td>
+        <td>2019-10-27</td>
+    </tr>
+    <tr>
+        <td>赤木刚宪</td>
+         <td>2019-10-28</td>
+        <td>2019-10-31</td>
+    </tr>
+    <tr>
+        <td>工藤新一</td>
+        <td>2019-10-31</td>
+        <td>2019-11-01</td>
+    </tr>
+    <tr>
+        <td>流川枫</td>
+        <td>2019-11-03</td>
+        <td>2019-11-04</td>
+    </tr>
+    <tr>
+        <td>石神哲哉</td>
+        <td>2019-11-03</td>
+        <td>2019-11-05</td>
+    </tr>
+</table>
+
+<p>查出住宿日期重叠的客人并列表显示：<br>需要满足以下条件之一  </p>
+<ol>
+<li>自己的入住日期在他人住宿期间内</li>
+<li>自己的退宿日期在他人住宿期间内</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> reserver, start_date, end_date</span><br><span class="line">    <span class="keyword">FROM</span> Reservations R1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Reservations R2</span><br><span class="line">                <span class="comment">-- 与自己以外的客人进行比较</span></span><br><span class="line">              <span class="keyword">WHERE</span> R1.reserver &lt;&gt; R2.reserver</span><br><span class="line">                <span class="comment">-- 条件(1)：自己的入住日期在他人的住宿期间内</span></span><br><span class="line">                <span class="keyword">AND</span> ( R1.start_date <span class="keyword">BETWEEN</span> R2.start_date <span class="keyword">AND</span> R2.end_date</span><br><span class="line">                <span class="comment">-- 条件(2)：自己的退宿日期在他人的住宿期间内 </span></span><br><span class="line">                <span class="keyword">OR</span> R1.end_date <span class="keyword">BETWEEN</span> R2.start_date <span class="keyword">AND</span> R2.end_date));</span><br></pre></td></tr></table></figure>
+
+<p>但如果某人住宿期间完全包含了另一个人的住宿区间，该SQL语句就无法选出他，可追加如下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">OR ( R2.start_date BETWEEN R1.start_date AND R1.end_date</span><br><span class="line">    AND R2.end_date BETWEEN R1.start_date AND R1.end_date)</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用 OVERLAPS 谓词：<br>（开始日期1, 结束日期1）OVERLAPS（开始日期2, 结束日期2）</p>
+<p>但对于只有一个时间点重叠的记录不会被选取</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> R1.reserver, R1.start_date, R1.end_date</span><br><span class="line">    <span class="keyword">FROM</span> Reservations R1, Reservations R2</span><br><span class="line"><span class="keyword">WHERE</span> R1.reserver &lt;&gt; R2.reserver <span class="comment">-- 与除自己以外的客人进行比较</span></span><br><span class="line">        <span class="keyword">AND</span> (R1.start_date, R1.end_date) OVERLAPS (R2.start_date, R2.end_date);</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-用-SQL-进行集合运算"><a href="#7-用-SQL-进行集合运算" class="headerlink" title="7. 用 SQL 进行集合运算"></a>7. 用 SQL 进行集合运算</h2><h3 id="7-1-注意事项"><a href="#7-1-注意事项" class="headerlink" title="7.1 注意事项"></a>7.1 注意事项</h3><ol>
+<li><p>SQL 能操作具有重复行的集合，可以通过可选项ALL来支持</p>
+</li>
+<li><p>集合运算符有优先级：INTERSECT 比UNION 和EXCEPT 优先级更高</p>
+</li>
+<li><p>各个DBMS 提供商在集合运算的实现程度上参差不齐</p>
+</li>
+<li><p>除法运算没有标准定义，和（UNION）、差（EXCEPT）、积（CROSS JOIN）都有定义</p>
+</li>
+</ol>
+<h3 id="7-2-相等性"><a href="#7-2-相等性" class="headerlink" title="7.2 相等性"></a>7.2 相等性</h3><h4 id="7-2-1-幂等性"><a href="#7-2-1-幂等性" class="headerlink" title="7.2.1 幂等性"></a>7.2.1 幂等性</h4><p>同一个集合无论加多少次结果都相同, 称为幂等性：<br>S UNION S UNION S UNION S …… UNION S = S</p>
+<p>对SQL中有重复数据的多重集合或 UNION ALL  是不适用的。</p>
+<p>同样的，对于交集 INTERSECT，它也具有幂等性。</p>
+<h4 id="7-2-2-判断集合相等性"><a href="#7-2-2-判断集合相等性" class="headerlink" title="7.2.2 判断集合相等性"></a>7.2.2 判断集合相等性</h4><p>SQL判断两个集合是否相等，需判断：<br>A UNION B = A INTERSECT B</p>
+<p>从集合论角度，以下条件必然成立：<br>$$(A INTERSECT B) \subseteq (A UNION B)$$</p>
+<p>所以在 SQL 里只需判断两者差集是否为空。为空，则 A = B</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">COUNT</span>(*) = <span class="number">0</span></span><br><span class="line">            <span class="keyword">THEN</span> <span class="string">'相等'</span></span><br><span class="line">            <span class="keyword">ELSE</span> <span class="string">'不相等'</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="keyword">result</span></span><br><span class="line">    <span class="keyword">FROM</span> ((<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_A</span><br><span class="line">           <span class="keyword">UNION</span></span><br><span class="line">           <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_B)</span><br><span class="line"></span><br><span class="line">           <span class="keyword">EXCEPT</span></span><br><span class="line"></span><br><span class="line">           (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_A</span><br><span class="line">           <span class="keyword">INTERSECT</span></span><br><span class="line">           <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_B)) TMP;</span><br></pre></td></tr></table></figure>
+
+<p>如果两个表不等，求不同的记录，输出异或集：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 用于比较表与表的diff</span></span><br><span class="line">(<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_A</span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_B)</span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">(<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_B</span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_A);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3-用差集实现关系除法运算"><a href="#7-3-用差集实现关系除法运算" class="headerlink" title="7.3 用差集实现关系除法运算"></a>7.3 用差集实现关系除法运算</h3><p>关系除法三种方法：</p>
+<ol>
+<li>嵌套使用NOT EXISTS。</li>
+<li>使用HAVING 子句转换成一对一关系。</li>
+<li>把除法变成减法(差集EXCEPT)。</li>
+</ol>
+<p>第二个 4.5 节已经介绍过，下面介绍第三种：<br>考虑 4.5 节的表，查询啤酒、纸尿裤同时在库的店铺。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--用求差集的方法进行关系除法运算（有余数）</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> shop</span><br><span class="line">    <span class="keyword">FROM</span> ShopItems SI1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> item <span class="keyword">FROM</span> Items</span><br><span class="line">                  <span class="keyword">EXCEPT</span></span><br><span class="line">                  <span class="keyword">SELECT</span> item <span class="keyword">FROM</span> ShopItems SI2</span><br><span class="line">                  <span class="keyword">WHERE</span> SI1.shop = SI2.shop);</span><br></pre></td></tr></table></figure>
+
+<p>从Items的集合中减去每个店铺自己的库存的集合，如果结果是空集，则说明该店铺具备Items的所有商品</p>
+<h3 id="7-4-寻找相等的子集"><a href="#7-4-寻找相等的子集" class="headerlink" title="7.4 寻找相等的子集"></a>7.4 寻找相等的子集</h3><p>考虑以下表：</p>
+<table border="1">
+    <caption>SupParts</caption>
+    <tr>
+        <th>sup</th>
+        <th>part</th>
+    </tr>
+    <tr>
+        <td>A</td>
+        <td>螺丝</td>
+    </tr>
+    <tr>
+        <td>A</td>
+        <td>螺母</td>
+    </tr>
+    <tr>
+        <td>A</td>
+        <td>管子</td>
+    </tr>
+        <tr>
+        <td>B</td>
+        <td>螺丝</td>
+    </tr>
+    <tr>
+        <td>B</td>
+        <td>管子</td>
+    </tr>
+    <tr>
+        <td>E</td>
+        <td>螺丝</td>
+    </tr>
+    <tr>
+        <td>E</td>
+        <td>螺母</td>
+    </tr>
+    <tr>
+        <td>E</td>
+        <td>管子</td>
+    </tr>
+</table>
+
+<p>我们需要找出两个完全相同的子集：即 A 和 C</p>
+<p>首先生成供应商全部组合，GROUP BY 去重</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SP1.sup <span class="keyword">AS</span> S1, SP2.sup <span class="keyword">AS</span> S2</span><br><span class="line">    <span class="keyword">FROM</span> SupParts SP1, SubParts SP2</span><br><span class="line"><span class="keyword">WHERE</span> SP1.sup &lt; SP2.sup</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> SP1.sup, SP2.sup;</span><br></pre></td></tr></table></figure>
+
+<p>供应组合需要满足两个条件：</p>
+<ol>
+<li>条件1：两个供应商都经营同种类型的零件</li>
+<li>条件2：两个供应商经营的零件种类数相同（即存在一一映射）</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SP1.sup <span class="keyword">AS</span> S1, SP2.sup <span class="keyword">AS</span> S2</span><br><span class="line">    <span class="keyword">FROM</span> SupParts SP1, SubParts SP2</span><br><span class="line"><span class="keyword">WHERE</span> SP1.sup &lt; SP2.sup</span><br><span class="line">        <span class="keyword">AND</span> SP1.part = SP2.part <span class="comment">-- 条件1 ：经营同种类型的零件</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> SP1.sup, SP2.sup;</span><br><span class="line">HAVING COUNT(*) = (SELECT COUNT(*) -- 条件2 ：经营的零件种类数相同</span><br><span class="line">                    FROM SupParts SP3</span><br><span class="line">                   WHERE SP3.sup = SP1.sup)</span><br><span class="line">        AND COUNT(*) = (SELECT COUNT(*)</span><br><span class="line">                           FROM SupParts SP4</span><br><span class="line">                        WHERE SP4.sup = SP2.sup);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-5-用于删除重复行的高效SQL"><a href="#7-5-用于删除重复行的高效SQL" class="headerlink" title="7.5 用于删除重复行的高效SQL"></a>7.5 用于删除重复行的高效SQL</h3><p>2.2 节使用的是关联子查询和极值函数，还可以直接求出要删除的rowid：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 用于删除重复行的高效SQL 语句(1)：通过EXCEPT 求补集</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> Products</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">rowid</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> <span class="keyword">rowid</span> <span class="comment">-- 全部rowid</span></span><br><span class="line">                    <span class="keyword">FROM</span> Products</span><br><span class="line">                <span class="keyword">EXCEPT</span> <span class="comment">-- 减去</span></span><br><span class="line">                <span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">rowid</span>) <span class="comment">-- 要留下的rowid</span></span><br><span class="line">                    <span class="keyword">FROM</span> Products</span><br><span class="line">                <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">name</span>, price) ;</span><br></pre></td></tr></table></figure>
+
+<p>此外，把EXCEPT 改写成NOT IN 也是可以实现的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除重复行的高效SQL 语句(2)：通过NOT IN 求补集</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> Products</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">rowid</span> <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">rowid</span>)</span><br><span class="line">                        <span class="keyword">FROM</span> Products</span><br><span class="line">                    <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">name</span>, price);</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-EXISTS-谓词的用法"><a href="#8-EXISTS-谓词的用法" class="headerlink" title="8. EXISTS 谓词的用法"></a>8. EXISTS 谓词的用法</h2><h3 id="8-1-基础理论"><a href="#8-1-基础理论" class="headerlink" title="8.1 基础理论"></a>8.1 基础理论</h3><ul>
+<li><p><strong>谓词</strong>是一种特殊的函数，返回值是真值。</p>
+</li>
+<li><p>提供谓词是为了判断<strong>命题</strong>（可以理解成陈述句）的真假</p>
+</li>
+<li><p><strong>表</strong>可以看作是<strong>命题</strong>的集合</p>
+</li>
+<li><p>EXISTS 谓词的参数为行数据的集合</p>
+</li>
+</ul>
+<h3 id="8-2-查询”不”存在的数据"><a href="#8-2-查询”不”存在的数据" class="headerlink" title="8.2 查询”不”存在的数据"></a>8.2 查询”不”存在的数据</h3><p>比如以下表：</p>
+<table border="1">
+    <caption>Meetings</caption>
+    <tr>
+        <th>meeting</th>
+        <th>person</th>
+    </tr>
+    <tr>
+        <td>第 1 次</td>
+        <td>樱木</td>
+    </tr>
+    <tr>
+        <td>第 1 次</td>
+        <td>新一</td>
+    </tr>
+    <tr>
+        <td>第 2 次</td>
+        <td>樱木</td>
+    </tr>
+        <tr>
+        <td>第 2 次</td>
+        <td>石神</td>
+    </tr>
+    <tr>
+        <td>第 2 次</td>
+        <td>新一</td>
+    </tr>
+    <tr>
+        <td>第 3 次</td>
+        <td>石神</td>
+    </tr>
+    <tr>
+        <td>第 3 次</td>
+        <td>新一</td>
+    </tr>
+</table>
+
+<p>求每次会议缺席的人：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--首先生成每次会议应到名单</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> M1.meeting, M2.person</span><br><span class="line">    <span class="keyword">FROM</span> Meetings M1 <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> Meetings M2;</span><br><span class="line"><span class="comment">--减掉实际参会者集合</span></span><br><span class="line">WHERE NOT EXISTS (<span class="keyword">SELECT</span> *</span><br><span class="line">                    <span class="keyword">FROM</span> Meetings M3</span><br><span class="line">                  <span class="keyword">WHERE</span> M1.meeting = M3.meeting</span><br><span class="line">                    <span class="keyword">AND</span> M2.person = M3.person);</span><br></pre></td></tr></table></figure>
+
+<p>还可以使用差集：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> M1.meeting, M2.person</span><br><span class="line">    <span class="keyword">FROM</span> Meetings M1, Meetings M2</span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span> meeting, person</span><br><span class="line">    <span class="keyword">FROM</span> Meetings;</span><br></pre></td></tr></table></figure>
+
+<p>通过以上可知，NOT EXISTS 具备了差集运算的功能。</p>
+<h3 id="8-3-全称量化-1-：习惯“肯定⇔-双重否定”之间的转换"><a href="#8-3-全称量化-1-：习惯“肯定⇔-双重否定”之间的转换" class="headerlink" title="8.3 全称量化(1) ：习惯“肯定⇔ 双重否定”之间的转换"></a>8.3 全称量化(1) ：习惯“肯定⇔ 双重否定”之间的转换</h3><table border="1">
+    <caption>TestScores</caption>
+    <tr>
+        <th>student_id</th>
+        <th>subject</th>
+        <th>score</th>
+    </tr>
+    <tr>
+        <td>001</td>
+        <td>数学</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>001</td>
+         <td>语文</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>001</td>
+        <td>理化</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>002</td>
+        <td>数学</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>002</td>
+        <td>语文</td>
+        <td>95</td>
+    </tr>
+        <tr>
+        <td>003</td>
+        <td>数学</td>
+        <td>40</td>
+    </tr>
+    <tr>
+        <td>003</td>
+        <td>语文</td>
+        <td>90</td>
+    </tr>
+        <tr>
+        <td>003</td>
+        <td>社会</td>
+        <td>55</td>
+    </tr>
+</table>
+
+<p>我们要找出 “所有科目都在 60 分以上的学生”, 可以使用 NOT EXISTS 谓词来转换为 “没有一个科目分数不满 60 分”</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> student_id</span><br><span class="line">    <span class="keyword">FROM</span> TestScores TS1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> TestScores TS2</span><br><span class="line">                  <span class="keyword">WHERE</span> TS2.student_id = TS1.student_id</span><br><span class="line">                    <span class="keyword">AND</span> TS2.score &lt; <span class="number">60</span>);</span><br></pre></td></tr></table></figure>
+
+<p>比如再查询：</p>
+<ol>
+<li>数学的分数在80 分以上。</li>
+<li>语文的分数在60 分以上。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TS1.student_id</span><br><span class="line">    <span class="keyword">FROM</span> TestScores TS1</span><br><span class="line"><span class="keyword">WHERE</span> subject <span class="keyword">IN</span> (<span class="string">'数学'</span>, <span class="string">'语文'</span>)</span><br><span class="line">    <span class="keyword">AND</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> TestScores TS2</span><br><span class="line">                    <span class="keyword">WHERE</span> TS2.student_id = TS1.student_id</span><br><span class="line">                    <span class="comment">--条件分支</span></span><br><span class="line">                    <span class="keyword">AND</span> <span class="number">1</span> = <span class="keyword">CASE</span> <span class="keyword">WHEN</span> subject = <span class="string">'数学'</span> <span class="keyword">AND</span> score &lt; <span class="number">80</span> <span class="keyword">THEN</span> <span class="number">1</span></span><br><span class="line">                                 <span class="keyword">WHEN</span> subject = <span class="string">'语文'</span> <span class="keyword">AND</span> score &lt; <span class="number">60</span> <span class="keyword">THEN</span> <span class="number">1</span></span><br><span class="line">                                 <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>)</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> student_id</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) = <span class="number">2</span>;  <span class="comment">--必须两门都有分数</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-4-对列进行量化：查询全是-1-的行"><a href="#8-4-对列进行量化：查询全是-1-的行" class="headerlink" title="8.4 对列进行量化：查询全是 1 的行"></a>8.4 对列进行量化：查询全是 1 的行</h3><p>使用 ALL 谓词：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ArrayTbl</span><br><span class="line"><span class="keyword">WHERE</span> <span class="number">1</span> = <span class="keyword">ALL</span> (col1, col2, col3, col4, col5);</span><br></pre></td></tr></table></figure>
+
+<p>查找至少有一个 9 的行：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--使用ANY谓词（可用 IN 代替）</span></span><br><span class="line"><span class="comment">-- 列方向的存在量化(1)</span></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line">    <span class="keyword">FROM</span> ArrayTbl</span><br><span class="line"><span class="keyword">WHERE</span> <span class="number">9</span> = <span class="keyword">ANY</span> (col1, col2, col3, col4, col5, col6, col7, col8, col9, col10);</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-用-SQL-处理数列"><a href="#9-用-SQL-处理数列" class="headerlink" title="9. 用 SQL 处理数列"></a>9. 用 SQL 处理数列</h2><h3 id="9-1-生成连续编号"><a href="#9-1-生成连续编号" class="headerlink" title="9.1 生成连续编号"></a>9.1 生成连续编号</h3><p>有表 Digits {digit: 0,1,2,3,4,5,6,7,8,9}</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 求连续编号(1)：求0~99 的数</span></span><br><span class="line"><span class="keyword">SELECT</span> D1.digit + (D2.digit * <span class="number">10</span>) <span class="keyword">AS</span> seq</span><br><span class="line">    <span class="keyword">FROM</span> Digits D1 <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> Digits D2</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> seq;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 生成序列视图（包含0~999）</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> <span class="keyword">Sequence</span> (seq)</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> D1.digit + (D2.digit * <span class="number">10</span>) + (D3.digit * <span class="number">100</span>)</span><br><span class="line">    <span class="keyword">FROM</span> Digits D1 <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> Digits D2 <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> Digits D3;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 从序列视图中获取1~100</span></span><br><span class="line"><span class="keyword">SELECT</span> seq</span><br><span class="line">    <span class="keyword">FROM</span> <span class="keyword">Sequence</span></span><br><span class="line"><span class="keyword">WHERE</span> seq <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">100</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> seq;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-2-求全部的缺失编号"><a href="#9-2-求全部的缺失编号" class="headerlink" title="9.2 求全部的缺失编号"></a>9.2 求全部的缺失编号</h3><p>Seqtbl {seq: 1,2,4,5,6,7,8,11,12}</p>
+<p>使用序列视图差集运算：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--EXCEPT 版</span></span><br><span class="line"><span class="keyword">SELECT</span> seq</span><br><span class="line">    <span class="keyword">FROM</span> <span class="keyword">Sequence</span></span><br><span class="line"><span class="keyword">WHERE</span> seq <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">12</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span> seq <span class="keyword">FROM</span> SeqTbl;</span><br><span class="line"></span><br><span class="line"><span class="comment">--NOT IN 版</span></span><br><span class="line"><span class="keyword">SELECT</span> seq</span><br><span class="line">    <span class="keyword">FROM</span> <span class="keyword">Sequence</span></span><br><span class="line"><span class="keyword">WHERE</span> seq <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">12</span></span><br><span class="line">    <span class="keyword">AND</span> seq <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> seq <span class="keyword">FROM</span> SeqTbl);</span><br><span class="line"></span><br><span class="line"><span class="comment">--NOT EXISTS 版本</span></span><br><span class="line"><span class="keyword">SELECT</span> seq</span><br><span class="line">    <span class="keyword">FROM</span> <span class="keyword">Sequence</span> N</span><br><span class="line"><span class="keyword">WHERE</span> seq <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">12</span></span><br><span class="line">    <span class="keyword">AND</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> *</span><br><span class="line">                        <span class="keyword">FROM</span> SeqTbl S</span><br><span class="line">                    <span class="keyword">WHERE</span> N.seq = S.seq );</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-3-求序列"><a href="#9-3-求序列" class="headerlink" title="9.3 求序列"></a>9.3 求序列</h3><p>从1 ～ 15 的座位编号中，找出连续3 个空位的全部组合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 找出需要的空位(1)：不考虑座位的换排</span></span><br><span class="line"><span class="keyword">SELECT</span> S1.seat <span class="keyword">AS</span> start_seat, <span class="string">'~'</span> , S2.seat <span class="keyword">AS</span> end_seat</span><br><span class="line">    <span class="keyword">FROM</span> Seats S1, Seats S2</span><br><span class="line"><span class="keyword">WHERE</span> S2.seat = S1.seat + (:head_cnt <span class="number">-1</span>) <span class="comment">-- 决定起点和终点,“:head_cnt”是表示需要的空位个数的参数</span></span><br><span class="line">    <span class="keyword">AND</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> *</span><br><span class="line">                        <span class="keyword">FROM</span> Seats S3</span><br><span class="line">                    <span class="keyword">WHERE</span> S3.seat <span class="keyword">BETWEEN</span> S1.seat <span class="keyword">AND</span> S2.seat</span><br><span class="line">                    <span class="keyword">AND</span> S3.status &lt;&gt; <span class="string">'未预订'</span> );</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 找出需要的空位(2)：考虑座位的换排</span></span><br><span class="line"><span class="comment">-- “row_id”列表示排编号</span></span><br><span class="line">AND (S3.status &lt;&gt; '未预订' OR S3.row_id &lt;&gt; S1.row_id)</span><br></pre></td></tr></table></figure>
+
+<p>“肯定⇔ 双重否定”之间的等价转换是使用SQL 进行全称量化时的必备技巧.</p>
+<h3 id="9-4-单调递增和单调递减"><a href="#9-4-单调递增和单调递减" class="headerlink" title="9.4 单调递增和单调递减"></a>9.4 单调递增和单调递减</h3><p>考虑以下反映股价动态的表：</p>
+<table border="1">
+    <caption>MyStock</caption>
+    <tr>
+        <th>deal_date</th>
+        <th>price</th>
+    </tr>
+    <tr>
+        <td>2019-01-06</td>
+        <td>1000</td>
+    </tr>
+    <tr>
+        <td>2019-01-08</td>
+        <td>1050</td>
+    </tr>
+    <tr>
+        <td>2019-01-09</td>
+        <td>1050</td>
+    </tr>
+        <tr>
+        <td>2019-01-12</td>
+        <td>900</td>
+    </tr>
+    <tr>
+        <td>2019-01-13</td>
+        <td>880</td>
+    </tr>
+    <tr>
+        <td>2019-01-14</td>
+        <td>870</td>
+    </tr>
+    <tr>
+        <td>2019-01-16</td>
+        <td>920</td>
+    </tr>
+</table>
+
+<p>求一下股价单调递增的时间区间</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--首先通过自连接生成起点和终点的组合</span></span><br><span class="line"><span class="keyword">SELECT</span> S1.deal_date <span class="keyword">AS</span> start_date,</span><br><span class="line">       S2.deal_date <span class="keyword">AS</span> end_date</span><br><span class="line">    <span class="keyword">FROM</span> MyStock S1, MyStock S2</span><br><span class="line"><span class="keyword">WHERE</span> S1.deal_date &lt; S2.deal_date</span><br><span class="line"><span class="comment">-- 第二步：描述区间内所有日期需要满足的条件(双重否定)</span></span><br><span class="line">    <span class="keyword">AND</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> *</span><br><span class="line">                        <span class="keyword">FROM</span> MyStock S3, MyStock S4</span><br><span class="line">                    <span class="keyword">WHERE</span> S3.deal_date <span class="keyword">BETWEEN</span> S1.deal_date <span class="keyword">AND</span> S2.deal_date</span><br><span class="line">                    <span class="keyword">AND</span> S4.deal_date <span class="keyword">BETWEEN</span> S1.deal_date <span class="keyword">AND</span> S2.deal_date</span><br><span class="line">                    <span class="keyword">AND</span> S3.deal_date &lt; S4.deal_date</span><br><span class="line">                    <span class="keyword">AND</span> S3.price &gt;= S4.price);</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-再论-HAVING-子句"><a href="#10-再论-HAVING-子句" class="headerlink" title="10. 再论 HAVING 子句"></a>10. 再论 HAVING 子句</h2><p>HAVING 子句的处理对象是集合而不是记录</p>
+<h3 id="10-1-全称量化"><a href="#10-1-全称量化" class="headerlink" title="10.1 全称量化"></a>10.1 全称量化</h3><p>改写 9.2 的 NOT EXISTS</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> S1.seat <span class="keyword">AS</span> start_seat, <span class="string">'未预订'</span> , S2.seat <span class="keyword">AS</span> end_seat</span><br><span class="line">    <span class="keyword">FROM</span> Seats S1, Seats S2, Seats S3</span><br><span class="line"><span class="keyword">WHERE</span> S2.seat = S1.seat + (:head_cnt <span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">AND</span> S3.seat <span class="keyword">BETWEEN</span> S1.seat <span class="keyword">AND</span> S2.seat</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> S1.seat, S2.seat</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) = <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> S3.status = <span class="string">'未预订'</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> <span class="comment">--特征函数的方法</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-2-寻找缺失的编号：升级版"><a href="#10-2-寻找缺失的编号：升级版" class="headerlink" title="10.2 寻找缺失的编号：升级版"></a>10.2 寻找缺失的编号：升级版</h3><p>寻找缺失编号（起始值&lt;&gt;1）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">COUNT</span>(*) = <span class="number">0</span></span><br><span class="line">            <span class="keyword">THEN</span> <span class="string">'表为空'</span></span><br><span class="line">            <span class="keyword">WHEN</span> <span class="keyword">COUNT</span>(*) &lt;&gt; <span class="keyword">MAX</span>(seq) - <span class="keyword">MIN</span>(seq) + <span class="number">1</span></span><br><span class="line">            <span class="keyword">THEN</span> <span class="string">'存在缺失的编号'</span></span><br><span class="line">            <span class="keyword">ELSE</span> <span class="string">'连续'</span> <span class="keyword">END</span> <span class="keyword">AS</span> gap</span><br><span class="line">    <span class="keyword">FROM</span> SeqTbl;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查找最小的缺失编号</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">COUNT</span>(*) = <span class="number">0</span> <span class="keyword">OR</span> <span class="keyword">MIN</span>(seq) &gt; <span class="number">1</span> <span class="comment">--最小值不为1或者空表返回1</span></span><br><span class="line">            <span class="keyword">THEN</span> <span class="number">1</span></span><br><span class="line">            <span class="keyword">ELSE</span> (<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(seq + <span class="number">1</span>) <span class="comment">-- 最小值是1时→返回最小的缺失编号</span></span><br><span class="line">                    <span class="keyword">FROM</span> SeqTbl S1</span><br><span class="line">                  <span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> *</span><br><span class="line">                    <span class="keyword">FROM</span> SeqTbl S2</span><br><span class="line">                   <span class="keyword">WHERE</span> S2.seq = S1.seq + <span class="number">1</span>)) <span class="keyword">END</span></span><br><span class="line">    <span class="keyword">FROM</span> SeqTbl;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-3-为集合设置详细的条件"><a href="#10-3-为集合设置详细的条件" class="headerlink" title="10.3 为集合设置详细的条件"></a>10.3 为集合设置详细的条件</h3><table border="1">
+    <caption>TestResults</caption>
+    <tr>
+        <th>student_id</th>
+        <th>class</th>
+        <th>sex</th>
+        <th>score</th>
+    </tr>
+    <tr>
+        <td>001</td>
+        <td>A</td>
+        <td>男</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>002</td>
+        <td>A</td>
+        <td>女</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>003</td>
+        <td>A</td>
+        <td>女</td>
+        <td>49</td>
+    </tr>
+    <tr>
+        <td>004</td>
+        <td>B</td>
+        <td>女</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>005</td>
+        <td>B</td>
+        <td>男</td>
+        <td>92</td>
+    </tr>
+    <tr>
+        <td>006</td>
+        <td>B</td>
+        <td>男</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>007</td>
+        <td>B</td>
+        <td>女</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>008</td>
+        <td>C</td>
+        <td>男</td>
+        <td>92</td>
+    </tr>
+    <tr>
+        <td>009</td>
+        <td>C</td>
+        <td>男</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>010</td>
+        <td>C</td>
+        <td>女</td>
+        <td>100</td>
+    </tr>
+</table>
+
+<p>1、查询出75% 以上的学生分数都在80 分以上的班级</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">class</span></span><br><span class="line">    <span class="keyword">FROM</span> TestResults</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">class</span></span><br><span class="line">    <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) * <span class="number">0.75</span></span><br><span class="line">            &lt;= <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> score &gt;= <span class="number">80</span></span><br><span class="line">                        <span class="keyword">THEN</span> <span class="number">1</span></span><br><span class="line">                        <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>);</span><br></pre></td></tr></table></figure>
+
+<p>第2 题：请查询出分数在50 分以上的男生的人数比分数在 50 分以上的女生的人数多的班级。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">class</span></span><br><span class="line">    <span class="keyword">FROM</span> TestResults</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">class</span></span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> score &gt;= <span class="number">50</span> <span class="keyword">AND</span> sex = <span class="string">'男'</span></span><br><span class="line">                <span class="keyword">THEN</span> <span class="number">1</span></span><br><span class="line">                <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>)</span><br><span class="line">        &gt; <span class="keyword">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> score &gt;= <span class="number">50</span> <span class="keyword">AND</span> sex = <span class="string">'女'</span></span><br><span class="line">                    <span class="keyword">THEN</span> <span class="number">1</span></span><br><span class="line">                    <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>);</span><br></pre></td></tr></table></figure>
+
+<p>第3 题：请查询出女生平均分比男生平均分高的班级。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--对空集求平均值后返回NULL</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">class</span></span><br><span class="line">    <span class="keyword">FROM</span> TestResults</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">class</span></span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">AVG</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex = <span class="string">'男'</span></span><br><span class="line">                <span class="keyword">THEN</span> score</span><br><span class="line">                <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>)</span><br><span class="line">        &lt; <span class="keyword">AVG</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex = <span class="string">'女'</span></span><br><span class="line">                   <span class="keyword">THEN</span> score</span><br><span class="line">                   <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-SQL性能优化"><a href="#11-SQL性能优化" class="headerlink" title="11. SQL性能优化"></a>11. SQL性能优化</h2><h3 id="11-1-使用高效的查询"><a href="#11-1-使用高效的查询" class="headerlink" title="11.1 使用高效的查询"></a>11.1 使用高效的查询</h3><p><strong>参数是子查询时，使用EXISTS 代替IN</strong>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--慢</span></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line">    <span class="keyword">FROM</span> Class_A</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> <span class="keyword">id</span> <span class="keyword">FROM</span> Class_B);</span><br><span class="line"></span><br><span class="line"><span class="comment">--快</span></span><br><span class="line"><span class="keyword">SELECT</span> * </span><br><span class="line">    <span class="keyword">FROM</span> Class_A A</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> *</span><br><span class="line">                <span class="keyword">FROM</span> Class_B B</span><br><span class="line">              <span class="keyword">WHERE</span> A.id = B.id);</span><br></pre></td></tr></table></figure>
+
+<p>原因如下：</p>
+<ul>
+<li>如果连接列（id）上建立了索引，那么查询Class_B 时不用查实际的表，只需查索引就可以了。</li>
+<li>如果使用EXISTS，那么只要查到一行数据满足条件就会终止查询，不用像使用IN 时一样扫描全表。在这一点上NOT EXISTS 也一样</li>
+</ul>
+<p><strong>参数是子查询时，使用连接代替IN</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用连接代替IN</span></span><br><span class="line"><span class="keyword">SELECT</span> A.id, A.name</span><br><span class="line">    <span class="keyword">FROM</span> Class_A A <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Class_B B</span><br><span class="line">        <span class="keyword">ON</span> A.id = B.id;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-2-避免无谓的排序"><a href="#10-2-避免无谓的排序" class="headerlink" title="10.2 避免无谓的排序"></a>10.2 避免无谓的排序</h3><p>会进行排序的操作有：</p>
+<ul>
+<li>GROUP BY 子句</li>
+<li>ORDER BY 子句</li>
+<li>聚合函数（SUM、COUNT、AVG、MAX、MIN）</li>
+<li>DISTINCT</li>
+<li>集合运算符（UNION、INTERSECT、EXCEPT）</li>
+<li>窗口函数（RANK、ROW_NUMBER 等）</li>
+</ul>
+<p>知道不会有重复数据，请使用UNION ALL 代替UNION<br><strong>如果需要去重，使用EXISTS 代替DISTINCT</strong>  </p>
+<p><strong>能写在WHERE 子句里的条件不要写在HAVING 子句里</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Allen Timmger
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://timmger.github.io/2019/12/05/SQLAdvance/" title="SQL 进阶教程">https://timmger.github.io/2019/12/05/SQLAdvance/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/25/The-Futurama-Theorem/" rel="next" title="The Futurama Theorem">
+                <i class="fa fa-chevron-left"></i> The Futurama Theorem
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/05/Redis实战/" rel="prev" title="Redis开发运维">
+                Redis开发运维 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Allen Timmger">
+            
+              <p class="site-author-name" itemprop="name">Allen Timmger</p>
+              <p class="site-description motion-element" itemprop="description">ザ・ワールド</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Timmger" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:timmgerable@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/AllenTimmger" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://design.timmger.site/dist/design.html" title="我的设计站" target="_blank">我的设计站</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CASE-表达式"><span class="nav-number">1.</span> <span class="nav-text">1. CASE 表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-CASE-表达式的写法："><span class="nav-number">1.1.</span> <span class="nav-text">1.1 CASE 表达式的写法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-一条语句不同条件统计"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 一条语句不同条件统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-CHECK-约束"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 CHECK 约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-UPDATE-语句里进行条件分支"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 UPDATE 语句里进行条件分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-表之间的数据匹配"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 表之间的数据匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-使用聚合函数"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 使用聚合函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-自连接的用法"><span class="nav-number">2.</span> <span class="nav-text">2. 自连接的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-可重排列、排列、组合"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 可重排列、排列、组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-删除重复行"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 删除重复行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-查找局部不一致的列"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 查找局部不一致的列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-排序"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-三值逻辑和-NULL"><span class="nav-number">3.</span> <span class="nav-text">3. 三值逻辑和 NULL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-定义"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-实践"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-WHERE"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 WHERE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-CASE"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 CASE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-NOT-IN-和-NOT-EXISTS"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3 NOT IN 和 NOT EXISTS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-限定词和-NULL-以及极值函数"><span class="nav-number">3.2.4.</span> <span class="nav-text">3.2.4 限定词和 NULL 以及极值函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HAVING-子句"><span class="nav-number">4.</span> <span class="nav-text">4. HAVING 子句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-前言"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-用HAVING-子句进行子查询：求众数"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 用HAVING 子句进行子查询：求众数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-用HAVING-子句进行自连接：求中位数"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 用HAVING 子句进行自连接：求中位数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-查询不包含NULL的集合"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 查询不包含NULL的集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-用关系除法运算进行购物篮分析"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 用关系除法运算进行购物篮分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-外连接的用法"><span class="nav-number">5.</span> <span class="nav-text">5. 外连接的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-用外连接进行行列转换-1-（行→列）：制作交叉表"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 用外连接进行行列转换(1)（行→列）：制作交叉表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-用外连接进行行列转换-2-（列→行）：汇总重复项于一列"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 用外连接进行行列转换(2)（列→行）：汇总重复项于一列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-作为乘法运算的连接"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 作为乘法运算的连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-用外连接进行集合运算"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 用外连接进行集合运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-1-外连接求差集"><span class="nav-number">5.4.1.</span> <span class="nav-text">5.4.1 外连接求差集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-2-全外连接求异或集"><span class="nav-number">5.4.2.</span> <span class="nav-text">5.4.2 全外连接求异或集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-用关联子查询比较行与行"><span class="nav-number">6.</span> <span class="nav-text">6. 用关联子查询比较行与行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-增加、减少、维持不变"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 增加、减少、维持不变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-时间轴有间断时：和过去最临近的时间进行比较"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 时间轴有间断时：和过去最临近的时间进行比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-移动累计值和移动平均值"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 移动累计值和移动平均值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-查询重叠的时间区间"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 查询重叠的时间区间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-用-SQL-进行集合运算"><span class="nav-number">7.</span> <span class="nav-text">7. 用 SQL 进行集合运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-注意事项"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-相等性"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 相等性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-1-幂等性"><span class="nav-number">7.2.1.</span> <span class="nav-text">7.2.1 幂等性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-2-判断集合相等性"><span class="nav-number">7.2.2.</span> <span class="nav-text">7.2.2 判断集合相等性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-用差集实现关系除法运算"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 用差集实现关系除法运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-寻找相等的子集"><span class="nav-number">7.4.</span> <span class="nav-text">7.4 寻找相等的子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-用于删除重复行的高效SQL"><span class="nav-number">7.5.</span> <span class="nav-text">7.5 用于删除重复行的高效SQL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-EXISTS-谓词的用法"><span class="nav-number">8.</span> <span class="nav-text">8. EXISTS 谓词的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-基础理论"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 基础理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-查询”不”存在的数据"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 查询”不”存在的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-全称量化-1-：习惯“肯定⇔-双重否定”之间的转换"><span class="nav-number">8.3.</span> <span class="nav-text">8.3 全称量化(1) ：习惯“肯定⇔ 双重否定”之间的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-对列进行量化：查询全是-1-的行"><span class="nav-number">8.4.</span> <span class="nav-text">8.4 对列进行量化：查询全是 1 的行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-用-SQL-处理数列"><span class="nav-number">9.</span> <span class="nav-text">9. 用 SQL 处理数列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-生成连续编号"><span class="nav-number">9.1.</span> <span class="nav-text">9.1 生成连续编号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-求全部的缺失编号"><span class="nav-number">9.2.</span> <span class="nav-text">9.2 求全部的缺失编号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-求序列"><span class="nav-number">9.3.</span> <span class="nav-text">9.3 求序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4-单调递增和单调递减"><span class="nav-number">9.4.</span> <span class="nav-text">9.4 单调递增和单调递减</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-再论-HAVING-子句"><span class="nav-number">10.</span> <span class="nav-text">10. 再论 HAVING 子句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-全称量化"><span class="nav-number">10.1.</span> <span class="nav-text">10.1 全称量化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-寻找缺失的编号：升级版"><span class="nav-number">10.2.</span> <span class="nav-text">10.2 寻找缺失的编号：升级版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3-为集合设置详细的条件"><span class="nav-number">10.3.</span> <span class="nav-text">10.3 为集合设置详细的条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-SQL性能优化"><span class="nav-number">11.</span> <span class="nav-text">11. SQL性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-1-使用高效的查询"><span class="nav-number">11.1.</span> <span class="nav-text">11.1 使用高效的查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-避免无谓的排序"><span class="nav-number">11.2.</span> <span class="nav-text">10.2 避免无谓的排序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Timmger</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Timmger.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://timmger.github.io/2019/12/05/SQLAdvance/';
+          this.page.identifier = '2019/12/05/SQLAdvance/';
+          this.page.title = 'SQL 进阶教程';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Timmger.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("iT4XyBMDp0Pyz0cKOytLfnfL-gzGzoHsz", "QjKlcR3aK5ao12eaYIzuUR8I");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":180,"height":360},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
+</html>
