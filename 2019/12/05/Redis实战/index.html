@@ -99,7 +99,20 @@
 <meta property="og:image" content="https://i.loli.net/2019/12/17/qwF3s6G4zSpYDtP.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/17/Aq7iCrb5coPpzkm.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/17/ntPO5hrFNSXTE2Q.png">
-<meta property="og:updated_time" content="2019-12-18T07:38:13.548Z">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/EelgUSTZjc7FGpD.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/X1KepagWdZf7Ak2.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/rfAtdL5HWhBeYmQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/qdRNDXKe4Jg57Z8.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/18/OL4pTU2mrw8ICJq.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/19/IdNXEhbcZSl19Pu.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/19/3ZS6CUtHE5ALf7F.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/19/VK96IkJFPwgH1nm.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/19/hq65RyD27v4YsBL.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/19/ldoPD2vxnNVKGrg.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/20/hVxSlLbJZdyOC2u.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/20/E91xMbiN6GaDVFH.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/20/wXu8mxZkfeDsdql.png">
+<meta property="og:updated_time" content="2019-12-27T04:09:59.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis开发运维">
 <meta name="twitter:description" content="1. Redis简介 1.1 什么是 Redis Redis是一种基于键值（key-value）的NoSQL数据库。    数据存放于内存，读写性能惊人  Redis中的值由string（字符串）、hash（哈希）、list（列表）、set（集合）、zset（有序集合）、Bitmaps（位图）、HyperLogLog、GEO（地理信息定位）等组成   1.2 Redis 可以做什么缓存、排行榜系统">
@@ -400,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  9.9k
+                  14.6k
                 </span>
               
 
@@ -416,7 +429,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  42
+                  61
                 </span>
               
             </div>
@@ -503,6 +516,17 @@
 <li>setex: 作用等同 ex</li>
 <li>setnx: 作用等同 nx</li>
 </ul>
+<p><strong>用setnx(或nx)实现分布式锁</strong>：  </p>
+<p><strong>分布式锁</strong>(distributed locks)用来实现不同进程以互斥的方式来共享资源, Redis提供了叫<strong>Redlock</strong>算法</p>
+<p>它的实现需要满足三个特性:</p>
+<ul>
+<li>safety: 互斥性，任何时刻，仅有一个客户端能够持有锁</li>
+<li>liveness A: 无死锁，客户端总是能获得锁</li>
+<li>liveness B: 容错能力，只要大多数Redis节点运行，客户端总能获得或释放锁</li>
+</ul>
+<p>以下指令获得分布式锁:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">set</span> mykey myvalue NX PX 30000</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>获取值</strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> get key</span></span><br></pre></td></tr></table></figure>
 
@@ -1613,13 +1637,15 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">redis-sentinel-26379.conf</span><br><span class="line">port 26379</span><br><span class="line">daemonize yes</span><br><span class="line">logfile "26379.log"</span><br><span class="line">dir ./redis/data</span><br><span class="line">sentinel monitor mymaster 127.0.0.1 6379 2</span><br><span class="line">sentinel down-after-milliseconds mymaster 30000</span><br><span class="line">sentinel parallel-syncs mymaster 1</span><br><span class="line">sentinel failover-timeout mymaster 180000</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>sentinel monitor mymaster 127.0.0.1 6379 2配置代表sentinel-1节点需要监控127.0.0.1：6379这个主节点，2代表判断主节点失败至少需要2个Sentinel节<br>点同意</p>
+<li><p>sentinel monitor mymaster 127.0.0.1 6379 2配置代表sentinel-1节点需要监控127.0.0.1：6379这个主节点，2代表判断主节点失败至少需要2个Sentinel节<br>点同意, 可设置不同的主节点名监控多主结点</p>
 </li>
 <li><p>超过了down-after-milliseconds配置的时间（单位为毫秒）且没有有效的回复，则判定节点不可达</p>
 </li>
 <li><p>parallel-syncs 用来限制在一次故障转移之后，每次向新的主节点发起复制操作的从节点个数</p>
 </li>
 <li><p>failover-timeout通常被解释成故障转移超时时间</p>
+</li>
+<li><p>sentinel auth-pass配置通过添加主节点的密码</p>
 </li>
 </ul>
 <p><strong>启动Sentinel节点</strong></p>
@@ -1636,6 +1662,338 @@
 <ul>
 <li>建议Redis Sentinel的所有节点应该分布在不同的物理机</li>
 </ul>
+<h3 id="7-3-API"><a href="#7-3-API" class="headerlink" title="7.3 API"></a>7.3 API</h3><blockquote>
+<p><strong>sentinel masters</strong>: 展示所有被监控的主节点状态以及相关的统计信息</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:26379$ sentinel masters</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>sentinel master &lt;master name&gt;</strong>: 展示指定&lt;master name&gt;的主节点状态以及相关的统计信息</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:26379$ sentinel master mymaster-1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>sentinel slaves &lt;master name&gt;</strong>: 从节点状态以及相关的统计信息</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:26379$ sentinel slaves mymaster-1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>sentinel sentinels &lt;master name&gt;</strong>: 展示指定<master name>的Sentinel节点集合</master></p>
+</blockquote>
+<blockquote>
+<p><strong>sentinel reset &lt;pattern&gt;</strong>: 对符合 &lt;pattern&gt;（通配符风格）主节点的配置进行重置</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:26379$ sentinel reset mymaster-1</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>sentinel failover &lt;master name&gt;</strong>: 对指定&lt;master name&gt;主节点进行强制故障转移(没有“协商”)</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:26379$ sentinel failover mymaster-2</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>sentinel ckquorum &lt;master name&gt;</strong>: 检测当前可达的Sentinel节点总数是否达到<quorum>的个数</quorum></p>
+</blockquote>
+<blockquote>
+<p><strong>sentinel flushconfig</strong>: 将Sentinel节点的配置强制刷到磁盘上</p>
+</blockquote>
+<blockquote>
+<p><strong>sentinel remove &lt;master name&gt;</strong>: 取消当前Sentinel节点对于指定&lt;master name&gt;主节点的监控</p>
+</blockquote>
+<h3 id="7-4-客户端连接"><a href="#7-4-客户端连接" class="headerlink" title="7.4 客户端连接"></a>7.4 客户端连接</h3><p><strong>基本步骤</strong>：</p>
+<ul>
+<li>遍历Sentinel节点集合获取一个可用的Sentinel节点</li>
+<li>通过sentinel get-master-addr-by-name master-name这个API来获取对应主节点的相关信息</li>
+<li>验证当前获取的“主节点”是真正的主节点(info replication)</li>
+<li>客户端订阅Sentinel节点相关频道</li>
+</ul>
+<p><strong>Java 操作 redis sentinel</strong></p>
+<p>Jedis针对Redis Sentinel给出了一个JedisSentinelPool</p>
+<p>初始化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SentinelTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 日志类</span></span><br><span class="line">        Logger logger = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// Sentinel节点集合</span></span><br><span class="line">        Set&lt;String&gt; sentinels = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="comment">// common-pool连接池配置</span></span><br><span class="line">        GenericObjectPoolConfig poolConfig = <span class="keyword">new</span> GenericObjectPoolConfig();</span><br><span class="line">        <span class="comment">// 读写,连接超时</span></span><br><span class="line">        <span class="keyword">int</span> timeout = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 主节点名 myMaster</span></span><br><span class="line">        JedisSentinelPool jedisSentinelPool = <span class="keyword">new</span> JedisSentinelPool(<span class="string">"myMaster"</span>, sentinels, poolConfig, timeout);</span><br><span class="line"></span><br><span class="line">        Jedis jedis = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            jedis = jedisSentinelPool.getResource();</span><br><span class="line">            <span class="comment">// jedis command</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            logger.error(e.getMessage(), e);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (jedis != <span class="keyword">null</span>) &#123;</span><br><span class="line">                jedis.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-5-实现原理"><a href="#7-5-实现原理" class="headerlink" title="7.5 实现原理"></a>7.5 实现原理</h3><p><strong>1. 三个定时监控任务</strong></p>
+<ol>
+<li><p>每隔10秒，每个Sentinel节点会向主节点和从节点发送info命令获取最新的拓扑结构</p>
+</li>
+<li><p>每隔2秒，每个Sentinel节点会向Redis数据节点的<strong>sentinel</strong>：hello<br>频道上发送该Sentinel节点对于主节点的判断以及当前Sentinel节点的信息</p>
+</li>
+<li><p>每隔1秒，每个Sentinel节点会向主节点、从节点、其余Sentinel节点发送一条ping命令做一次心跳检测</p>
+</li>
+</ol>
+<p><strong>2. 客观下线与主观下线</strong></p>
+<p><strong>主观下线（+sdown）</strong><br>心跳检测时，节点超过 down-after-milliseconds 没有进行有效回复，Sentinel节点就会对该节点做失败判定，这个行为叫做主观下线</p>
+<p><strong>客观下线（+odown）</strong><br>当Sentinel主观下线的节点是主节点时，协商通过（sentinel is-master-<br>down-by-addr命令）</p>
+<p><strong>3. 领导者Sentinel节点选举</strong></p>
+<ul>
+<li><p>每个在线的Sentinel节点，向其他Sentinel节点发送sentinel is-master-down-by-addr命令，要求将自己设置为领导者</p>
+</li>
+<li><p>如果某Sentinel节点票数大于等于max（quorum，num（sentinels）/2+1），它就成为领导者节点</p>
+</li>
+</ul>
+<p><strong>4. 故障转移</strong></p>
+<p>领导者选举出的Sentinel节点负责故障转移：</p>
+<ul>
+<li>在从节点列表中选出一个节点作为新的主节点（过滤）</li>
+</ul>
+<p><img src="https://i.loli.net/2019/12/18/EelgUSTZjc7FGpD.png" alt="选出替代主节点.png"></p>
+<ul>
+<li><p>对从节点执行slaveof no one</p>
+</li>
+<li><p>让其余从节点成为新主节点的从节点</p>
+</li>
+<li><p>将原来的主节点更新为从节点</p>
+</li>
+</ul>
+<h3 id="7-6-高可用读写分离"><a href="#7-6-高可用读写分离" class="headerlink" title="7.6 高可用读写分离"></a>7.6 高可用读写分离</h3><p><img src="https://i.loli.net/2019/12/18/X1KepagWdZf7Ak2.png" alt="读写分离模型1.png"></p>
+<center>一般读写分离模型</center>
+
+<br>
+
+<p>上述模型中，从节点不是高可用的:</p>
+<ul>
+<li>如果slave-1节点出现故障，客户端client-1将与其失联，</li>
+<li>Sentinel节点只会对该节点做主观下线(故障转移是针对主节点)</li>
+</ul>
+<p><strong>Redis Sentinel读写分离设计思路</strong>:</p>
+<p>从节点变动的事件消息：</p>
+<ul>
+<li>+switch-master：切换主节点（原来的从节点晋升为主节点）</li>
+<li>+convert-to-slave：切换从节点（原来的主节点降级为从节点）</li>
+<li>+sdown：主观下线</li>
+<li>+reboot：重新启动了某个节点</li>
+</ul>
+<p>只要能够实时掌握所有从节点的状态，把所有从节点看做一个资源池，无论是上线还是下线从节点，客户端都能及时感知到</p>
+<p><img src="https://i.loli.net/2019/12/18/rfAtdL5HWhBeYmQ.png" alt="读写分离模型2.png"></p>
+<center>Redis Sentinel下的读写分离架构</center>
+
+<h2 id="8-集群"><a href="#8-集群" class="headerlink" title="8. 集群"></a>8. 集群</h2><p>分布式解决方案，当遇到单机内存、并发、流量等瓶颈时，可以采用Cluster架构方案达到负载均衡的目的</p>
+<h3 id="8-1-数据分布"><a href="#8-1-数据分布" class="headerlink" title="8.1 数据分布"></a>8.1 数据分布</h3><p><strong>数据分布理论</strong></p>
+<p><img src="https://i.loli.net/2019/12/18/qdRNDXKe4Jg57Z8.png" alt="资源 37.png"></p>
+<p>常见的<strong>分区规则</strong>有<strong>哈希分区</strong>和<strong>顺序分区</strong>两种，而于Redis Cluster采用哈希分区规则</p>
+<p>常见的哈希分区规则有：</p>
+<ul>
+<li><p><strong>节点取余分区</strong>：hash（key）% N 计算出哈希值(N 为节点数)。当节点数量变化时，需要重新计算</p>
+</li>
+<li><p><strong>一致性哈希分区</strong>：为系统中每个节点分配一个token，范围一般在0~$2^32$，这些token构成一个哈希环。查找时，先根据key计算hash值，然后顺时针找到第一个大于等于该哈希值的token节点</p>
+</li>
+<li><p><strong>虚拟槽分区</strong>：redis cluster 采用，使用分散度良好的哈希函数把所有数据映射到一个固定范围的整数集合中，整数定义为槽（slot），每个节点会负责一定数量的槽</p>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/12/18/OL4pTU2mrw8ICJq.png" alt="虚拟槽分区.png"></p>
+<p><strong>Redis 数据分区</strong></p>
+<p>Redis Cluser采用虚拟槽分区，所有的键根据哈希函数映射到0~16383整数槽内，计算公式：slot = CRC16（key）&amp; 16383</p>
+<p><strong>集群功能限制</strong></p>
+<ul>
+<li><p>key批量操作支持有限，目前只支持具有相同slot值的key执行批量操作</p>
+</li>
+<li><p>key事务操作支持有限，只支持多key在同一节点上的事务操作</p>
+</li>
+<li><p>key作为数据分区的最小粒度</p>
+</li>
+<li><p>不支持多数据库空间，只能使用一个数据库空间，即db0</p>
+</li>
+<li><p>复制结构只支持一层，从节点只能复制主节点</p>
+</li>
+</ul>
+<h3 id="8-2-搭建集群"><a href="#8-2-搭建集群" class="headerlink" title="8.2 搭建集群"></a>8.2 搭建集群</h3><ol>
+<li>准备节点</li>
+</ol>
+<p>节点数量至少为6个，建议为集群内所有节点统一目录，一般划分三个目录：conf、data、log，分别存放配置、数据和日志相关文件。</p>
+<p>配置如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">port 6379</span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启集群模式</span></span><br><span class="line">cluster-enabled yes</span><br><span class="line"><span class="meta">#</span><span class="bash"> 节点超时时间，单位毫秒</span></span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line"><span class="meta">#</span><span class="bash"> 集群内部配置文件</span></span><br><span class="line">cluster-config-file "nodes-6379.conf"</span><br></pre></td></tr></table></figure>
+
+<p>配置文件命名规则redis-{port}.conf</p>
+<p>启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis-server conf/redis-6379.conf</span><br><span class="line">redis-server conf/redis-6380.conf</span><br><span class="line">redis-server conf/redis-6381.conf</span><br><span class="line">redis-server conf/redis-6382.conf</span><br><span class="line">redis-server conf/redis-6383.conf</span><br><span class="line">redis-server conf/redis-6384.conf</span><br></pre></td></tr></table></figure>
+
+<p>启动成功，第一次启动时如果没有集群配置文件，自动创建，名称采用cluster-config-file参数项控制，建议采用node-{port}.conf格式自定义</p>
+<ol start="2">
+<li>节点握手</li>
+</ol>
+<p>节点握手是集群彼此通信的第一步，由客户端发起命令：cluster meet {ip} {port}</p>
+<ul>
+<li><p>节点6379本地创建6380节点信息对象，并发送meet消息</p>
+</li>
+<li><p>节点6380接受到meet消息后，保存6379节点信息并回复pong消息</p>
+</li>
+<li><p>节点6379和6380彼此定期通过ping/pong消息进行正常的节点通信。</p>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2019/12/19/IdNXEhbcZSl19Pu.png" alt="cluster1.png"></p>
+<center>通过两个节点握手的集群结构</center>
+
+<p>加入其他节点：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379$ cluster meet 127.0.0.1 6381</span><br><span class="line">127.0.0.1:6379$ cluster meet 127.0.0.1 6382</span><br><span class="line">127.0.0.1:6379$ cluster meet 127.0.0.1 6383</span><br><span class="line">127.0.0.1:6379$ cluster meet 127.0.0.1 6384</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cluster nodes命令获取集群节点状态</li>
+<li>cluster info命令可以获取集群当前状态</li>
+</ul>
+<p><img src="https://i.loli.net/2019/12/19/3ZS6CUtHE5ALf7F.png" alt="cluster4.png"></p>
+<center>集群握手完成后的状态</center>
+
+<ol start="3">
+<li>分配槽</li>
+</ol>
+<p>通过cluster addslots命令为节点分配槽。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-cli -h 127.0.0.1 -p 6379 cluster addslots &#123;0...5461&#125;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-cli -h 127.0.0.1 -p 6380 cluster addslots &#123;5462...10922&#125;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-cli -h 127.0.0.1 -p 6381 cluster addslots &#123;10923...16383&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>集群模式下，Reids节点角色分为主节点和从节点，首次启动的节点和被分配槽的节点都是主节点<br>使用<code>cluster replicate {nodeId}</code>命令让一个节点成为从节点。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6382$ cluster replicate cfb28ef1deee4e0fa78da86abe5d24566744411e</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6383$ cluster replicate 8e41673d59c9568aa9d29fb174ce733345b3e8f1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6384$ cluster replicate 40b8d09d44294d2e23c7c768efc8fcd153446746</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2019/12/19/VK96IkJFPwgH1nm.png" alt="cluster.png"></p>
+<center>集群完整结构</center>
+
+<p>此外也可用redis-trib.rb脚本搭建集群</p>
+<h3 id="8-3-节点通信"><a href="#8-3-节点通信" class="headerlink" title="8.3 节点通信"></a>8.3 节点通信</h3><ul>
+<li>Redis集群采用P2P的Gossip（流言）协议维护元数据(如节点负责哪些数据，是否出现故障等状态信息)  </li>
+<li>Gossip协议工作原理就是节点彼此不断通信交换信息，一段时间后所有的节点都会知道集群完整的信息，这种方式类似流言传播</li>
+</ul>
+<p><strong>Gossip消息</strong></p>
+<p>信息交换的载体是节点彼此发送的Gossip消息，可分为：ping消息、pong消息、meet消息、fail消息</p>
+<ul>
+<li>meet消息：用于通知新节点加入</li>
+<li>ping消息：集群内交换最频繁的消息，检测节点是否在线和交换彼此状态信息</li>
+<li>pong消息：当接收到ping、meet消息时，作为响应消息回复给发送方确认消息正常通信</li>
+<li>fail消息：当节点判定集群内另一个节点下线时，会向集群内广播一个fail消息</li>
+</ul>
+<p>所有的消息格式划分为：消息头和消息体</p>
+<p><img src="https://i.loli.net/2019/12/19/hq65RyD27v4YsBL.png" alt="消息解析.png"></p>
+<center>消息解析流程</center>
+
+<br>
+
+<p><strong>节点选择</strong></p>
+<ul>
+<li><p>通信节点选择过多虽然可以做到信息及时交换但成本过高</p>
+</li>
+<li><p>节点选择过少会降低集群内所有节点彼此信息交换频率，从而影响故障判定、新节点发现等需求的速度</p>
+</li>
+</ul>
+<p>选择发送消息的节点数量：  </p>
+<ul>
+<li><p>每个节点维护定时任务默认每秒执行10次，每秒会随机选取5个节点找出最久没有通信的节点发送ping消息</p>
+</li>
+<li><p>每100毫秒都会扫描本地节点列表，如果发现节点最近一次接受pong消息的时间大于cluster_node_timeout/2，则立刻发送ping消息</p>
+</li>
+<li><p>因此，每个节点每秒需要发送ping消息的数量=1+10*num（node.pong_received&gt;cluster_node_timeout/2）</p>
+</li>
+</ul>
+<h3 id="8-4-集群伸缩"><a href="#8-4-集群伸缩" class="headerlink" title="8.4 集群伸缩"></a>8.4 集群伸缩</h3><p>Redis集群提供了灵活的节点扩容和收缩方案，实现对节点的灵活上下线控制。本质上抽象为槽和对应数据在不同节点之间灵活移动</p>
+<h4 id="8-4-1-扩容集群"><a href="#8-4-1-扩容集群" class="headerlink" title="8.4.1 扩容集群"></a>8.4.1 扩容集群</h4><ol>
+<li>准备新节点<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-server conf/redis-6385.conf</span><br><span class="line">redis-server conf/redis-6386.conf</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>启动后的新节点作为孤儿节点运行</p>
+<ol start="2">
+<li>加入集群<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379$ cluster meet 127.0.0.1 6385</span><br><span class="line">127.0.0.1:6379$ cluster meet 127.0.0.1 6386</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>新节点刚开始都是主节点状态, 后续操作有两种选择：</p>
+<ul>
+<li>为它迁移槽和数据实现扩容</li>
+<li>作为其他主节点的从节点负责故障转移</li>
+</ul>
+<p>redis-trib.rb工具也实现了为现有集群添加新节点的命令,推荐使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-trib.rb add-node 127.0.0.1:6385 127.0.0.1:6379</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-trib.rb add-node 127.0.0.1:6386 127.0.0.1:6379</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>迁移槽和数据</li>
+</ol>
+<p>槽在迁移过程中集群可以正常提供读写服务</p>
+<p><strong>槽迁移计划</strong></p>
+<p>槽是Redis集群管理数据的基本单位，迁移计划需要确保每个节点负责相似数量的槽，从而保证各节点的数据均匀</p>
+<p><strong>迁移数据</strong></p>
+<ul>
+<li><p>对目标节点发送 <code>cluster setslot {slot} importing {sourceNodeId}</code> 命令，让目标节点准备导入槽的数据。</p>
+</li>
+<li><p>对源节点发送 <code>cluster setslot {slot} migrating {targetNodeId}</code> 命令，让源节点准备迁出槽的数据</p>
+</li>
+<li><p>源节点循环执行 <code>cluster getkeysinslot {slot} {count}</code>命令，获取count个属于槽{slot}的键。</p>
+</li>
+<li><p>在源节点上执行 <code>migrate {targetIp} {targetPort} &quot;&quot; 0 {timeout} keys {keys...}</code></p>
+</li>
+<li><p>向集群内所有主节点发送<code>cluster setslot {slot} node {targetNodeId}</code>命令，通知槽分配给目标节点</p>
+</li>
+</ul>
+<p>redis-trib也提供了槽重分片功能</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-trib.rb reshard host:port --from &lt;arg&gt; --to &lt;arg&gt; --slots &lt;arg&gt; --yes --timeout</span><br><span class="line">&lt;arg&gt; --pipeline &lt;arg&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>host：port：必传参数，集群内任意节点地址，用来获取整个集群信息。  </li>
+</ul>
+<p>我们迁移 6385 端口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-trib.rb reshard 127.0.0.1:6379</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>添加从节点</strong><br><code>cluster replicate {masterNodeId}</code>命令为主节点添加对应从节点</p>
+<p>把节点6386作为6385的从节点</p>
+<h4 id="8-4-2-收缩集群"><a href="#8-4-2-收缩集群" class="headerlink" title="8.4.2 收缩集群"></a>8.4.2 收缩集群</h4><p><img src="https://i.loli.net/2019/12/19/ldoPD2vxnNVKGrg.png" alt="收缩.png"></p>
+<center>节点安全下线流程</center>
+
+<p><strong>下线迁移槽</strong></p>
+<p>把6381和6384节点下线，6381是主节点，负责槽（12288-16383），共 4096 个槽</p>
+<p>和扩容迁移方向相反，直接使用<code>redis-trib.rb reshard</code>命令完成槽迁移，执行3次reshard命令，分别迁移1365、1365、1366个槽</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-trib.rb reshard 127.0.0.1:6381</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-trib.rb reshard 127.0.0.1:6381</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-trib.rb reshard 127.0.0.1:6381</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>忘记节点</strong></p>
+<p>让其他节点不再与下线节点进行Gossip消息交换，Redis 提供了 <code>cluster forget {downNodeId}</code> 命令实现该功能</p>
+<p>线上环境建议使用 <code>redis-trib.rb del-node {host：port} {downNodeId}</code> 命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-trib.rb del-node 127.0.0.1:6379 4fa7eac4080f0b667ffeab9b87841da49b84a6e4 </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 从节点6384 id</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-trib.rb del-node 127.0.0.1:6379 40b8d09d44294d2e23c7c768efc8fcd153446746 </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 主节点6381 id</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-5-请求路由"><a href="#8-5-请求路由" class="headerlink" title="8.5 请求路由"></a>8.5 请求路由</h3><h4 id="8-5-1-请求重定向"><a href="#8-5-1-请求重定向" class="headerlink" title="8.5.1 请求重定向"></a>8.5.1 请求重定向</h4><p>Redis接收任何键相关命令时首先计算键对应的槽，再根据槽找出所对应的节点，如果节点是自身，则处理键命令；否则回复 MOVED重定向错误<br><code>cluster keyslot {key}</code> 命令返回key所对应的槽, 使用redis-cli命令时，可以加入-c参数支持自动重定向</p>
+<h4 id="8-5-2-Smart客户端"><a href="#8-5-2-Smart客户端" class="headerlink" title="8.5.2 Smart客户端"></a>8.5.2 Smart客户端</h4><p><strong>JedisCluster的定义</strong></p>
+<p>Jedis为Redis Cluster提供了Smart客户端，对应的类是JedisCluster, 初始化方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">JedisCluster</span><span class="params">(Set&lt;HostAndPort&gt; jedisClusterNode, <span class="keyword">int</span> connectionTimeout, <span class="keyword">int</span> soTimeout, <span class="keyword">int</span> maxAttempts, <span class="keyword">final</span> GenericObjectPoolConfig poolConfig)</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Set<hostandport>jedisClusterNode：所有Redis Cluster节点信息</hostandport></li>
+<li>int connectionTimeout：连接超时</li>
+<li>int soTimeout：读写超时</li>
+<li>int maxAttempts：重试次数</li>
+<li>GenericObjectPoolConfig poolConfig：连接池参数，JedisCluster会为 Redis Cluster的每个节点创建连接池</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化所有节点(例如6个节点)</span></span><br><span class="line">Set&lt;HostAndPort&gt; jedisClusterNode = <span class="keyword">new</span> HashSet&lt;HostAndPort&gt;();</span><br><span class="line">jedisClusterNode.add(<span class="keyword">new</span> HostAndPort(<span class="string">"10.10.xx.1"</span>, <span class="number">6379</span>));</span><br><span class="line">jedisClusterNode.add(<span class="keyword">new</span> HostAndPort(<span class="string">"10.10.xx.2"</span>, <span class="number">6379</span>));</span><br><span class="line">jedisClusterNode.add(<span class="keyword">new</span> HostAndPort(<span class="string">"10.10.xx.3"</span>, <span class="number">6379</span>));</span><br><span class="line">jedisClusterNode.add(<span class="keyword">new</span> HostAndPort(<span class="string">"10.10.xx.4"</span>, <span class="number">6379</span>));</span><br><span class="line">jedisClusterNode.add(<span class="keyword">new</span> HostAndPort(<span class="string">"10.10.xx.5"</span>, <span class="number">6379</span>));</span><br><span class="line">jedisClusterNode.add(<span class="keyword">new</span> HostAndPort(<span class="string">"10.10.xx.6"</span>, <span class="number">6379</span>));</span><br><span class="line"><span class="comment">// 初始化commnon-pool连接池，并设置相关参数</span></span><br><span class="line">GenericObjectPoolConfig poolConfig = <span class="keyword">new</span> GenericObjectPoolConfig();</span><br><span class="line"><span class="comment">// 初始化JedisCluster</span></span><br><span class="line">JedisCluster jedisCluster = <span class="keyword">new</span> JedisCluster(jedisClusterNode, <span class="number">1000</span>, <span class="number">1000</span>, <span class="number">5</span>, poolConfig);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不需要管理连接池的借还，它在内部已<br>经完成</li>
+<li>不要执行close（）操作，它会将所有JedisPool执行 destroy操作。</li>
+</ul>
+<p><strong>多节点命令和操作</strong><br>有些命令或者操作，诸如keys、flushall、删除指定模式的键，需要遍历所有节点才可以完成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从RedisCluster批量删除指定pattern的数据</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delRedisClusterByPattern</span><span class="params">(JedisCluster jedisCluster, String pattern, <span class="keyword">int</span> scanCounter)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 获取所有节点的JedisPool</span></span><br><span class="line">    Map&lt;String, JedisPool&gt; jedisPoolMap = jedisCluster.getClusterNodes();</span><br><span class="line">    <span class="keyword">for</span> (Entry&lt;String, JedisPool&gt; entry : jedisPoolMap.entrySet()) &#123;</span><br><span class="line">        <span class="comment">// 获取每个节点的Jedis连接</span></span><br><span class="line">        Jedis jedis = entry.getValue().getResource();</span><br><span class="line">        <span class="comment">// 只删除主节点数据</span></span><br><span class="line">        <span class="keyword">if</span> (!isMaster(jedis)) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 使用Pipeline每次删除指定前缀的数据</span></span><br><span class="line">        Pipeline pipeline = jedis.pipelined();</span><br><span class="line">        <span class="comment">// 使用scan扫描指定前缀的数据</span></span><br><span class="line">        String cursor = <span class="string">"0"</span>;</span><br><span class="line">        <span class="comment">// 指定扫描参数：每次扫描个数和pattern</span></span><br><span class="line">        ScanParams params = <span class="keyword">new</span> ScanParams().count(scanCounter).match(pattern);</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="comment">// 执行扫描</span></span><br><span class="line">            ScanResult&lt;String&gt; scanResult = jedis.scan(cursor, params);</span><br><span class="line">            <span class="comment">// 删除的key列表</span></span><br><span class="line">            List&lt;String&gt; keyList = scanResult.getResult();</span><br><span class="line">            <span class="keyword">if</span> (keyList != <span class="keyword">null</span> &amp;&amp; keyList.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (String key : keyList) &#123;</span><br><span class="line">                    pipeline.del(key);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 批量删除</span></span><br><span class="line">                pipeline.syncAndReturnAll</span><br><span class="line">            &#125;</span><br><span class="line">            cursor = scanResult.getStringCursor();</span><br><span class="line">            <span class="comment">// 如果游标变为0，说明扫描完毕</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"0"</span>.equals(cursor)) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 判断当前Redis是否为master节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isMaster</span><span class="params">(Jedis jedis)</span> </span>&#123;</span><br><span class="line">    String[] data = jedis.info(<span class="string">"Replication"</span>).split(<span class="string">"\r\n"</span>);</span><br><span class="line">    <span class="keyword">for</span> (String line : data) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"role:master"</span>.equals(line.trim())) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>批量操作的方法</strong></p>
+<p>见 9.5 节 “无底洞优化”</p>
+<p><strong>使用Lua、事务等特性的方法</strong></p>
+<ol>
+<li>将事务中所有的key添加hashtag。</li>
+<li>使用CRC16计算hashtag对应的slot。</li>
+<li>获取指定slot对应的节点连接池JedisPool。</li>
+<li>在JedisPool上执行事务。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">String hastag = <span class="string">"&#123;user&#125;"</span>;</span><br><span class="line"><span class="comment">// 用户A的关注表</span></span><br><span class="line">String userAFollowKey = hastag + <span class="string">":a:follow"</span>;</span><br><span class="line"><span class="comment">// 用户B的粉丝表</span></span><br><span class="line">String userBFanKey = hastag + <span class="string">":b:fans"</span>;</span><br><span class="line"><span class="comment">// 计算hashtag对应的slot</span></span><br><span class="line"><span class="keyword">int</span> slot = JedisClusterCRC16.getSlot(hastag);</span><br><span class="line"><span class="comment">// 获取指定slot的JedisPool</span></span><br><span class="line">JedisPool jedisPool = jedisCluster.getConnectionHandler().getJedisPoolFromSlot(slot);</span><br><span class="line"><span class="comment">// 在当个节点上执行事务</span></span><br><span class="line">Jedis jedis = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    jedis = jedisPool.getResource();</span><br><span class="line">    <span class="comment">// 用户A的关注表加入用户B，用户B的粉丝列表加入用户A</span></span><br><span class="line">    Transaction transaction = jedis.multi();</span><br><span class="line">    transaction.sadd(userAFollowKey, <span class="string">"user:b"</span>);</span><br><span class="line">    transaction.sadd(userBFanKey, <span class="string">"user:a"</span>);</span><br><span class="line">    transaction.exec();</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    logger.error(e.getMessage(), e);</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (jedis!= <span class="keyword">null</span>)</span><br><span class="line">        jedis.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-5-3-ASK-重定向异常"><a href="#8-5-3-ASK-重定向异常" class="headerlink" title="8.5.3 ASK 重定向异常"></a>8.5.3 ASK 重定向异常</h4><p><strong>客户端ASK重定向流程</strong></p>
+<p>当一个slot数据从源节点迁移到目标节点时，期间可能出现一部分数据在源节点，而另一部分在目标节点。<br>当客户端向源节点发送命令时，如果不存在键对象，则可能存在于目标节点，这时源节点会回复ASK重定向异常。格式如下：<code>（error）ASK {slot}{targetIP}：{targetPort}</code>。</p>
+<p><img src="https://i.loli.net/2019/12/20/hVxSlLbJZdyOC2u.png" alt="ASK重定向.png"></p>
+<ul>
+<li>ASK重定向说明集群正在进行slot数据迁移，客户端不会更新slots缓存</li>
+<li>MOVED重定向说明键对应的槽已经指定到新的节点，因此需要更新slots缓存。</li>
+<li>当在集群环境下使用mget、mset等批量操作时，slot迁移数据期间由于键列表无法保证在同一节点，会导致大量错误</li>
+</ul>
+<h3 id="8-6-故障转移"><a href="#8-6-故障转移" class="headerlink" title="8.6 故障转移"></a>8.6 故障转移</h3><h4 id="8-6-1-故障发现"><a href="#8-6-1-故障发现" class="headerlink" title="8.6.1 故障发现"></a>8.6.1 故障发现</h4><p>故障发现也是通过消息传播机制实现的</p>
+<p><strong>主观下线（pfail）</strong></p>
+<p>指某个节点认为另一个节点不可用，不是最终的故障判定</p>
+<p><img src="https://i.loli.net/2019/12/20/E91xMbiN6GaDVFH.png" alt="主观下线.png"></p>
+<center>主观下线流程</center>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 定时任务,默认每秒执行<span class="number">10</span>次</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clusterCron</span><span class="params">()</span>:</span></span><br><span class="line">    // ... 忽略其他代码</span><br><span class="line">    <span class="keyword">for</span>(node <span class="keyword">in</span> server.cluster.nodes):</span><br><span class="line">    // 忽略自身节点比较</span><br><span class="line">    <span class="keyword">if</span>(node.flags == CLUSTER_NODE_MYSELF):</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    // 系统当前时间</span><br><span class="line">    long now = mstime();</span><br><span class="line">    // 自身节点最后一次与该节点PING通信的时间差</span><br><span class="line">    long delay = now - node.ping_sent;</span><br><span class="line">    // 如果通信时间差超过cluster_node_timeout，将该节点标记为PFAIL（主观下线）</span><br><span class="line">    <span class="keyword">if</span> (delay &gt; server.cluster_node_timeout) :</span><br><span class="line">        node.flags = CLUSTER_NODE_PFAIL;</span><br></pre></td></tr></table></figure>
+
+<p><strong>客观下线</strong></p>
+<p>当某个节点判断另一个节点主观下线，通过<strong>Gossip</strong>消息传播，集群内节点不断收集到故障节点的下线报告。当<strong>半数以上</strong>持有槽的主节点都标记某个节点是主观下线时，触发<strong>客观下线</strong></p>
+<h4 id="8-6-2-故障恢复"><a href="#8-6-2-故障恢复" class="headerlink" title="8.6.2 故障恢复"></a>8.6.2 故障恢复</h4><p>故障节点变为客观下线后，如果下线节点是持有槽的主节点则需要在它的从节点中选出一个替换它，从而保证集群的高可用</p>
+<p><img src="https://i.loli.net/2019/12/20/wXu8mxZkfeDsdql.png" alt="故障选举流程.png"></p>
 
       
     </div>
@@ -1695,6 +2053,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/31/Effective-Java-Notes/" rel="prev" title="Effective Java Notes">
+                Effective Java Notes <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1783,7 +2145,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1794,7 +2156,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1805,7 +2167,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1881,7 +2243,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Redis简介"><span class="nav-number">1.</span> <span class="nav-text">1. Redis简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是-Redis"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是 Redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Redis-可以做什么"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Redis 可以做什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-安装-Redis"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 安装 Redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Redis-常用命令和数据结构"><span class="nav-number">2.</span> <span class="nav-text">2. Redis 常用命令和数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-全局命令"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 全局命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-数据结构与内部编码"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 数据结构与内部编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-单线程架构"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 单线程架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-字符串"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-命令"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-内部编码"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-3-使用场景"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Hash"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-1-命令"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-2-内部编码"><span class="nav-number">2.5.2.</span> <span class="nav-text">2.5.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-3-使用场景"><span class="nav-number">2.5.3.</span> <span class="nav-text">2.5.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-列表"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-1-命令"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-2-内部编码"><span class="nav-number">2.6.2.</span> <span class="nav-text">2.6.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-3-使用场景"><span class="nav-number">2.6.3.</span> <span class="nav-text">2.6.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-集合"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-1-命令"><span class="nav-number">2.7.1.</span> <span class="nav-text">2.7.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-2-内部编码"><span class="nav-number">2.7.2.</span> <span class="nav-text">2.7.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-3-使用场景"><span class="nav-number">2.7.3.</span> <span class="nav-text">2.7.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-有序集合"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 有序集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-1-命令"><span class="nav-number">2.8.1.</span> <span class="nav-text">2.8.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-2-内部编码"><span class="nav-number">2.8.2.</span> <span class="nav-text">2.8.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-3-使用场景"><span class="nav-number">2.8.3.</span> <span class="nav-text">2.8.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-键管理"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 键管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-1-单键管理"><span class="nav-number">2.9.1.</span> <span class="nav-text">2.9.1 单键管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-2-遍历键"><span class="nav-number">2.9.2.</span> <span class="nav-text">2.9.2 遍历键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-3-数据库管理"><span class="nav-number">2.9.3.</span> <span class="nav-text">2.9.3 数据库管理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-多功能"><span class="nav-number">3.</span> <span class="nav-text">3. 多功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-慢查询分析"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 慢查询分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-配置参数"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 配置参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-配置建议"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 配置建议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Redis-Shell"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Redis Shell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-redis-cli"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 redis-cli</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-redis-server"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 redis-server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-redis-benchmark"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3 redis-benchmark</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Pipeline"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Pipeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-事务与Lua"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 事务与Lua</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-事务"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-Lua"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2 Lua</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-3-Redis-与-Lua"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.4.3 Redis 与 Lua</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-4-案例"><span class="nav-number">3.4.4.</span> <span class="nav-text">3.4.4 案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-管理-Lua-脚本"><span class="nav-number">3.4.5.</span> <span class="nav-text">3.4.5 管理 Lua 脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Bitmaps"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 Bitmaps</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-1-命令"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-2-Bitmaps分析"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2 Bitmaps分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-HyperLogLog"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 HyperLogLog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-发布订阅"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 发布订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-1-命令"><span class="nav-number">3.7.1.</span> <span class="nav-text">3.7.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-2-使用场景"><span class="nav-number">3.7.2.</span> <span class="nav-text">3.7.2 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-GEO"><span class="nav-number">3.8.</span> <span class="nav-text">3.8 GEO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-1-命令"><span class="nav-number">3.8.1.</span> <span class="nav-text">3.8.1 命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-客户端"><span class="nav-number">4.</span> <span class="nav-text">4. 客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Jedis"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Jedis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-持久化"><span class="nav-number">5.</span> <span class="nav-text">5. 持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-RDB"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 RDB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-1-触发机制"><span class="nav-number">5.1.1.</span> <span class="nav-text">5.1.1 触发机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-2-RDB文件的处理"><span class="nav-number">5.1.2.</span> <span class="nav-text">5.1.2 RDB文件的处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-3-RDB-优缺点"><span class="nav-number">5.1.3.</span> <span class="nav-text">5.1.3 RDB 优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-AOF"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 AOF</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-使用-AOF"><span class="nav-number">5.2.1.</span> <span class="nav-text">5.2.1 使用 AOF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-命令写入"><span class="nav-number">5.2.2.</span> <span class="nav-text">5.2.2　命令写入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-3-文件同步"><span class="nav-number">5.2.3.</span> <span class="nav-text">5.2.3　文件同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-4-重写"><span class="nav-number">5.2.4.</span> <span class="nav-text">5.2.4　重写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-4-重启加载"><span class="nav-number">5.2.5.</span> <span class="nav-text">5.2.4　重启加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-5-文件校验"><span class="nav-number">5.2.6.</span> <span class="nav-text">5.2.5 文件校验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-复制"><span class="nav-number">6.</span> <span class="nav-text">6. 复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-配置"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-1-建立复制"><span class="nav-number">6.1.1.</span> <span class="nav-text">6.1.1 建立复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-2-断开复制"><span class="nav-number">6.1.2.</span> <span class="nav-text">6.1.2 断开复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-3-安全性"><span class="nav-number">6.1.3.</span> <span class="nav-text">6.1.3 安全性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-4-传输延迟"><span class="nav-number">6.1.4.</span> <span class="nav-text">6.1.4 传输延迟</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-拓扑"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 拓扑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-原理"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-问题"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-1-读写分离"><span class="nav-number">6.4.1.</span> <span class="nav-text">6.4.1 读写分离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-2-规避全量复制"><span class="nav-number">6.4.2.</span> <span class="nav-text">6.4.2 规避全量复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-3-规避复制风暴"><span class="nav-number">6.4.3.</span> <span class="nav-text">6.4.3 规避复制风暴</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-哨兵-Sentinel"><span class="nav-number">7.</span> <span class="nav-text">7. 哨兵(Sentinel)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-基本概念"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-1-主从复制的问题"><span class="nav-number">7.1.1.</span> <span class="nav-text">7.1.1 主从复制的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-2-Redis-Sentinel的高可用性"><span class="nav-number">7.1.2.</span> <span class="nav-text">7.1.2 Redis Sentinel的高可用性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-安装部署"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 安装部署</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Redis简介"><span class="nav-number">1.</span> <span class="nav-text">1. Redis简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是-Redis"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是 Redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Redis-可以做什么"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Redis 可以做什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-安装-Redis"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 安装 Redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Redis-常用命令和数据结构"><span class="nav-number">2.</span> <span class="nav-text">2. Redis 常用命令和数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-全局命令"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 全局命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-数据结构与内部编码"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 数据结构与内部编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-单线程架构"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 单线程架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-字符串"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-命令"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-内部编码"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-3-使用场景"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Hash"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-1-命令"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-2-内部编码"><span class="nav-number">2.5.2.</span> <span class="nav-text">2.5.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-3-使用场景"><span class="nav-number">2.5.3.</span> <span class="nav-text">2.5.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-列表"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-1-命令"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-2-内部编码"><span class="nav-number">2.6.2.</span> <span class="nav-text">2.6.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-3-使用场景"><span class="nav-number">2.6.3.</span> <span class="nav-text">2.6.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-集合"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-1-命令"><span class="nav-number">2.7.1.</span> <span class="nav-text">2.7.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-2-内部编码"><span class="nav-number">2.7.2.</span> <span class="nav-text">2.7.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-3-使用场景"><span class="nav-number">2.7.3.</span> <span class="nav-text">2.7.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-有序集合"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 有序集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-1-命令"><span class="nav-number">2.8.1.</span> <span class="nav-text">2.8.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-2-内部编码"><span class="nav-number">2.8.2.</span> <span class="nav-text">2.8.2 内部编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-3-使用场景"><span class="nav-number">2.8.3.</span> <span class="nav-text">2.8.3 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-键管理"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 键管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-1-单键管理"><span class="nav-number">2.9.1.</span> <span class="nav-text">2.9.1 单键管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-2-遍历键"><span class="nav-number">2.9.2.</span> <span class="nav-text">2.9.2 遍历键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-3-数据库管理"><span class="nav-number">2.9.3.</span> <span class="nav-text">2.9.3 数据库管理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-多功能"><span class="nav-number">3.</span> <span class="nav-text">3. 多功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-慢查询分析"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 慢查询分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-配置参数"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 配置参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-配置建议"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 配置建议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Redis-Shell"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Redis Shell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-redis-cli"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 redis-cli</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-redis-server"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 redis-server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-redis-benchmark"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3 redis-benchmark</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Pipeline"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Pipeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-事务与Lua"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 事务与Lua</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-事务"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-Lua"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2 Lua</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-3-Redis-与-Lua"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.4.3 Redis 与 Lua</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-4-案例"><span class="nav-number">3.4.4.</span> <span class="nav-text">3.4.4 案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-管理-Lua-脚本"><span class="nav-number">3.4.5.</span> <span class="nav-text">3.4.5 管理 Lua 脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Bitmaps"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 Bitmaps</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-1-命令"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-2-Bitmaps分析"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2 Bitmaps分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-HyperLogLog"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 HyperLogLog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-发布订阅"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 发布订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-1-命令"><span class="nav-number">3.7.1.</span> <span class="nav-text">3.7.1 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-2-使用场景"><span class="nav-number">3.7.2.</span> <span class="nav-text">3.7.2 使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-GEO"><span class="nav-number">3.8.</span> <span class="nav-text">3.8 GEO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-1-命令"><span class="nav-number">3.8.1.</span> <span class="nav-text">3.8.1 命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-客户端"><span class="nav-number">4.</span> <span class="nav-text">4. 客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Jedis"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Jedis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-持久化"><span class="nav-number">5.</span> <span class="nav-text">5. 持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-RDB"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 RDB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-1-触发机制"><span class="nav-number">5.1.1.</span> <span class="nav-text">5.1.1 触发机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-2-RDB文件的处理"><span class="nav-number">5.1.2.</span> <span class="nav-text">5.1.2 RDB文件的处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-3-RDB-优缺点"><span class="nav-number">5.1.3.</span> <span class="nav-text">5.1.3 RDB 优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-AOF"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 AOF</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-使用-AOF"><span class="nav-number">5.2.1.</span> <span class="nav-text">5.2.1 使用 AOF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-命令写入"><span class="nav-number">5.2.2.</span> <span class="nav-text">5.2.2　命令写入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-3-文件同步"><span class="nav-number">5.2.3.</span> <span class="nav-text">5.2.3　文件同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-4-重写"><span class="nav-number">5.2.4.</span> <span class="nav-text">5.2.4　重写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-4-重启加载"><span class="nav-number">5.2.5.</span> <span class="nav-text">5.2.4　重启加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-5-文件校验"><span class="nav-number">5.2.6.</span> <span class="nav-text">5.2.5 文件校验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-复制"><span class="nav-number">6.</span> <span class="nav-text">6. 复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-配置"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-1-建立复制"><span class="nav-number">6.1.1.</span> <span class="nav-text">6.1.1 建立复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-2-断开复制"><span class="nav-number">6.1.2.</span> <span class="nav-text">6.1.2 断开复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-3-安全性"><span class="nav-number">6.1.3.</span> <span class="nav-text">6.1.3 安全性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-4-传输延迟"><span class="nav-number">6.1.4.</span> <span class="nav-text">6.1.4 传输延迟</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-拓扑"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 拓扑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-原理"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-问题"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-1-读写分离"><span class="nav-number">6.4.1.</span> <span class="nav-text">6.4.1 读写分离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-2-规避全量复制"><span class="nav-number">6.4.2.</span> <span class="nav-text">6.4.2 规避全量复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-3-规避复制风暴"><span class="nav-number">6.4.3.</span> <span class="nav-text">6.4.3 规避复制风暴</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-哨兵-Sentinel"><span class="nav-number">7.</span> <span class="nav-text">7. 哨兵(Sentinel)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-基本概念"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-1-主从复制的问题"><span class="nav-number">7.1.1.</span> <span class="nav-text">7.1.1 主从复制的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-2-Redis-Sentinel的高可用性"><span class="nav-number">7.1.2.</span> <span class="nav-text">7.1.2 Redis Sentinel的高可用性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-安装部署"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 安装部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-API"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-客户端连接"><span class="nav-number">7.4.</span> <span class="nav-text">7.4 客户端连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-实现原理"><span class="nav-number">7.5.</span> <span class="nav-text">7.5 实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-6-高可用读写分离"><span class="nav-number">7.6.</span> <span class="nav-text">7.6 高可用读写分离</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-集群"><span class="nav-number">8.</span> <span class="nav-text">8. 集群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-数据分布"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 数据分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-搭建集群"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 搭建集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-节点通信"><span class="nav-number">8.3.</span> <span class="nav-text">8.3 节点通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-集群伸缩"><span class="nav-number">8.4.</span> <span class="nav-text">8.4 集群伸缩</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-1-扩容集群"><span class="nav-number">8.4.1.</span> <span class="nav-text">8.4.1 扩容集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-2-收缩集群"><span class="nav-number">8.4.2.</span> <span class="nav-text">8.4.2 收缩集群</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-请求路由"><span class="nav-number">8.5.</span> <span class="nav-text">8.5 请求路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-1-请求重定向"><span class="nav-number">8.5.1.</span> <span class="nav-text">8.5.1 请求重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-2-Smart客户端"><span class="nav-number">8.5.2.</span> <span class="nav-text">8.5.2 Smart客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-3-ASK-重定向异常"><span class="nav-number">8.5.3.</span> <span class="nav-text">8.5.3 ASK 重定向异常</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-6-故障转移"><span class="nav-number">8.6.</span> <span class="nav-text">8.6 故障转移</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-6-1-故障发现"><span class="nav-number">8.6.1.</span> <span class="nav-text">8.6.1 故障发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-6-2-故障恢复"><span class="nav-number">8.6.2.</span> <span class="nav-text">8.6.2 故障恢复</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1901,7 +2263,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
