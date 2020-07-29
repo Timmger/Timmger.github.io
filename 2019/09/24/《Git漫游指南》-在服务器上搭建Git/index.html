@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="两岸青山相对出，孤帆一片日边来。  1. 服务器上搭建Git 把现有仓库导出为裸仓库(不包含当前工作目录)123$ git clone --bare my_project my_project.gitCloning into bare repository &apos;my_project.git&apos;...done.  把裸仓库放到服务器上所有的仓库放在 /opt/git 目录下 1$ scp -r my_">
+<meta name="description" content="1. 服务器上搭建Git 把现有仓库导出为裸仓库(不包含当前工作目录)123$ git clone --bare my_project my_project.gitCloning into bare repository &apos;my_project.git&apos;...done.  把裸仓库放到服务器上所有的仓库放在 /opt/git 目录下 1$ scp -r my_project.git user@gi">
 <meta name="keywords" content="git,分布式,DVCS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Git漫游指南》- 在服务器上搭建Git">
 <meta property="og:url" content="https://timmger.github.io/2019/09/24/《Git漫游指南》-在服务器上搭建Git/index.html">
 <meta property="og:site_name" content="Time Manager">
-<meta property="og:description" content="两岸青山相对出，孤帆一片日边来。  1. 服务器上搭建Git 把现有仓库导出为裸仓库(不包含当前工作目录)123$ git clone --bare my_project my_project.gitCloning into bare repository &apos;my_project.git&apos;...done.  把裸仓库放到服务器上所有的仓库放在 /opt/git 目录下 1$ scp -r my_">
+<meta property="og:description" content="1. 服务器上搭建Git 把现有仓库导出为裸仓库(不包含当前工作目录)123$ git clone --bare my_project my_project.gitCloning into bare repository &apos;my_project.git&apos;...done.  把裸仓库放到服务器上所有的仓库放在 /opt/git 目录下 1$ scp -r my_project.git user@gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-25T23:48:57.435Z">
+<meta property="og:updated_time" content="2020-07-29T02:54:37.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Git漫游指南》- 在服务器上搭建Git">
-<meta name="twitter:description" content="两岸青山相对出，孤帆一片日边来。  1. 服务器上搭建Git 把现有仓库导出为裸仓库(不包含当前工作目录)123$ git clone --bare my_project my_project.gitCloning into bare repository &apos;my_project.git&apos;...done.  把裸仓库放到服务器上所有的仓库放在 /opt/git 目录下 1$ scp -r my_">
+<meta name="twitter:description" content="1. 服务器上搭建Git 把现有仓库导出为裸仓库(不包含当前工作目录)123$ git clone --bare my_project my_project.gitCloning into bare repository &apos;my_project.git&apos;...done.  把裸仓库放到服务器上所有的仓库放在 /opt/git 目录下 1$ scp -r my_project.git user@gi">
 
 
 
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  505
+                  491
                 </span>
               
 
@@ -426,10 +426,7 @@
       
 
       
-        <blockquote>
-<p><strong>两岸青山相对出，孤帆一片日边来。</strong></p>
-</blockquote>
-<h2 id="1-服务器上搭建Git"><a href="#1-服务器上搭建Git" class="headerlink" title="1. 服务器上搭建Git"></a>1. 服务器上搭建Git</h2><hr>
+        <h2 id="1-服务器上搭建Git"><a href="#1-服务器上搭建Git" class="headerlink" title="1. 服务器上搭建Git"></a>1. 服务器上搭建Git</h2><hr>
 <h3 id="把现有仓库导出为裸仓库-不包含当前工作目录"><a href="#把现有仓库导出为裸仓库-不包含当前工作目录" class="headerlink" title="把现有仓库导出为裸仓库(不包含当前工作目录)"></a>把现有仓库导出为裸仓库(不包含当前工作目录)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> --bare my_project my_project.git</span><br><span class="line">Cloning into bare repository <span class="string">'my_project.git'</span>...</span><br><span class="line"><span class="keyword">done</span>.</span><br></pre></td></tr></table></figure>
 
 <h3 id="把裸仓库放到服务器上"><a href="#把裸仓库放到服务器上" class="headerlink" title="把裸仓库放到服务器上"></a>把裸仓库放到服务器上</h3><p>所有的仓库放在 /opt/git 目录下</p>

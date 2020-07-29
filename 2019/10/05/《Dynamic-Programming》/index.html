@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="君子藏器于身，待时而动；天下有道则见，无道则隐；  1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常">
+<meta name="description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
 <meta name="keywords" content="leetcode,dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Dynamic Programming》(一)">
 <meta property="og:url" content="https://timmger.github.io/2019/10/05/《Dynamic-Programming》/index.html">
 <meta property="og:site_name" content="Time Manager">
-<meta property="og:description" content="君子藏器于身，待时而动；天下有道则见，无道则隐；  1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常">
+<meta property="og:description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/10/05/UwtEFVuheSJaZGb.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/05/m2xOn7RuJjYsrLt.png">
@@ -98,10 +98,10 @@
 <meta property="og:image" content="https://i.loli.net/2019/10/11/Q9g6xmfCcouhXsz.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/11/FIAzTwonWUYaj7m.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/11/hsLqm1FMdEV6rzu.png">
-<meta property="og:updated_time" content="2019-11-27T02:21:40.797Z">
+<meta property="og:updated_time" content="2020-07-29T02:54:51.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Dynamic Programming》(一)">
-<meta name="twitter:description" content="君子藏器于身，待时而动；天下有道则见，无道则隐；  1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常">
+<meta name="twitter:description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
 <meta name="twitter:image" content="https://i.loli.net/2019/10/05/UwtEFVuheSJaZGb.png">
 
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k
+                  1.9k
                 </span>
               
 
@@ -436,10 +436,7 @@
       
 
       
-        <blockquote>
-<p>君子藏器于身，待时而动；天下有道则见，无道则隐；</p>
-</blockquote>
-<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>动态规划主要应用于<strong>纯递归</strong>问题的优化。只要遇到对相同输入的<strong>重复调用</strong>时，我们都可以使用动态规划来优化它，主要的思路就是简化<strong>子问题</strong>结果的存储,这样当之后求解子问题时，我们就不用重复计算。<br>动态规划算法可以将时间复杂度从<strong>指数</strong>时间降到<strong>多项式</strong>时间，通常有以下4个步骤来设计：  </p>
+        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>动态规划主要应用于<strong>纯递归</strong>问题的优化。只要遇到对相同输入的<strong>重复调用</strong>时，我们都可以使用动态规划来优化它，主要的思路就是简化<strong>子问题</strong>结果的存储,这样当之后求解子问题时，我们就不用重复计算。<br>动态规划算法可以将时间复杂度从<strong>指数</strong>时间降到<strong>多项式</strong>时间，通常有以下4个步骤来设计：  </p>
 <ol>
 <li>刻画一个最优解的结构特征</li>
 <li>递归地定义最优解的值</li>

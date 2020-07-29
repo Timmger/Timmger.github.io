@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="山随平野尽，江入大荒流。  1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点">
+<meta name="description" content="1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点：不可协同工作，风险集中 集中">
 <meta name="keywords" content="git,分布式,DVCS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Git漫游指南》- Git命令">
 <meta property="og:url" content="https://timmger.github.io/2019/09/19/《Git漫游指南》/index.html">
 <meta property="og:site_name" content="Time Manager">
-<meta property="og:description" content="山随平野尽，江入大荒流。  1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点">
+<meta property="og:description" content="1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点：不可协同工作，风险集中 集中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-25T02:44:29.524Z">
+<meta property="og:updated_time" content="2020-07-29T02:54:13.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Git漫游指南》- Git命令">
-<meta name="twitter:description" content="山随平野尽，江入大荒流。  1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点">
+<meta name="twitter:description" content="1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点：不可协同工作，风险集中 集中">
 
 
 
@@ -426,10 +426,7 @@
       
 
       
-        <blockquote>
-<p><strong>山随平野尽，江入大荒流。</strong></p>
-</blockquote>
-<h2 id="1-版本控制"><a href="#1-版本控制" class="headerlink" title="1. 版本控制"></a>1. 版本控制</h2><h3 id="1-1-什么是版本控制"><a href="#1-1-什么是版本控制" class="headerlink" title="1.1 什么是版本控制"></a>1.1 什么是版本控制</h3><p><strong>版本控制</strong>是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。<strong>版本控制系统(VCS)</strong>，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。</p>
+        <h2 id="1-版本控制"><a href="#1-版本控制" class="headerlink" title="1. 版本控制"></a>1. 版本控制</h2><h3 id="1-1-什么是版本控制"><a href="#1-1-什么是版本控制" class="headerlink" title="1.1 什么是版本控制"></a>1.1 什么是版本控制</h3><p><strong>版本控制</strong>是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。<strong>版本控制系统(VCS)</strong>，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。</p>
 <h3 id="1-2-版本控制系统类别"><a href="#1-2-版本控制系统类别" class="headerlink" title="1.2 版本控制系统类别"></a>1.2 版本控制系统类别</h3><h4 id="本地版本控制系统"><a href="#本地版本控制系统" class="headerlink" title="本地版本控制系统"></a>本地版本控制系统</h4><p>RCS  </p>
 <p><strong>原理</strong>：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。<br><strong>缺点</strong>：不可协同工作，风险集中</p>
 <h4 id="集中的版本控制系统（CVCS）"><a href="#集中的版本控制系统（CVCS）" class="headerlink" title="集中的版本控制系统（CVCS）"></a>集中的版本控制系统（CVCS）</h4><p>CVS、Subversion(SVN)、Perforce  </p>
