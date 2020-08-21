@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="git,分布式,DVCS,">
+  <meta name="keywords" content="分布式,git,DVCS,">
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点：不可协同工作，风险集中 集中">
-<meta name="keywords" content="git,分布式,DVCS">
+<meta name="keywords" content="分布式,git,DVCS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Git漫游指南》- Git命令">
 <meta property="og:url" content="https://timmger.github.io/2019/09/19/《Git漫游指南》/index.html">
 <meta property="og:site_name" content="Time Manager">
 <meta property="og:description" content="1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点：不可协同工作，风险集中 集中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-29T02:54:13.736Z">
+<meta property="og:updated_time" content="2020-08-18T08:06:25.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Git漫游指南》- Git命令">
 <meta name="twitter:description" content="1. 版本控制1.1 什么是版本控制版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。版本控制系统(VCS)，在需要的时候可以将文件回溯到之前的状态，还可以显示当前版本与之前版本文件改动的细节。 1.2 版本控制系统类别本地版本控制系统RCS   原理：在硬盘上保存补丁集（文件修订前后变化），通过应用补丁集，可以计算出各个版本文件内容。缺点：不可协同工作，风险集中 集中">
@@ -450,8 +450,7 @@
 <h4 id="初始化Git仓库"><a href="#初始化Git仓库" class="headerlink" title="初始化Git仓库"></a>初始化Git仓库</h4><blockquote>
 <p><strong>$ git init</strong>：创建一个<code>.git</code>的子目录</p>
 </blockquote>
-<p>追踪文件并提交</p>
-<blockquote>
+<h4 id="追踪文件并提交"><a href="#追踪文件并提交" class="headerlink" title="追踪文件并提交"></a>追踪文件并提交</h4><blockquote>
 <p><strong>$ git add *.c</strong><br><strong>$ git add LICENSE</strong><br><strong>$ git commit -m ‘initial project version’</strong></p>
 </blockquote>
 <h4 id="克隆现有仓库"><a href="#克隆现有仓库" class="headerlink" title="克隆现有仓库"></a>克隆现有仓库</h4><blockquote>
@@ -714,9 +713,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
-          
             <a href="/tags/分布式/" rel="tag"><i class="fa fa-tag"></i> 分布式</a>
+          
+            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
           
             <a href="/tags/DVCS/" rel="tag"><i class="fa fa-tag"></i> DVCS</a>
           
@@ -843,7 +842,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -854,7 +853,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -930,7 +929,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-版本控制"><span class="nav-number">1.</span> <span class="nav-text">1. 版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是版本控制"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是版本控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-版本控制系统类别"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 版本控制系统类别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地版本控制系统"><span class="nav-number">1.2.1.</span> <span class="nav-text">本地版本控制系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集中的版本控制系统（CVCS）"><span class="nav-number">1.2.2.</span> <span class="nav-text">集中的版本控制系统（CVCS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式版本控制系统（DVCS）"><span class="nav-number">1.2.3.</span> <span class="nav-text">分布式版本控制系统（DVCS）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Git工作流程"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Git工作流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-命令行"><span class="nav-number">2.</span> <span class="nav-text">2. 命令行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-初次配置"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 初次配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-仓库"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化Git仓库"><span class="nav-number">2.2.1.</span> <span class="nav-text">初始化Git仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#克隆现有仓库"><span class="nav-number">2.2.2.</span> <span class="nav-text">克隆现有仓库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-记录每次更新"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 记录每次更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-查看提交历史"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 查看提交历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-撤销操作"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 撤销操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-远程仓库的使用"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 远程仓库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显示远程仓库"><span class="nav-number">2.6.1.</span> <span class="nav-text">显示远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加远程仓库"><span class="nav-number">2.6.2.</span> <span class="nav-text">添加远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从远程仓库抓取和拉取"><span class="nav-number">2.6.3.</span> <span class="nav-text">从远程仓库抓取和拉取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推送到远程仓库"><span class="nav-number">2.6.4.</span> <span class="nav-text">推送到远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看远程仓库"><span class="nav-number">2.6.5.</span> <span class="nav-text">查看远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程仓库的移除与重命名"><span class="nav-number">2.6.6.</span> <span class="nav-text">远程仓库的移除与重命名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-打标签"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 打标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列出标签"><span class="nav-number">2.7.1.</span> <span class="nav-text">列出标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建附注标签"><span class="nav-number">2.7.2.</span> <span class="nav-text">创建附注标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建轻量标签"><span class="nav-number">2.7.3.</span> <span class="nav-text">创建轻量标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后期打标签"><span class="nav-number">2.7.4.</span> <span class="nav-text">后期打标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示推送标签"><span class="nav-number">2.7.5.</span> <span class="nav-text">显示推送标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除标签"><span class="nav-number">2.7.6.</span> <span class="nav-text">删除标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-Git别名"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 Git别名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-参考"><span class="nav-number">3.</span> <span class="nav-text">3. 参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-版本控制"><span class="nav-number">1.</span> <span class="nav-text">1. 版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是版本控制"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是版本控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-版本控制系统类别"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 版本控制系统类别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地版本控制系统"><span class="nav-number">1.2.1.</span> <span class="nav-text">本地版本控制系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集中的版本控制系统（CVCS）"><span class="nav-number">1.2.2.</span> <span class="nav-text">集中的版本控制系统（CVCS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式版本控制系统（DVCS）"><span class="nav-number">1.2.3.</span> <span class="nav-text">分布式版本控制系统（DVCS）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Git工作流程"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Git工作流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-命令行"><span class="nav-number">2.</span> <span class="nav-text">2. 命令行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-初次配置"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 初次配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-仓库"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化Git仓库"><span class="nav-number">2.2.1.</span> <span class="nav-text">初始化Git仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#追踪文件并提交"><span class="nav-number">2.2.2.</span> <span class="nav-text">追踪文件并提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#克隆现有仓库"><span class="nav-number">2.2.3.</span> <span class="nav-text">克隆现有仓库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-记录每次更新"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 记录每次更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-查看提交历史"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 查看提交历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-撤销操作"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 撤销操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-远程仓库的使用"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 远程仓库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显示远程仓库"><span class="nav-number">2.6.1.</span> <span class="nav-text">显示远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加远程仓库"><span class="nav-number">2.6.2.</span> <span class="nav-text">添加远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从远程仓库抓取和拉取"><span class="nav-number">2.6.3.</span> <span class="nav-text">从远程仓库抓取和拉取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推送到远程仓库"><span class="nav-number">2.6.4.</span> <span class="nav-text">推送到远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看远程仓库"><span class="nav-number">2.6.5.</span> <span class="nav-text">查看远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程仓库的移除与重命名"><span class="nav-number">2.6.6.</span> <span class="nav-text">远程仓库的移除与重命名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-打标签"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 打标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列出标签"><span class="nav-number">2.7.1.</span> <span class="nav-text">列出标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建附注标签"><span class="nav-number">2.7.2.</span> <span class="nav-text">创建附注标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建轻量标签"><span class="nav-number">2.7.3.</span> <span class="nav-text">创建轻量标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后期打标签"><span class="nav-number">2.7.4.</span> <span class="nav-text">后期打标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示推送标签"><span class="nav-number">2.7.5.</span> <span class="nav-text">显示推送标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除标签"><span class="nav-number">2.7.6.</span> <span class="nav-text">删除标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-Git别名"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 Git别名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-参考"><span class="nav-number">3.</span> <span class="nav-text">3. 参考</span></a></li></ol></div>
             
 
           </div>

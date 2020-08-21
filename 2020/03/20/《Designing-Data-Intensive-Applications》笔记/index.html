@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="leetcode,dynamic programming,">
+  <meta name="keywords" content="数据系统,分布式,">
 
 
 
@@ -81,28 +81,21 @@
 
 
 
-<meta name="description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
-<meta name="keywords" content="leetcode,dynamic programming">
+<meta name="description" content="一、数据系统基础 1. 可靠、可扩展和可维护1.1 认识数据系统（data system）一个数据系统架构，往往包含了多个组件，如缓存层、主数据库、全文索引(如ElasticSearch)、消息队列等，应用代码使得各个组件之间保持数据同步。影响数据系统设计的因素有很多，我们集中于其中三个:    可靠性（Reliability）出现意外情况(硬件故障，软件错误，人为失误等)，系统保持正常运转  可">
+<meta name="keywords" content="数据系统,分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Dynamic Programming》(一)">
-<meta property="og:url" content="https://timmger.github.io/2019/10/05/《Dynamic-Programming》/index.html">
+<meta property="og:title" content="《Designing Data-Intensive Applications》笔记">
+<meta property="og:url" content="https://timmger.github.io/2020/03/20/《Designing-Data-Intensive-Applications》笔记/index.html">
 <meta property="og:site_name" content="Time Manager">
-<meta property="og:description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
+<meta property="og:description" content="一、数据系统基础 1. 可靠、可扩展和可维护1.1 认识数据系统（data system）一个数据系统架构，往往包含了多个组件，如缓存层、主数据库、全文索引(如ElasticSearch)、消息队列等，应用代码使得各个组件之间保持数据同步。影响数据系统设计的因素有很多，我们集中于其中三个:    可靠性（Reliability）出现意外情况(硬件故障，软件错误，人为失误等)，系统保持正常运转  可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2019/10/05/UwtEFVuheSJaZGb.png">
-<meta property="og:image" content="https://i.loli.net/2019/10/05/m2xOn7RuJjYsrLt.png">
-<meta property="og:image" content="https://i.loli.net/2019/10/08/Mbez7q3S28ocD16.png">
-<meta property="og:image" content="https://i.loli.net/2019/10/10/7UzpIxFtPwuv8rQ.png">
-<meta property="og:image" content="https://i.loli.net/2019/10/08/Av1ImlLMyRW9sP6.png">
-<meta property="og:image" content="https://i.loli.net/2019/10/10/hmELgBH4jUM2rGt.png">
-<meta property="og:image" content="https://i.loli.net/2019/10/11/Q9g6xmfCcouhXsz.png">
-<meta property="og:image" content="https://i.loli.net/2019/10/11/FIAzTwonWUYaj7m.png">
-<meta property="og:image" content="https://i.loli.net/2019/10/11/hsLqm1FMdEV6rzu.png">
-<meta property="og:updated_time" content="2020-07-29T02:54:51.120Z">
+<meta property="og:image" content="https://i.loli.net/2020/03/20/lH1nuQ5S3GRIY6B.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/20/FpMf4ubQHhnyT7r.png">
+<meta property="og:updated_time" content="2020-03-23T06:17:20.902Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《Dynamic Programming》(一)">
-<meta name="twitter:description" content="1. 概述动态规划主要应用于纯递归问题的优化。只要遇到对相同输入的重复调用时，我们都可以使用动态规划来优化它，主要的思路就是简化子问题结果的存储,这样当之后求解子问题时，我们就不用重复计算。动态规划算法可以将时间复杂度从指数时间降到多项式时间，通常有以下4个步骤来设计：    刻画一个最优解的结构特征 递归地定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算出的信息构造一个最优解">
-<meta name="twitter:image" content="https://i.loli.net/2019/10/05/UwtEFVuheSJaZGb.png">
+<meta name="twitter:title" content="《Designing Data-Intensive Applications》笔记">
+<meta name="twitter:description" content="一、数据系统基础 1. 可靠、可扩展和可维护1.1 认识数据系统（data system）一个数据系统架构，往往包含了多个组件，如缓存层、主数据库、全文索引(如ElasticSearch)、消息队列等，应用代码使得各个组件之间保持数据同步。影响数据系统设计的因素有很多，我们集中于其中三个:    可靠性（Reliability）出现意外情况(硬件故障，软件错误，人为失误等)，系统保持正常运转  可">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/20/lH1nuQ5S3GRIY6B.png">
 
 
 
@@ -132,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://timmger.github.io/2019/10/05/《Dynamic-Programming》/">
+  <link rel="canonical" href="https://timmger.github.io/2020/03/20/《Designing-Data-Intensive-Applications》笔记/">
 
 
 
 
 
-  <title>《Dynamic Programming》(一) | Time Manager</title>
+  <title>《Designing Data-Intensive Applications》笔记 | Time Manager</title>
   
 
 
@@ -295,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2019/10/05/《Dynamic-Programming》/">
+    <link itemprop="mainEntityOfPage" href="https://timmger.github.io/2020/03/20/《Designing-Data-Intensive-Applications》笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Allen Timmger">
@@ -312,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《Dynamic Programming》(一)</h1>
+          <h1 class="post-title" itemprop="name headline">《Designing Data-Intensive Applications》笔记</h1>
         
 
         <div class="post-meta">
@@ -324,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-05T09:24:22+08:00">
-                2019-10-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T15:14:21+08:00">
+                2020-03-20
               </time>
             
 
@@ -347,8 +340,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithms</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -365,8 +358,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/05/《Dynamic-Programming》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/05/《Dynamic-Programming》/" itemprop="commentCount"></span>
+                <a href="/2020/03/20/《Designing-Data-Intensive-Applications》笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/20/《Designing-Data-Intensive-Applications》笔记/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -374,7 +367,7 @@
 
           
           
-             <span id="/2019/10/05/《Dynamic-Programming》/" class="leancloud_visitors" data-flag-title="《Dynamic Programming》(一)">
+             <span id="/2020/03/20/《Designing-Data-Intensive-Applications》笔记/" class="leancloud_visitors" data-flag-title="《Designing Data-Intensive Applications》笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -399,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.9k
+                  1k
                 </span>
               
 
@@ -415,7 +408,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  3
                 </span>
               
             </div>
@@ -436,65 +429,76 @@
       
 
       
-        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>动态规划主要应用于<strong>纯递归</strong>问题的优化。只要遇到对相同输入的<strong>重复调用</strong>时，我们都可以使用动态规划来优化它，主要的思路就是简化<strong>子问题</strong>结果的存储,这样当之后求解子问题时，我们就不用重复计算。<br>动态规划算法可以将时间复杂度从<strong>指数</strong>时间降到<strong>多项式</strong>时间，通常有以下4个步骤来设计：  </p>
+        <h2 id="一、数据系统基础"><a href="#一、数据系统基础" class="headerlink" title="一、数据系统基础"></a><strong>一、数据系统基础</strong></h2><hr>
+<h2 id="1-可靠、可扩展和可维护"><a href="#1-可靠、可扩展和可维护" class="headerlink" title="1. 可靠、可扩展和可维护"></a>1. 可靠、可扩展和可维护</h2><h3 id="1-1-认识数据系统（data-system）"><a href="#1-1-认识数据系统（data-system）" class="headerlink" title="1.1 认识数据系统（data system）"></a>1.1 认识数据系统（data system）</h3><p>一个数据系统架构，往往包含了多个组件，如<strong>缓存层</strong>、<strong>主数据库</strong>、<strong>全文索引</strong>(如ElasticSearch)、<strong>消息队列</strong>等，<strong>应用代码</strong>使得各个组件之间保持数据同步。<br>影响数据系统设计的因素有很多，我们集中于其中三个:  </p>
+<ul>
+<li><p><strong>可靠性（Reliability）</strong><br>出现意外情况(硬件故障，软件错误，人为失误等)，系统保持正常运转</p>
+</li>
+<li><p><strong>可扩展性（Scalability）</strong><br>随数据规模增长，系统以合理方式匹配这种增长</p>
+</li>
+<li><p><strong>可维护性（Maintainability）</strong><br>即便时间推移，新人员加入系统开发维护，系统仍能高效运转</p>
+</li>
+</ul>
+<h3 id="1-2-可靠性"><a href="#1-2-可靠性" class="headerlink" title="1.2 可靠性"></a>1.2 可靠性</h3><p>高可靠性系统都有完善的<strong>容错机制</strong>(fault-tolerant)，从而避免由故障(fault)引发系统失效。以下为<strong>可消除</strong>的故障类型：  </p>
+<h4 id="硬件故障"><a href="#硬件故障" class="headerlink" title="硬件故障"></a>硬件故障</h4><ul>
+<li><p><strong>表现</strong>：硬盘崩溃、内存故障、断电、断网等。  </p>
+</li>
+<li><p><strong>解决方案</strong>:   </p>
+</li>
+</ul>
 <ol>
-<li>刻画一个最优解的结构特征</li>
-<li>递归地定义最优解的值</li>
-<li>计算最优解的值，通常采用自底向上的方法</li>
-<li>利用计算出的信息构造一个最优解</li>
+<li>添加硬件冗余，如配置磁盘阵列(RAID)、配双电源、热插拔CPU、不间断电源(UPS)等</li>
+<li>软件容错，如热修补丁(hotfix)</li>
 </ol>
-<h2 id="2-最长递增子序列"><a href="#2-最长递增子序列" class="headerlink" title="2. 最长递增子序列"></a>2. 最长递增子序列</h2><p><strong>问题描述</strong>：<br>在最长子序列中，输入是一串数列 $a_1$, … , $a_n$。<strong>子序列</strong>是这些数的任意子集，形如$a_{i_1},a_{i_2},{…} ,a_{i_k}$ ,其中 $1\le{i_1}\lt{i_2}\lt{…}\lt{i_k}\le{n}$，<strong>递增子序列</strong>是数字严格增大的子序列。我们需要找到最长的递增子序列的长度（顶点数）。例如：  </p>
-<p><img src="https://i.loli.net/2019/10/05/UwtEFVuheSJaZGb.png" alt="资源 1.png"></p>
-<p>{6,1,8,5,3,6,9,7}的最长递增子序列为{1,3,6,9}，长度为4</p>
-<p><strong>问题分析</strong>：<br>为了更好地理解问题的解空间，我们构造一个<strong>有向无环图</strong>(dag)：<br>为每个元素$a_i$构造一个顶点$i$, 并建立一条边｛$i$,$j$｝，且${a_i}\le{a_j}$, ${i}\lt{j}$</p>
-<p><img src="https://i.loli.net/2019/10/05/m2xOn7RuJjYsrLt.png" alt="资源 2.png"></p>
-<p>所以问题转变为求解<strong>有向无环图</strong> DAG(V,E) 的<strong>最长路径</strong>:  </p>
-<ol>
-<li>首先，我们定义$L(j)$为最长路径的长度（即结束于j的最长路径上的顶点数）</li>
-<li>通过数学归纳法，假设已知$L(i)$（$i$为$j$ 的父节点）,只要找到$L(i)$的最大值, $L(j)$就等于 $max\{ L(i):(i,j)\in E \} + 1$</li>
-<li>对于$j = 1,2,…,n$, 返回最大值</li>
-</ol>
-<p>Java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">LengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] L = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</span><br><span class="line">    <span class="comment">// 初始化 L 数组为1</span></span><br><span class="line">    Arrays.fill(L,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; j; i++) &#123;</span><br><span class="line">            <span class="comment">//判断 i 是否为 j 的父节点</span></span><br><span class="line">            <span class="keyword">if</span>(a[j] &gt; a[i]) &#123;</span><br><span class="line">                L[j] = Math.max(L[j], L[i] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 求出L数组的最大元素</span></span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; L.length; i++) &#123;</span><br><span class="line">        len = Math.max(len, L[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="软件错误"><a href="#软件错误" class="headerlink" title="软件错误"></a>软件错误</h4><ul>
+<li><strong>表现</strong>：碰到特定条件会触发软件bug</li>
+<li><strong>解决方案</strong>：做好测试</li>
+</ul>
+<h4 id="人为失误"><a href="#人为失误" class="headerlink" title="人为失误"></a>人为失误</h4><ul>
+<li><strong>表现</strong>：人类是不可靠的</li>
+<li><strong>解决方案</strong>：添加更多限制条件、分离易错接口(沙箱)、充分测试、恢复机制(回滚)、监控系统、做好管理培训</li>
+</ul>
+<h3 id="1-3-可扩展性"><a href="#1-3-可扩展性" class="headerlink" title="1.3 可扩展性"></a>1.3 可扩展性</h3><p>可扩展用来描述系统的负载增加能力，随着数据规模增加，如何添加计算资源处理额外负载</p>
+<h4 id="描述负载"><a href="#描述负载" class="headerlink" title="描述负载"></a>描述负载</h4><p>使用负载参数描述当前系统负载，如web每秒请求数、数据库写入的比例、同时活动用户数、缓存命中率</p>
+<p>比如Twitter，两个典型业务操作：</p>
+<ul>
+<li>发布tweet消息</li>
+<li>浏览主页讯息</li>
+</ul>
+<p>面对流量高峰的解决方案：</p>
+<blockquote>
+<p>1.当前用户查看时间线，首先查找所有的关注对象，列出这些人的所有tweet, 最后以时间排序合并</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> tweets.*, users.* </span><br><span class="line">  <span class="keyword">FROM</span> tweets <span class="keyword">JOIN</span> <span class="keyword">users</span> <span class="keyword">ON</span> tweets.sender_id = users.id</span><br><span class="line">              <span class="keyword">JOIN</span> <span class="keyword">follows</span> <span class="keyword">ON</span> follows.followee_id = users.id</span><br><span class="line"><span class="keyword">WHERE</span> follows.follower_id = <span class="keyword">current_user</span></span><br></pre></td></tr></table></figure>
 
-<p>算法的<strong>时间复杂度</strong>为$O(n^2)$, <strong>空间复杂度</strong>为$O(n)$<br>因此，可以看到，动态规划的核心思想即：<strong>数学归纳</strong>思想，对于一个最优解，我们假设给定一个较小的子问题，如何根据已知条件求解出它，并递归划分成更小的子问题，最终求出最优解。</p>
-<p>【<strong>注</strong>】： 该题还有一个二分查找解法，时间复杂度为$O(nlogn)$,<br>该解涉及到叫“Patience Sorting”的排序算法，有兴趣的童鞋可以了解一下(<a href="https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/</a>)</p>
-<h2 id="3-编辑距离-Edit-distance"><a href="#3-编辑距离-Edit-distance" class="headerlink" title="3. 编辑距离(Edit distance)"></a>3. 编辑距离(Edit distance)</h2><p>在机器翻译中，当拼写检查器遇到一个可能的单词拼写错误时，它就会在字典里寻找其他近似的单词，这种情况下，怎么根据近似度找出最合适的单词？<br>一种衡量两个字符串距离的方法是比较它们对齐或匹配的程度，比如 <code>SNOWY</code> 和 <code>SUNNY</code>:  </p>
-<p><img src="https://i.loli.net/2019/10/08/Mbez7q3S28ocD16.png" alt="资源 3.png"></p>
-<p><code>&quot;--&quot;</code> 表示“间断(gap)”，任何数量的”gap”可以插入到字符串的任何位置, <code>cost</code> 表示字母不同的列数，而<strong>编辑距离</strong>就是最小的 <code>cost</code> 的值。比如<code>SNOWY</code> 和 <code>SUNNY</code> 的编辑距离为3。<br>编辑距离之所以如此命名，是因为它表示了将一个字符串转换为另一个字符串时，字符编辑操作(删除，插入，替换)的最小数，本例中，编辑距离显示三个操作：插入 U， 替换 O –&gt; N, 删除 W。</p>
-<h3 id="动态规划解法"><a href="#动态规划解法" class="headerlink" title="动态规划解法"></a>动态规划解法</h3><p>当解决一个动态规划问题时，最关键的问题是，它的<strong>子问题</strong>是什么？只要找到它，就可以通过<strong>数学归纳</strong>的思想来解决：按照递增的顺序，迭代地解决子问题。  </p>
-<p>OK, 我们的目标是找到两个字符串 $x[1…m]$ 和 $y[1…n]$ 的编辑距离，怎么定义一个好的子问题，它应该是解决<strong>整个问题的一部分</strong>的方法。好，我们不妨来计算两个字符串的前缀部分 $x[1…i]$ 和 $y[1…j]$ 的编辑距离，称之为 $E(i,j)$, 我们的最终目标就是计算出 $E(m,n)$。</p>
-<p>接着，我们需要知道怎么把 $E(i,j)$ 划分成更小的子问题：<br>首先考虑 $x[1…i]$ 和 $y[1…j]$ 的最右列的排列情况，可分为以下三种：</p>
-<p><img src="https://i.loli.net/2019/10/10/7UzpIxFtPwuv8rQ.png" alt="资源 5.png"></p>
-<p>第一种情况的列的 <code>cost</code> 为1，剩余对齐的部分为 $x[1…i-1]$ 和 $y[1…j]$ ，同时也是子问题 $E(i-1,j)$<br>第二种类似，剩余对齐部分的子问题为 $E(i,j-1)$<br>第三种，最右列的 <code>cost</code> 为 1 ($x[i]\neq y[j]$) 或 0 ($x[i] = y[j]$), 剩余部分的子问题表示为 $E(i-1,j-1)$<br><strong>综上</strong>，$E(i,j)$ 表示为：  </p>
-<center>$$E(i,j) = min\{1+E(i-1,j), 1+E(i,j-1), diff(i,j)+E(i-1,j-1)\}$$</center>
+<p><img src="https://i.loli.net/2020/03/20/lH1nuQ5S3GRIY6B.png" alt="twitter01.png"></p>
+<center>关系型数据模型构成时间线</center>
 
-<p>方便起见，定义 $diff(i,j)$ 输出 1（$x[i]\neq y[j]$） 或 0（$x[i] = y[j]$）。 </p>
-<p><strong>例</strong>: 计算 <code>EXPONENTIAL</code> 和 <code>POLYNOMIAL</code> 的编辑距离</p>
-<p><img src="https://i.loli.net/2019/10/08/Av1ImlLMyRW9sP6.png" alt="资源 4.png"></p>
-<p>本例中，子问题 $E(4,3)$ 为 <code>EXPO</code> 和 <code>POL</code>，最右列的对齐情况肯定是以下的一种（删除，插入，替换）：</p>
-<p><img src="https://i.loli.net/2019/10/10/hmELgBH4jUM2rGt.png" alt="资源 6.png"></p>
-<p>因此,  $E(4,3) = min\{1+E(3,3), 1+E(4,2), 1+E(3,2)\}$</p>
-<p>所有的子问题 $E(i,j)$ 可以用二维图表表示, 在求解 $E(i,j)$ 前，需要先处理 $E(i-1,j)$，$E(i,j-1)$，$E(i-1,j-1)$</p>
-<p><img src="https://i.loli.net/2019/10/11/Q9g6xmfCcouhXsz.png" alt="资源 9.png"></p>
-<p>最小子问题 $E(0,.)$ 和 $E(,.0)$ 为”base cases”（递归基）,显然：<br>$$E(0,j)=j \qquad E(i,0)=i$$</p>
-<p>下面给出代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">editDistance</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = s1.length();</span><br><span class="line">    <span class="keyword">int</span> n = s2.length();</span><br><span class="line">    <span class="keyword">int</span>[][] E = <span class="keyword">new</span> <span class="keyword">int</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归基</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        E[i][<span class="number">0</span>] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n + <span class="number">1</span>; j++) &#123;</span><br><span class="line">        E[<span class="number">0</span>][j] = j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自底向上递归</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n + <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="comment">// 根据公式计算</span></span><br><span class="line">            <span class="keyword">int</span> cp1 = E[i-<span class="number">1</span>][j] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> cp2 = E[i][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> cp3 = E[i-<span class="number">1</span>][j-<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (s1.charAt(i - <span class="number">1</span>) != s2.charAt(j - <span class="number">1</span>)) &#123;</span><br><span class="line">                cp3 += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            E[i][j] = Math.min(cp1, Math.min(cp2, cp3));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> E[m][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>算法的<strong>时间复杂度</strong>为$O(mn)$, <strong>空间复杂度</strong>为$O(mn)$<br>本例中，<code>EXPONENTIAL</code> 和 <code>POLYNOMIAL</code> 的最终编辑距离为 6:</p>
-<p><img src="https://i.loli.net/2019/10/11/FIAzTwonWUYaj7m.png" alt="资源 10.png"></p>
-<h2 id="4-潜在的DAG结构"><a href="#4-潜在的DAG结构" class="headerlink" title="4. 潜在的DAG结构"></a>4. 潜在的DAG结构</h2><p>每个动态规划问题都有一个 <strong>底层的DAG(有向无环图)</strong> 结构：  </p>
-<p>想象一下，每个图<strong>节点</strong>代表了一个<strong>子问题</strong>，每条<strong>边</strong>对应了解决子问题之间的一个<strong>优先级限制条件</strong>，比如节点 $v_1,…,v_k$ 指向节点 $n$，意味着“子问题 $n$ 只能在求得 $v_1,…,v_k$ 之后解出”。   </p>
-<p>在编辑距离的例子中，节点对应了图表中的位置 $(i,j)$, 边 $(i-1,j) \to (i,j),\quad (i,j-1) \to (i,j),\quad (i-1,j-1) \to (i,j)$ 显示优先级。<br>更进一步，我们可以给每条边加上权重，就能够计算出DAG的最短路径(参考Bellman-Ford算法)。比如，把所有边 $\{(i-1,j-1) \to (i,j) : x[i]=y[j]\}$ 权重（cost）设为 0，其余边设为 1，最终我们要求出从节点 $s(0,0)$ 到 $t(m,n)$ 的最短路径。如图所示：图中显示路径向下为删除，向右为插入，对角为替换($x[i] \neq y[j]$) 或匹配（$x[i]=y[j]$,权重为 0）。</p>
-<p><img src="https://i.loli.net/2019/10/11/hsLqm1FMdEV6rzu.png" alt="资源 12.png"></p>
 <br>
 
-<p><strong>参考文章</strong></p>
-<ol>
-<li>Leetcode</li>
-<li>《ALgorithms》by Sanjoy Dasgupta</li>
-<li>《Algorithms》4th</li>
-</ol>
+<blockquote>
+<p>2.对每个用户的时间线维护一个缓存，当用户推送新tweet时，查询其关注者，将tweet插入到每个关注者的时间线缓存中</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/03/20/FpMf4ubQHhnyT7r.png" alt="twitter02.png"></p>
+<center>流水线方式推送</center>
+
+<br>
+
+<p>读负载压力大的情况下，可采用第二种方式。</p>
+<h4 id="描述性能"><a href="#描述性能" class="headerlink" title="描述性能"></a>描述性能</h4><p><strong>批处理系统</strong>(如Hadoop), 使用<strong>吞吐量</strong>（即每秒可处理记录条数）描述负载增加时，系统性能变化。<strong>在线系统</strong>，使用<strong>响应时间</strong>描述。</p>
+<h4 id="应对负载增加的方法"><a href="#应对负载增加的方法" class="headerlink" title="应对负载增加的方法"></a>应对负载增加的方法</h4><p>垂直扩展（升级机器性能）和水平扩展（负载分布到多个更小机器）</p>
+<h3 id="1-4-可维护性"><a href="#1-4-可维护性" class="headerlink" title="1.4 可维护性"></a>1.4 可维护性</h3><h4 id="可运维性"><a href="#可运维性" class="headerlink" title="可运维性"></a>可运维性</h4><p>方便运营团队保持系统平稳运行</p>
+<h4 id="简单性"><a href="#简单性" class="headerlink" title="简单性"></a>简单性</h4><p>简化系统复杂度（状态空间膨胀、模块紧耦合、复杂依赖、不一致命名），良好的抽象可降低复杂度</p>
+<h4 id="可演化性"><a href="#可演化性" class="headerlink" title="可演化性"></a>可演化性</h4><p>系统要适应需求而变化，组织流程可使用敏捷开发</p>
+<h2 id="2-数据模型与查询语言"><a href="#2-数据模型与查询语言" class="headerlink" title="2. 数据模型与查询语言"></a>2. 数据模型与查询语言</h2><h3 id="2-1-关系模型与文档模型"><a href="#2-1-关系模型与文档模型" class="headerlink" title="2.1 关系模型与文档模型"></a>2.1 关系模型与文档模型</h3><h4 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h4><p>SQL为一种<strong>关系数据模型</strong>：数据被组织成<strong>关系</strong>（SQL中为表），而每个<strong>关系</strong>又是<strong>元组</strong> (tuple) 的无序集合（SQL中为行）<br><strong>关系数据库管理系统</strong>（RDBMS）和 SQL 已经成为数据存储查询的首选</p>
+<h4 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h4><p><strong>非关系型数据库</strong>，采用 NOSQL 的驱动因素</p>
+<ul>
+<li>要求比关系数据库更好的扩展性、高吞吐量</li>
+<li>偏向开源软件</li>
+<li>特定查询</li>
+<li>渴望更具动态和表达力的数据模型</li>
+</ul>
+<h4 id="对象-关系不匹配"><a href="#对象-关系不匹配" class="headerlink" title="对象-关系不匹配"></a>对象-关系不匹配</h4><p>由于面向对象语言与关系型数据库模型的差异性问题，需要一个转换层，而<strong>对象-关系映射</strong>(ORM)，如 ActiveRecorder 和 Hibernate 框架可减少此转换层代码量，</p>
 
       
     </div>
@@ -515,7 +519,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://timmger.github.io/2019/10/05/《Dynamic-Programming》/" title="《Dynamic Programming》(一)">https://timmger.github.io/2019/10/05/《Dynamic-Programming》/</a>
+    <a href="https://timmger.github.io/2020/03/20/《Designing-Data-Intensive-Applications》笔记/" title="《Designing Data-Intensive Applications》笔记">https://timmger.github.io/2020/03/20/《Designing-Data-Intensive-Applications》笔记/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -530,9 +534,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode/" rel="tag"><i class="fa fa-tag"></i> leetcode</a>
+            <a href="/tags/数据系统/" rel="tag"><i class="fa fa-tag"></i> 数据系统</a>
           
-            <a href="/tags/dynamic-programming/" rel="tag"><i class="fa fa-tag"></i> dynamic programming</a>
+            <a href="/tags/分布式/" rel="tag"><i class="fa fa-tag"></i> 分布式</a>
           
         </div>
       
@@ -545,8 +549,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/24/《Git漫游指南》-在服务器上搭建Git/" rel="next" title="《Git漫游指南》- 在服务器上搭建Git">
-                <i class="fa fa-chevron-left"></i> 《Git漫游指南》- 在服务器上搭建Git
+              <a href="/2019/12/05/Redis实战/" rel="next" title="Redis开发运维">
+                <i class="fa fa-chevron-left"></i> Redis开发运维
               </a>
             
           </div>
@@ -554,10 +558,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/11/《Dynamic-Programming》-二/" rel="prev" title="《Dynamic Programming》(二)">
-                《Dynamic Programming》(二) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -744,7 +744,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最长递增子序列"><span class="nav-number">2.</span> <span class="nav-text">2. 最长递增子序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-编辑距离-Edit-distance"><span class="nav-number">3.</span> <span class="nav-text">3. 编辑距离(Edit distance)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划解法"><span class="nav-number">3.1.</span> <span class="nav-text">动态规划解法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-潜在的DAG结构"><span class="nav-number">4.</span> <span class="nav-text">4. 潜在的DAG结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、数据系统基础"><span class="nav-number">1.</span> <span class="nav-text">一、数据系统基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-可靠、可扩展和可维护"><span class="nav-number">2.</span> <span class="nav-text">1. 可靠、可扩展和可维护</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-认识数据系统（data-system）"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 认识数据系统（data system）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-可靠性"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 可靠性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#硬件故障"><span class="nav-number">2.2.1.</span> <span class="nav-text">硬件故障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件错误"><span class="nav-number">2.2.2.</span> <span class="nav-text">软件错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#人为失误"><span class="nav-number">2.2.3.</span> <span class="nav-text">人为失误</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-可扩展性"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 可扩展性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#描述负载"><span class="nav-number">2.3.1.</span> <span class="nav-text">描述负载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#描述性能"><span class="nav-number">2.3.2.</span> <span class="nav-text">描述性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应对负载增加的方法"><span class="nav-number">2.3.3.</span> <span class="nav-text">应对负载增加的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-可维护性"><span class="nav-number">2.4.</span> <span class="nav-text">1.4 可维护性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可运维性"><span class="nav-number">2.4.1.</span> <span class="nav-text">可运维性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单性"><span class="nav-number">2.4.2.</span> <span class="nav-text">简单性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可演化性"><span class="nav-number">2.4.3.</span> <span class="nav-text">可演化性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数据模型与查询语言"><span class="nav-number">3.</span> <span class="nav-text">2. 数据模型与查询语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-关系模型与文档模型"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 关系模型与文档模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL"><span class="nav-number">3.1.1.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NoSQL"><span class="nav-number">3.1.2.</span> <span class="nav-text">NoSQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象-关系不匹配"><span class="nav-number">3.1.3.</span> <span class="nav-text">对象-关系不匹配</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -907,9 +907,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://timmger.github.io/2019/10/05/《Dynamic-Programming》/';
-          this.page.identifier = '2019/10/05/《Dynamic-Programming》/';
-          this.page.title = '《Dynamic Programming》(一)';
+          this.page.url = 'https://timmger.github.io/2020/03/20/《Designing-Data-Intensive-Applications》笔记/';
+          this.page.identifier = '2020/03/20/《Designing-Data-Intensive-Applications》笔记/';
+          this.page.title = '《Designing Data-Intensive Applications》笔记';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://Timmger.disqus.com/embed.js';
