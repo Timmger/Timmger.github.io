@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Time Manager">
 <meta property="og:description" content="1. CASE 表达式1.1 CASE 表达式的写法：12345678910-- 简单CASE表达式(不推荐)CASE sexWHEN &apos;1&apos; THEN &apos;男&apos;WHEN &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END-- 搜索CASE 表达式CASE WHEN sex = &apos;1&apos; THEN &apos;男&apos;WHEN sex = &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END  注意事项：  统一各分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-18T07:26:08.542Z">
+<meta property="og:updated_time" content="2020-08-25T13:59:11.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 进阶教程">
 <meta name="twitter:description" content="1. CASE 表达式1.1 CASE 表达式的写法：12345678910-- 简单CASE表达式(不推荐)CASE sexWHEN &apos;1&apos; THEN &apos;男&apos;WHEN &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END-- 搜索CASE 表达式CASE WHEN sex = &apos;1&apos; THEN &apos;男&apos;WHEN sex = &apos;2&apos; THEN &apos;女&apos;ELSE &apos;其他&apos; END  注意事项：  统一各分">
@@ -679,7 +679,7 @@
     </tr>
     <tr>
         <th>f</th>
-        <td>f</td>
+        <td>t</td>
         <td>u</td>
         <td>f</td>
     </tr>
@@ -1020,8 +1020,8 @@
 <p>类似地，求 B - A:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> B.id <span class="keyword">AS</span> <span class="keyword">id</span>, B.name <span class="keyword">AS</span> B_name</span><br><span class="line">    <span class="keyword">FROM</span> Class_A <span class="keyword">AS</span> A <span class="keyword">RIGHT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Class_B <span class="keyword">AS</span> B</span><br><span class="line">    <span class="keyword">ON</span> A.id = B.id</span><br><span class="line"><span class="keyword">WHERE</span> A.name <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
 
-<h4 id="5-4-2-全外连接求异或集"><a href="#5-4-2-全外连接求异或集" class="headerlink" title="5.4.2 全外连接求异或集"></a>5.4.2 全外连接求异或集</h4><p>A{樱，工，赤} ， B{工，赤，汤}，求异或集{樱，赤}</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COALESCE</span>(A.id, B.id) <span class="keyword">AS</span> <span class="keyword">id</span>,</span><br><span class="line">       <span class="keyword">COALESCE</span>(A.name, B.name) <span class="keyword">AS</span> <span class="keyword">name</span></span><br><span class="line">    <span class="keyword">FROM</span> Class_A A <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Class_B B</span><br><span class="line"><span class="keyword">WHERE</span> A.name <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">AND</span> B.name <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="5-4-2-全外连接求异或集"><a href="#5-4-2-全外连接求异或集" class="headerlink" title="5.4.2 全外连接求异或集"></a>5.4.2 全外连接求异或集</h4><p>A{樱，工，赤} ， B{工，赤，汤}，求异或集{樱，汤}</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COALESCE</span>(A.id, B.id) <span class="keyword">AS</span> <span class="keyword">id</span>,</span><br><span class="line">       <span class="keyword">COALESCE</span>(A.name, B.name) <span class="keyword">AS</span> <span class="keyword">name</span></span><br><span class="line">    <span class="keyword">FROM</span> Class_A A <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Class_B B</span><br><span class="line"><span class="keyword">WHERE</span> A.name <span class="keyword">IS</span> <span class="literal">NULL</span> <span class="keyword">OR</span> B.name <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="6-用关联子查询比较行与行"><a href="#6-用关联子查询比较行与行" class="headerlink" title="6. 用关联子查询比较行与行"></a>6. 用关联子查询比较行与行</h2><h3 id="6-1-增加、减少、维持不变"><a href="#6-1-增加、减少、维持不变" class="headerlink" title="6.1 增加、减少、维持不变"></a>6.1 增加、减少、维持不变</h3><p>假设有一张记录每年的营业额的表Sales。</p>
 <table border="1">
@@ -1211,7 +1211,7 @@
     </tr>
 </table>
 
-<p>我们需要找出两个完全相同的子集：即 A 和 C</p>
+<p>我们需要找出两个完全相同的子集：即 A 和 E</p>
 <p>首先生成供应商全部组合，GROUP BY 去重</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SP1.sup <span class="keyword">AS</span> S1, SP2.sup <span class="keyword">AS</span> S2</span><br><span class="line">    <span class="keyword">FROM</span> SupParts SP1, SubParts SP2</span><br><span class="line"><span class="keyword">WHERE</span> SP1.sup &lt; SP2.sup</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> SP1.sup, SP2.sup;</span><br></pre></td></tr></table></figure>
 

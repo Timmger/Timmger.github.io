@@ -119,7 +119,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/12/29/UqWyRcBw4ztGS6X.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/29/1AK2hlwrvjzpuCx.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/30/W19uTEdokzgxqKy.png">
-<meta property="og:updated_time" content="2019-12-31T07:17:54.186Z">
+<meta property="og:updated_time" content="2020-08-23T11:03:30.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker指南">
 <meta name="twitter:description" content="1. 概览什么是 Docker  Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.  Docker 是一系列平台即服务产品，它使用操作系统级别的虚拟化技术，以软件包（容">
@@ -805,7 +805,7 @@
 
 <p><code>docker network ls</code> 查看网络是否创建成功</p>
 <p>创建一个新的服务，并将其接入 uber-net 网络</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker servce create --name uber-svc \</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --network uber-net \</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> -p 80:80 --replicas 12 \</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> nigelpoulton/tu-demo:v1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker service create --name uber-svc \</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --network uber-net \</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> -p 80:80 --replicas 12 \</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> nigelpoulton/tu-demo:v1</span></span><br></pre></td></tr></table></figure>
 
 <p>如果使用新镜像更新两个副本，其间有20s的延迟：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker service update \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --image nigelpoulton/tu-demo:v2 \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --update-parallelism 2 \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --update-delay 20s uber-svc</span></span><br></pre></td></tr></table></figure>
@@ -892,7 +892,7 @@
 
 <p>(3) 浏览器访问 <code>Docker的ip:5000</code></p>
 <h3 id="8-3-多机覆盖网络"><a href="#8-3-多机覆盖网络" class="headerlink" title="8.3 多机覆盖网络"></a>8.3 多机覆盖网络</h3><p>支持单个网络包含多个主机，不同主机上的容器间可以在链路层互相通信</p>
-<p>添加参数 <code>docker network create --d overlay</code> 创建覆盖网络</p>
+<p>添加参数 <code>docker network create -d overlay</code> 创建覆盖网络</p>
 <h3 id="8-4-接入现有网络"><a href="#8-4-接入现有网络" class="headerlink" title="8.4 接入现有网络"></a>8.4 接入现有网络</h3><p>Macvlan(Windows为Transparent)驱动，能够将容器化应用连接到物理网络和VLAN上</p>
 <p>它为容器提供MAC和IP地址，需要将主机网卡设置为<strong>混杂模式</strong></p>
 <p><strong>使用场景</strong></p>
@@ -908,7 +908,7 @@
 <center>Macvlan</center>
 
 <p><strong>用于故障排除的容器和服务日志</strong></p>
-<p><strong>daemon 日志</strong><br>Windows 日志存放在 <code>C:\Users\Direct-X\AppData\Local\Docker</code><br>Linux 通过 <code>journalctl -u docker.service</code> 查看</p>
+<p><strong>daemon 日志</strong><br>Windows 日志存放在 <code>C:\Users\username\AppData\Local\Docker</code><br>Linux 通过 <code>journalctl -u docker.service</code> 查看</p>
 <p><strong>容器日志</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker container logs &#123;name&#125;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看Swarm日志</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker service logs &#123;name&#125;</span></span><br></pre></td></tr></table></figure>
 
@@ -945,7 +945,7 @@
 <center>连接网络</center>
 
 <p><strong>1. 构建Swarm</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> node1 运行</span></span><br><span class="line"><span class="meta">node1$</span><span class="bash"> docker swarm init \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --advertise-addr = 172.31.1.5 \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --listen-addr = 172.31.1.5:2377</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> node2 运行</span></span><br><span class="line"><span class="meta">node2$</span><span class="bash"> docker swarm join \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --token SWMTKN-1-0hz2ec... 2vye \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 172.31.1.5:2377</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> node1 运行</span></span><br><span class="line"><span class="meta">node1$</span><span class="bash"> docker swarm init \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --advertise-addr  172.31.1.5 \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --listen-addr  172.31.1.5:2377</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> node2 运行</span></span><br><span class="line"><span class="meta">node2$</span><span class="bash"> docker swarm join \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --token SWMTKN-1-0hz2ec... 2vye \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 172.31.1.5:2377</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>2. 创建覆盖网络</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">node1$</span><span class="bash"> docker network create -d overlay uber-net</span></span><br></pre></td></tr></table></figure>
@@ -998,7 +998,7 @@
 <h3 id="10-2-使用"><a href="#10-2-使用" class="headerlink" title="10.2 使用"></a>10.2 使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker container run -dit --name voltainer \ </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 指定了不存在的卷，docker 会新建一个卷并挂载到容器内</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> --mount <span class="built_in">source</span>=bizvol,target=/vol \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> alpine</span></span><br></pre></td></tr></table></figure>
 
 <p>连接到容器并写入数据：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> container <span class="built_in">exec</span> -it voltainer sh</span></span><br><span class="line">/$ echo "I am the coolest" &gt; /vol/file1</span><br><span class="line">/$ cat /vol/file1</span><br><span class="line">I am the coolest</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker container <span class="built_in">exec</span> -it voltainer sh</span></span><br><span class="line">/$ echo "I am the coolest" &gt; /vol/file1</span><br><span class="line">/$ cat /vol/file1</span><br><span class="line">I am the coolest</span><br></pre></td></tr></table></figure>
 
 <p>此时删除容器：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker container stop voltainer</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker container rm voltainer</span></span><br></pre></td></tr></table></figure>
@@ -1073,7 +1073,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> \ 换行符，&gt; 标识(非指令)</span></span><br><span class="line"><span class="meta">mgr-1$</span><span class="bash"> openssl req -newkey rsa:4096 -nodes -sha256 \ </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> -keyout domain.key -x509 -days 365 -out domain.crt</span></span><br></pre></td></tr></table></figure>
 
 <p>创建 revprox_cert、revprox_key 和 postgres_password</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mgr-1$</span><span class="bash"> docker secret create revprox_cert domain.crt</span></span><br><span class="line"><span class="meta">mgr-1$</span><span class="bash"> docker secret create revprox_key domain.key</span></span><br><span class="line"><span class="meta">mgr-1$</span><span class="bash"> docker secret create postgres_password</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mgr-1$</span><span class="bash"> docker secret create revprox_cert domain.crt</span></span><br><span class="line"><span class="meta">mgr-1$</span><span class="bash"> docker secret create revprox_key domain.key</span></span><br><span class="line"><span class="meta">mgr-1$</span><span class="bash"> docker secret create postgres_password domain.key</span></span><br></pre></td></tr></table></figure>
 
 <p>创建 stage_token</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mgr-1$</span><span class="bash"> <span class="built_in">echo</span> staging | docker secret create staging_token -</span></span><br></pre></td></tr></table></figure>
