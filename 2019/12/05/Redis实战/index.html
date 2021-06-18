@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/12/20/hVxSlLbJZdyOC2u.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/20/E91xMbiN6GaDVFH.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/20/wXu8mxZkfeDsdql.png">
-<meta property="og:updated_time" content="2020-08-30T11:06:28.760Z">
+<meta property="og:updated_time" content="2021-04-14T16:24:44.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis开发运维">
 <meta name="twitter:description" content="1. Redis简介 1.1 什么是 Redis Redis是一种基于键值（key-value）的NoSQL数据库。    数据存放于内存，读写性能惊人  Redis中的值由string（字符串）、hash（哈希）、list（列表）、set（集合）、zset（有序集合）、Bitmaps（位图）、HyperLogLog、GEO（地理信息定位）等组成   1.2 Redis 可以做什么缓存、排行榜系统">
@@ -464,7 +464,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> wget http://download.redis.io/releases/redis-5.0.7.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tar xzf redis-5.0.7.tar.gz</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ln -s redis-5.0.7 redis</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> redis</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> make install</span></span><br></pre></td></tr></table></figure>
 
 <p>redis服务指定端口启动：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 指定端口</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> reids-server --port 6380</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 指定配置文件</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-server /opt/redis/redis.conf</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 指定端口</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-server --port 6380</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 指定配置文件</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> redis-server /opt/redis/redis.conf</span></span><br></pre></td></tr></table></figure>
 
 <p>命令行客户端启动：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-cli -h 127.0.0.1 -p 6380</span></span><br></pre></td></tr></table></figure>
@@ -697,7 +697,7 @@
 </ul>
 <h4 id="2-6-3-使用场景"><a href="#2-6-3-使用场景" class="headerlink" title="2.6.3 使用场景"></a>2.6.3 使用场景</h4><p><strong>消息队列</strong></p>
 <p><img src="https://i.loli.net/2019/12/08/iMbXZv9Rf6BHESL.png" alt="P_C.png"></p>
-<p>生产者客户端使用lrpush从列表左侧插入元素，多个消费者客户端使用brpop命令<br>阻塞式的“抢”列表尾部的元素</p>
+<p>生产者客户端使用lpush从列表左侧插入元素，多个消费者客户端使用brpop命令<br>阻塞式的“抢”列表尾部的元素</p>
 <p><strong>文章列表</strong></p>
 <ul>
 <li><p>每篇文章用 hash 存储</p>
@@ -756,7 +756,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sdiff key [key ...]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sdiff user:1:follow user:2:follow</span></span><br><span class="line">1) "his"</span><br><span class="line">2) "music"</span><br><span class="line">3) "sports"</span><br><span class="line"><span class="meta">$</span><span class="bash"> sdiff user:2:follow user:1:follow</span></span><br><span class="line">1) "news"</span><br><span class="line">2) "her"</span><br><span class="line">3) "dance"</span><br></pre></td></tr></table></figure>
 
 <p><strong>将交集、并集、差集的结果保存</strong>:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sinterstore destination_key key [key ...]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> suionstore destination_key key [key ...]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sdiffstore destination_key key [key ...]</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 例</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sdiffstore user:1_2:diff user:1:follow user:2:follow</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sinterstore destination_key key [key ...]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sunionstore destination_key key [key ...]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sdiffstore destination_key key [key ...]</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 例</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sdiffstore user:1_2:diff user:1:follow user:2:follow</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="2-7-2-内部编码"><a href="#2-7-2-内部编码" class="headerlink" title="2.7.2 内部编码"></a>2.7.2 内部编码</h4><ul>
 <li><strong>intset</strong>(整数集合)：元素为整数且个数小于set-maxintset-entries配置（默认512个）</li>
@@ -2263,7 +2263,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/10/17/esc5JZjgPhyCdb4.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/17/TIQtcxbz9AkXgBP.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/17/jOAsUcM9fN5oJ4a.png">
-<meta property="og:updated_time" content="2020-07-29T02:59:10.524Z">
+<meta property="og:updated_time" content="2020-11-26T05:02:05.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Dynamic Programming》(二)">
 <meta name="twitter:description" content="1. 背包问题(Knapsack)问题描述给定一个能够承重 W 磅的背包(knapsack), 有 n 个物体可供挑选，每个物体都有重量(weight)和价值(value)，怎么挑选才能使背包所装物体价值最大？在如下例子中，取 W = 10 并且               Item         Weight         Value                   1">
@@ -509,13 +509,13 @@
         <td>60,200</td>
     </tr>
     <tr>
-        <td>$(A\times)B\times (C\times D)$</td>
+        <td>$(A\times B)\times (C\times D)$</td>
         <td>50 * 20 * 1 + 1 * 10 * 100 + 50 * 1 * 100</td>
         <td>7,000</td>
     </tr>
 </table>
 
-<p>正如我们所见，乘法的顺序对最后的运行的时间有很大的影响，那我们如何确定最优顺序呢？比如我们想要计算 $A_1\times A_2\times … \times A_n$，维度分别为 $m_0\times m_1,m1\times m_2,…,m_n-1\times m_n$。  </p>
+<p>正如我们所见，乘法的顺序对最后的运行的时间有很大的影响，那我们如何确定最优顺序呢？比如我们想要计算 $A_1\times A_2\times … \times A_n$，维度分别为 $m_0\times m_1,m1\times m_2,…,(m_n-1)\times m_n$。  </p>
 <p>首先，二叉树可以非常直观地展示加括号计算的顺序，叶子结点（度为0）表示单独的矩阵，根结点是最终的乘积，根节点到叶子结点之间的内部结点（度大于1）是部分乘积，可能的顺序与满二叉树的 $n$ 个叶子节点的组合有关。</p>
 <p><img src="https://i.loli.net/2019/10/15/bSPQEKACLU26iHq.png" alt="资源 15.png"></p>
 <h3 id="暴力算法"><a href="#暴力算法" class="headerlink" title="暴力算法"></a>暴力算法</h3><p>通过 $n$ 个叶子结点能构成多少种满二叉树来逐个计算   </p>
@@ -823,7 +823,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
